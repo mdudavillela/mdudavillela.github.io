@@ -7,31 +7,73 @@
     body {
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
+      color: #333;
       text-align: center;
       padding: 50px;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     h1 {
-      color: #333;
+      margin-bottom: 30px;
     }
 
+    /* Links */
     a {
       display: inline-block;
       margin: 10px;
-      padding: 10px 20px;
+      padding: 12px 24px;
       text-decoration: none;
-      color: white;
-      background-color: #007BFF;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+      color: #fff;
+      background: linear-gradient(135deg, #007BFF, #0056b3);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: transform 0.2s, background 0.3s;
     }
 
     a:hover {
-      background-color: #0056b3;
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #0056b3, #003d80);
+    }
+
+    /* Botão de toggle */
+    .toggle-btn {
+      margin-bottom: 30px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      background-color: #333;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background-color: #555;
+    }
+
+    /* Estilo do modo escuro */
+    body.dark {
+      background-color: #121212;
+      color: #f1f1f1;
+    }
+
+    body.dark a {
+      background: linear-gradient(135deg, #ff7b00, #ff4d00);
+    }
+
+    body.dark a:hover {
+      background: linear-gradient(135deg, #cc3c00, #992d00);
+    }
+
+    body.dark .toggle-btn {
+      background-color: #f1f1f1;
+      color: #121212;
     }
   </style>
 </head>
 <body>
+  <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Alternar modo</button>
   <h1>Desafios ME315</h1>
 
   <!-- Desafio buttons -->
@@ -51,5 +93,11 @@
   <a href="ManipulacaoBancoDados/Desafio14.html">Desafio 14</a>
   <a href="ManipulacaoBancoDados/Desafio15.html">Desafio 15</a>
 
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark');
+    }
+  </script>
 </body>
 </html>
+
