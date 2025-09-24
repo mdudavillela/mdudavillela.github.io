@@ -1,455 +1,271 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Desafios</title>
+    <title>Desafios ME315 - Iuri Santos</title>
     <style>
         :root {
-            --bg-color: #f5f5f5;
-            --container-bg: #ffffff;
-            --text-color: #333333;
-            --header-bg: linear-gradient(135deg, #8A2BE2, #6A0DAD);
-            --header-text: #ffffff;
-            --challenge-bg: #f8f9fa;
-            --border-color: #eeeeee;
-            --link-bg: #8A2BE2;
-            --html-link-bg: #9C27B0;
-            --qmd-link-bg: #7B1FA2;
-            --shadow: rgba(0, 0, 0, 0.1);
-            --accent-color: #8A2BE2;
+            --sidebar-width: 250px;
+            --primary-color: #34495e;
+            --secondary-color: #1abc9c;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-bg: #f5f7fa;
         }
-
-        .dark-mode {
-            --bg-color: #1a0b2e;
-            --container-bg: #2d1b42;
-            --text-color: #e6e6e6;
-            --header-bg: linear-gradient(135deg, #4A148C, #6A1B9A);
-            --header-text: #e6e6e6;
-            --challenge-bg: #3d2a5c;
-            --border-color: #4A148C;
-            --link-bg: #7B1FA2;
-            --html-link-bg: #9C27B0;
-            --qmd-link-bg: #8E24AA;
-            --shadow: rgba(0, 0, 0, 0.4);
-            --accent-color: #BA68C8;
-        }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            transition: background-color 0.3s, color 0.3s;
         }
         
         body {
-            background: var(--bg-color);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--light-bg);
             color: var(--text-color);
-            line-height: 1.6;
-            padding: 20px;
+            display: flex;
             min-height: 100vh;
         }
         
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: var(--container-bg);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px var(--shadow);
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 5px;
-            background: linear-gradient(90deg, #8A2BE2, #6A0DAD, #4A148C);
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 40px 30px;
-            border-radius: 12px;
-            background: var(--header-bg);
-            color: var(--header-text);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            opacity: 0.3;
-        }
-        
-        .site-name {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            position: relative;
-        }
-        
-        .site-subtitle {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            position: relative;
-        }
-        
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            z-index: 10;
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s;
-        }
-        
-        .theme-toggle:hover {
-            transform: rotate(15deg);
-        }
-        
-        .challenge-list {
-            display: grid;
-            gap: 25px;
-        }
-        
-        .challenge-item {
-            background: var(--challenge-bg);
-            border-radius: 12px;
-            padding: 25px;
-            transition: all 0.3s;
-            border-left: 5px solid var(--accent-color);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .challenge-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-        }
-        
-        .challenge-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px var(--shadow);
-        }
-        
-        .challenge-title {
-            font-size: 1.4rem;
-            color: var(--text-color);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .challenge-title i {
-            margin-right: 12px;
-            repoOwner: 'mdudavillela',
-            repoName: 'ManipulacaoBancoDados'
-            color: var(--accent-color);
-            font-size: 1.6rem;
-        }
-        
-        .links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        
-        .link {
-            display: inline-flex;
-            align-items: center;
-            padding: 10px 18px;
-            background: var(--link-bg);
+        .sidebar {
+            width: var(--sidebar-width);
+            background-color: var(--primary-color);
             color: white;
+            padding: 30px 0;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .logo {
+            text-align: center;
+            padding: 0 20px 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .logo p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .nav-section {
+            margin-bottom: 30px;
+        }
+        
+        .nav-title {
+            padding: 0 20px 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-link {
+            padding: 12px 20px;
+            display: block;
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            border-left-color: var(--secondary-color);
+        }
+        
+        .main-content {
+            flex: 1;
+            margin-left: var(--sidebar-width);
+            padding: 40px;
+        }
+        
+        .content-header {
+            margin-bottom: 30px;
+        }
+        
+        .content-header h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .file-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .file-card {
+            background-color: white;
             border-radius: 8px;
-            transition: all 0.3s;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--secondary-color);
         }
         
-        .link:hover {
-            filter: brightness(1.15);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        .file-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
-        .link i {
-            margin-right: 8px;
+        .file-card h3 {
+            margin-bottom: 10px;
             font-size: 1.2rem;
         }
         
-        .html-link {
-            background: linear-gradient(135deg, var(--html-link-bg), #AD1457);
+        .file-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
         }
         
-        .qmd-link {
-            background: linear-gradient(135deg, var(--qmd-link-bg), #6A1B9A);
+        .file-type {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
         }
         
-        .download-link {
-            background: linear-gradient(135deg, var(--qmd-link-bg), #6A1B9A);
-        }
-        
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-color);
-            opacity: 0.7;
-            font-size: 0.9rem;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 30px;
-            font-style: italic;
-            font-size: 1.1rem;
+        .file-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            display: block;
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            
-            .site-name {
-                font-size: 2.2rem;
-            }
-            
-            .links {
+            body {
                 flex-direction: column;
             }
             
-            .link {
-                justify-content: center;
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
             }
             
-            .theme-toggle {
-                top: 15px;
-                right: 15px;
-                width: 40px;
-                height: 40px;
+            .main-content {
+                margin-left: 0;
+                padding: 20px;
+            }
+            
+            .file-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <button class="theme-toggle" id="themeToggle">🌙</button>
-            <h1 class="site-name">Universo de Desafios</h1>
-            <p class="site-subtitle">Explorando HTML, QMD e RMD</p>
-        </header>
+    <div class="sidebar">
+        <div class="logo">
+            <h1>ME315</h1>
+            <p>Banco de Dados</p>
+            <p>Iuri Santos</p>
+        </div>
         
-        <main>
-            <div class="challenge-list" id="challengeList">
-                <div class="loading">Carregando constelação de desafios...</div>
+        <div class="nav-section">
+            <div class="nav-title">Arquivos de Código</div>
+            <ul class="nav-links">
+                <li><a href="#qmd" class="nav-link active">Arquivos QMD</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-title">Visualização</div>
+            <ul class="nav-links">
+                <li><a href="#html" class="nav-link">Arquivos HTML/PDF</a></li>
+            </ul>
+        </div>
+        
+        <div class="nav-section">
+            <div class="nav-title">Informações</div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link">Sobre a Disciplina</a></li>
+                <li><a href="#" class="nav-link">Instruções</a></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="main-content">
+        <div class="content-header">
+            <h2>Desafios ME315</h2>
+            <p>Lista de arquivos para os desafios da disciplina Banco de Dados</p>
+        </div>
+        
+        <div id="qmd" class="tab-content active">
+            <h3>Arquivos de Código (QMD)</h3>
+            <div class="file-grid">
+                <!-- QMD files would be listed here -->
+                <div class="file-card">
+                    <a href="ManipulacaoBancoDados/Desafio - 01.qmd" class="file-link">
+                        <h3>Desafio 01</h3>
+                        <p>Código fonte do primeiro desafio</p>
+                    </a>
+                    <div class="file-meta">
+                        <span class="file-type">QMD</span>
+                        <span>Última modificação: 01/10/2023</span>
+                    </div>
+                </div>
+                <!-- Repeat for other QMD files -->
             </div>
-        </main>
+        </div>
         
-        <footer>
-            <p>Atualizado automaticamente conforme novos arquivos são adicionados ao repositório.</p>
-        </footer>
+        <div id="html" class="tab-content">
+            <h3>Arquivos de Visualização (HTML/PDF)</h3>
+            <div class="file-grid">
+                <!-- HTML/PDF files would be listed here -->
+                <div class="file-card">
+                    <a href="ManipulacaoBancoDados/Desafio - 01.html" class="file-link">
+                        <h3>Desafio 01</h3>
+                        <p>Visualização do primeiro desafio</p>
+                    </a>
+                    <div class="file-meta">
+                        <span class="file-type">HTML</span>
+                        <span>Última modificação: 01/10/2023</span>
+                    </div>
+                </div>
+                <!-- Repeat for other HTML/PDF files -->
+            </div>
+        </div>
     </div>
 
     <script>
-        // Variáveis de configuração - SUBSTITUA COM SEUS DADOS!
-        const config = {
-            repoOwner: 'seu-usuario', // Substitua pelo seu nome de usuário do GitHub
-            repoName: 'seu-repositorio', // Substitua pelo nome do seu repositório
-            fileExtensions: ['.html', '.qmd', '.rmd']
-        };
-
-        // Elementos DOM
-        const challengeList = document.getElementById('challengeList');
-        const themeToggle = document.getElementById('themeToggle');
-
-        // Verificar preferência de tema salva
-        if (localStorage.getItem('darkMode') === 'enabled') {
-            document.body.classList.add('dark-mode');
-            themeToggle.textContent = '☀️';
-        }
-
-        // Alternar modo escuro/claro
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
             
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem('darkMode', 'enabled');
-                themeToggle.textContent = '☀️';
-            } else {
-                localStorage.setItem('darkMode', 'disabled');
-                themeToggle.textContent = '🌙';
-            }
-        });
-
-        // Função para extrair número do desafio do nome do arquivo
-        function extractChallengeNumber(filename) {
-            const match = filename.match(/(\d+)/);
-            return match ? parseInt(match[0]) : 0;
-        }
-
-        // Função para criar URL correta para cada tipo de arquivo
-        function createFileUrl(file) {
-            if (file.name.endsWith('.html')) {
-                // Para HTML: usar GitHub Pages para visualização
-                return `https://${config.repoOwner}.github.io/${config.repoName}/${file.name}`;
-            } else {
-                // Para QMD/RMD: usar URL raw do GitHub para download
-                return `https://raw.githubusercontent.com/${config.repoOwner}/${config.repoName}/main/${file.name}`;
-            }
-        }
-
-        // Função para agrupar arquivos por desafio
-        function groupFilesByChallenge(files) {
-            const challenges = {};
-            
-            files.forEach(file => {
-                // Extrair o nome base (sem extensão)
-                const baseName = file.name.replace(/\.[^/.]+$/, "");
-                const challengeNum = extractChallengeNumber(baseName);
-                
-                if (!challenges[challengeNum]) {
-                    challenges[challengeNum] = {
-                        number: challengeNum,
-                        name: `Desafio ${challengeNum}`,
-                        htmlUrl: null,
-                        qmdUrl: null
-                    };
-                }
-                
-                // Determinar o tipo de arquivo e adicionar a URL correta
-                if (file.name.endsWith('.html')) {
-                    challenges[challengeNum].htmlUrl = createFileUrl(file);
-                } else if (file.name.endsWith('.qmd') || file.name.endsWith('.rmd')) {
-                    challenges[challengeNum].qmdUrl = createFileUrl(file);
-                }
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links and contents
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Show corresponding content
+                    const targetId = this.getAttribute('href').substring(1);
+                    document.getElementById(targetId).classList.add('active');
+                });
             });
-            
-            // Converter objeto em array e ordenar por número do desafio
-            return Object.values(challenges).sort((a, b) => a.number - b.number);
-        }
-
-        // Função para renderizar a lista de desafios
-        function renderChallenges(challenges) {
-            if (challenges.length === 0) {
-                challengeList.innerHTML = '<div class="loading">Nenhum desafio encontrado no universo.</div>';
-                return;
-            }
-            
-            challengeList.innerHTML = '';
-            
-            challenges.forEach(challenge => {
-                const challengeItem = document.createElement('div');
-                challengeItem.className = 'challenge-item';
-                
-                challengeItem.innerHTML = `
-                    <h2 class="challenge-title">
-                        <i>🌌</i> ${challenge.name}
-                    </h2>
-                    <div class="links">
-                        ${challenge.htmlUrl ? 
-                            `<a href="${challenge.htmlUrl}" class="link html-link" target="_blank">
-                                <i>🚀</i> Visualizar HTML
-                            </a>` : 
-                            '<span class="link html-link" style="opacity: 0.5; cursor: not-allowed;"><i>🚀</i> HTML não disponível</span>'
-                        }
-                        ${challenge.qmdUrl ? 
-                            `<a href="${challenge.qmdUrl}" class="link download-link" target="_blank" download>
-                                <i>📥</i> Baixar QMD/RMD
-                            </a>` : 
-                            '<span class="link download-link" style="opacity: 0.5; cursor: not-allowed;"><i>📥</i> QMD/RMD não disponível</span>'
-                        }
-                    </div>
-                `;
-                
-                challengeList.appendChild(challengeItem);
-            });
-        }
-
-        // Função para buscar arquivos do repositório via GitHub API
-        async function fetchRepoFiles() {
-            try {
-                // Verificar se as configurações foram personalizadas
-                if (config.repoOwner === 'seu-usuario' || config.repoName === 'seu-repositorio') {
-                    challengeList.innerHTML = `
-                        <div class="loading">
-                            <p>⚠️ Configure o repositório primeiro!</p>
-                            <p>Substitua 'seu-usuario' e 'seu-repositorio' no código JavaScript.</p>
-                            <p><small>Linhas 174-175 do código</small></p>
-                        </div>
-                    `;
-                    return;
-                }
-
-                const apiUrl = `https://api.github.com/repos/${config.repoOwner}/${config.repoName}/contents`;
-                const response = await fetch(apiUrl);
-                
-                if (!response.ok) {
-                    throw new Error('Erro ao buscar arquivos do repositório');
-                }
-                
-                const files = await response.json();
-                
-                // Filtrar apenas os arquivos com as extensões desejadas
-                const filteredFiles = files.filter(file => 
-                    config.fileExtensions.some(ext => file.name.toLowerCase().endsWith(ext))
-                );
-                
-                // Agrupar arquivos por desafio
-                const challenges = groupFilesByChallenge(filteredFiles);
-                
-                // Renderizar a lista de desafios
-                renderChallenges(challenges);
-                
-            } catch (error) {
-                console.error('Erro:', error);
-                challengeList.innerHTML = `
-                    <div class="loading">
-                        Erro ao carregar desafios: ${error.message}
-                        <br><br>
-                        <small>Verifique se o repositório é público e se o nome está correto.</small>
-                    </div>
-                `;
-            }
-        }
-
-        // Inicializar a aplicação
-        document.addEventListener('DOMContentLoaded', () => {
-            // Buscar arquivos do repositório
-            fetchRepoFiles();
-            
-            // Atualizar a cada 5 minutos (opcional)
-            setInterval(fetchRepoFiles, 5 * 60 * 1000);
         });
     </script>
 </body>
