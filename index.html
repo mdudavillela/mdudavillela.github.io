@@ -1,160 +1,216 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-<meta charset="UTF-8">
-<title>My Challenges</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-  :root {
-    --bg-light: #f5f6fa;
-    --bg-dark: #1e1e24;      /* dark elegante, não preto puro */
-    --card-light: #ffffff;
-    --card-dark: #2b2b31;
-    --text-light: #2c2c34;
-    --text-dark: #f1f1f1;
-    --primary: #4a90e2;
-    --primary-dark: #357ab8;
-  }
-
-  body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: var(--bg-light);
-    color: var(--text-light);
-    margin: 0;
-    padding: 40px 20px;
-    transition: background 0.3s, color 0.3s;
-  }
-
-  body.dark {
-    background: var(--bg-dark);
-    color: var(--text-dark);
-  }
-
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-    font-weight: 600;
-  }
-
-  .toggle-btn {
-    display: block;
-    margin: 0 auto 40px auto;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    background: var(--primary);
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  .toggle-btn:hover {
-    background: var(--primary-dark);
-  }
-  body.dark .toggle-btn {
-    background: #f1f1f1;
-    color: #1e1e24;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .card {
-    background: var(--card-light);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    text-align: center;
-    transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-  }
-  body.dark .card {
-    background: var(--card-dark);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  }
-  .card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
-  }
-
-  .card h2 {
-    margin: 0 0 15px 0;
-    font-size: 1.2rem;
-  }
-
-  .links {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  .links a {
-    text-decoration: none;
-    background: var(--primary);
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-weight: 600;
-    transition: background 0.3s;
-  }
-  .links a:hover {
-    background: var(--primary-dark);
-  }
-  body.dark .links a {
-    background: #ff7b00;
-  }
-  body.dark .links a:hover {
-    background: #cc5c00;
-  }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Desafios</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .description {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .challenge-list {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .challenge-item {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .challenge-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .challenge-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .challenge-title i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .link {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .link:hover {
+            background-color: #2980b9;
+        }
+        
+        .link i {
+            margin-right: 8px;
+        }
+        
+        .html-link {
+            background-color: #e74c3c;
+        }
+        
+        .html-link:hover {
+            background-color: #c0392b;
+        }
+        
+        .qmd-link {
+            background-color: #27ae60;
+        }
+        
+        .qmd-link:hover {
+            background-color: #219653;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            color: #7f8c8d;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .links {
+                flex-direction: column;
+            }
+            
+            .link {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <button class="toggle-btn" onclick="document.body.classList.toggle('dark')">🌙 Toggle Dark Mode</button>
-  <h1>📊 My Challenges</h1>
-
-  <div class="grid">
-    <!-- Repita o bloco abaixo para cada desafio -->
-    <div class="card">
-      <h2>Desafio 01</h2>
-      <div class="links">
-        <a href="#">HTML</a>
-        <a href="#">QMD/RMD</a>
-      </div>
+    <div class="container">
+        <header>
+            <h1>Lista de Desafios</h1>
+            <p class="description">Abaixo estão listados todos os desafios com seus respectivos arquivos HTML e QMD/RMD.</p>
+        </header>
+        
+        <main>
+            <div class="challenge-list" id="challengeList">
+                <!-- Os desafios serão inseridos aqui via JavaScript -->
+            </div>
+        </main>
+        
+        <footer>
+            <p>Atualizado automaticamente conforme novos arquivos são adicionados ao repositório.</p>
+        </footer>
     </div>
 
-    <div class="card">
-      <h2>Desafio 02</h2>
-      <div class="links">
-        <a href="#">HTML</a>
-        <a href="#">QMD/RMD</a>
-      </div>
-    </div>
+    <script>
+        // Dados de exemplo - substitua com os dados reais do seu repositório
+        const challenges = [
+            {
+                title: "Desafio 1",
+                htmlUrl: "desafio1.html",
+                qmdUrl: "desafio1.qmd"
+            },
+            {
+                title: "Desafio 2",
+                htmlUrl: "desafio2.html",
+                qmdUrl: "desafio2.qmd"
+            },
+            {
+                title: "Desafio 3",
+                htmlUrl: "desafio3.html",
+                qmdUrl: "desafio3.qmd"
+            },
+            {
+                title: "Desafio 4",
+                htmlUrl: "desafio4.html",
+                qmdUrl: "desafio4.qmd"
+            }
+        ];
 
-    <div class="card">
-      <h2>Desafio 03</h2>
-      <div class="links">
-        <a href="#">HTML</a>
-        <a href="#">QMD/RMD</a>
-      </div>
-    </div>
-    <!-- ...adicione mais desafios aqui -->
-  </div>
+        // Função para renderizar a lista de desafios
+        function renderChallenges() {
+            const challengeList = document.getElementById('challengeList');
+            
+            challenges.forEach(challenge => {
+                const challengeItem = document.createElement('div');
+                challengeItem.className = 'challenge-item';
+                
+                challengeItem.innerHTML = `
+                    <h2 class="challenge-title">
+                        <i>📁</i> ${challenge.title}
+                    </h2>
+                    <div class="links">
+                        <a href="${challenge.htmlUrl}" class="link html-link" target="_blank">
+                            <i>🌐</i> Visualizar HTML
+                        </a>
+                        <a href="${challenge.qmdUrl}" class="link qmd-link" target="_blank">
+                            <i>📊</i> Ver código QMD/RMD
+                        </a>
+                    </div>
+                `;
+                
+                challengeList.appendChild(challengeItem);
+            });
+        }
 
-<script>
-  // opcional: salvar modo escuro no navegador
-  const btn = document.querySelector('.toggle-btn');
-  if(localStorage.getItem('theme') === 'dark'){
-    document.body.classList.add('dark');
-  }
-  btn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-  });
-</script>
+        // Inicializar a renderização quando a página carregar
+        document.addEventListener('DOMContentLoaded', renderChallenges);
+    </script>
 </body>
 </html>
