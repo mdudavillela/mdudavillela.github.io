@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafios - ME315</title>
+    <title>Lista de Desafios</title>
     <style>
         :root {
             --bg-color: #f5f5f5;
@@ -13,14 +13,14 @@
             --header-text: #ffffff;
             --challenge-bg: #f8f9fa;
             --border-color: #eeeeee;
-            --link-bg: #8A2BE2
+            --link-bg: #8A2BE2;
             --html-link-bg: #9C27B0;
             --qmd-link-bg: #7B1FA2;
             --shadow: rgba(0, 0, 0, 0.1);
             --accent-color: #8A2BE2;
         }
 
-                .dark-mode {
+        .dark-mode {
             --bg-color: #1a0b2e;
             --container-bg: #2d1b42;
             --text-color: #e6e6e6;
@@ -44,7 +44,7 @@
         }
         
         body {
-            background-color: var(--bg-color);
+            background: var(--bg-color);
             color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
@@ -54,31 +54,58 @@
         .container {
             max-width: 1000px;
             margin: 0 auto;
-            background-color: var(--container-bg);
-            border-radius: 10px;
-            box-shadow: 0 0 20px var(--shadow);
+            background: var(--container-bg);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow);
             padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #8A2BE2, #6A0DAD, #4A148C);
         }
         
         header {
             text-align: center;
             margin-bottom: 30px;
-            padding: 30px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--header-bg), #2c3e50);
+            padding: 40px 30px;
+            border-radius: 12px;
+            background: var(--header-bg);
             color: var(--header-text);
             position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0.3;
         }
         
         .site-name {
-            font-size: 2.5rem;
+            font-size: 2.8rem;
             margin-bottom: 10px;
             font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            position: relative;
         }
         
         .site-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.9;
+            position: relative;
         }
         
         .theme-toggle {
@@ -88,55 +115,64 @@
             background: rgba(255, 255, 255, 0.2);
             border: none;
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.3rem;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            transition: transform 0.3s;
         }
         
-        h1 {
-            color: var(--text-color);
-            margin-bottom: 10px;
-        }
-        
-        .description {
-            color: var(--text-color);
-            font-size: 1.1rem;
-            opacity: 0.8;
+        .theme-toggle:hover {
+            transform: rotate(15deg);
         }
         
         .challenge-list {
             display: grid;
-            gap: 20px;
+            gap: 25px;
         }
         
         .challenge-item {
-            background-color: var(--challenge-bg);
-            border-radius: 8px;
-            padding: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border-left: 4px solid var(--link-bg);
+            background: var(--challenge-bg);
+            border-radius: 12px;
+            padding: 25px;
+            transition: all 0.3s;
+            border-left: 5px solid var(--accent-color);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .challenge-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
         }
         
         .challenge-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px var(--shadow);
+            box-shadow: 0 10px 20px var(--shadow);
         }
         
         .challenge-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             color: var(--text-color);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
             display: flex;
             align-items: center;
         }
         
         .challenge-title i {
-            margin-right: 10px;
-            color: var(--link-bg);
+            margin-right: 12px;
+            color: var(--accent-color);
+            font-size: 1.6rem;
         }
         
         .links {
@@ -148,29 +184,37 @@
         .link {
             display: inline-flex;
             align-items: center;
-            padding: 8px 15px;
-            background-color: var(--link-bg);
+            padding: 10px 18px;
+            background: var(--link-bg);
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 8px;
             transition: all 0.3s;
+            font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
         .link:hover {
-            filter: brightness(1.2);
-            transform: scale(1.05);
+            filter: brightness(1.15);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
         
         .link i {
             margin-right: 8px;
+            font-size: 1.2rem;
         }
         
         .html-link {
-            background-color: var(--html-link-bg);
+            background: linear-gradient(135deg, var(--html-link-bg), #AD1457);
         }
         
         .qmd-link {
-            background-color: var(--qmd-link-bg);
+            background: linear-gradient(135deg, var(--qmd-link-bg), #6A1B9A);
+        }
+        
+        .download-link {
+            background: linear-gradient(135deg, var(--qmd-link-bg), #6A1B9A);
         }
         
         footer {
@@ -180,21 +224,23 @@
             border-top: 1px solid var(--border-color);
             color: var(--text-color);
             opacity: 0.7;
+            font-size: 0.9rem;
         }
         
         .loading {
             text-align: center;
-            padding: 20px;
+            padding: 30px;
             font-style: italic;
+            font-size: 1.1rem;
         }
         
         @media (max-width: 768px) {
             .container {
-                padding: 15px;
+                padding: 20px;
             }
             
             .site-name {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
             
             .links {
@@ -206,8 +252,10 @@
             }
             
             .theme-toggle {
-                top: 10px;
-                right: 10px;
+                top: 15px;
+                right: 15px;
+                width: 40px;
+                height: 40px;
             }
         }
     </style>
@@ -216,13 +264,13 @@
     <div class="container">
         <header>
             <button class="theme-toggle" id="themeToggle">🌙</button>
-            <h1 class="site-name">Desafios de ME315</h1>
-            <p class="site-subtitle">Lista de arquivos HTML e QMD/RMD</p>
+            <h1 class="site-name">Universo de Desafios</h1>
+            <p class="site-subtitle">Explorando HTML, QMD e RMD</p>
         </header>
         
         <main>
             <div class="challenge-list" id="challengeList">
-                <div class="loading">Carregando desafios...</div>
+                <div class="loading">Carregando constelação de desafios...</div>
             </div>
         </main>
         
@@ -232,10 +280,10 @@
     </div>
 
     <script>
-        // Variáveis de configuração
+        // Variáveis de configuração - SUBSTITUA COM SEUS DADOS!
         const config = {
-            repoOwner: 'mdudavillela', // Substitua pelo seu nome de usuário do GitHub
-            repoName: 'ManipulacaoBancoDados', // Substitua pelo nome do seu repositório
+            repoOwner: 'seu-usuario', // Substitua pelo seu nome de usuário do GitHub
+            repoName: 'seu-repositorio', // Substitua pelo nome do seu repositório
             fileExtensions: ['.html', '.qmd', '.rmd']
         };
 
@@ -268,6 +316,17 @@
             return match ? parseInt(match[0]) : 0;
         }
 
+        // Função para criar URL correta para cada tipo de arquivo
+        function createFileUrl(file) {
+            if (file.name.endsWith('.html')) {
+                // Para HTML: usar GitHub Pages para visualização
+                return `https://${config.repoOwner}.github.io/${config.repoName}/${file.name}`;
+            } else {
+                // Para QMD/RMD: usar URL raw do GitHub para download
+                return `https://raw.githubusercontent.com/${config.repoOwner}/${config.repoName}/main/${file.name}`;
+            }
+        }
+
         // Função para agrupar arquivos por desafio
         function groupFilesByChallenge(files) {
             const challenges = {};
@@ -286,11 +345,11 @@
                     };
                 }
                 
-                // Determinar o tipo de arquivo e adicionar a URL
+                // Determinar o tipo de arquivo e adicionar a URL correta
                 if (file.name.endsWith('.html')) {
-                    challenges[challengeNum].htmlUrl = file.download_url;
+                    challenges[challengeNum].htmlUrl = createFileUrl(file);
                 } else if (file.name.endsWith('.qmd') || file.name.endsWith('.rmd')) {
-                    challenges[challengeNum].qmdUrl = file.download_url;
+                    challenges[challengeNum].qmdUrl = createFileUrl(file);
                 }
             });
             
@@ -301,7 +360,7 @@
         // Função para renderizar a lista de desafios
         function renderChallenges(challenges) {
             if (challenges.length === 0) {
-                challengeList.innerHTML = '<div class="loading">Nenhum desafio encontrado.</div>';
+                challengeList.innerHTML = '<div class="loading">Nenhum desafio encontrado no universo.</div>';
                 return;
             }
             
@@ -313,20 +372,20 @@
                 
                 challengeItem.innerHTML = `
                     <h2 class="challenge-title">
-                        <i>📁</i> ${challenge.name}
+                        <i>🌌</i> ${challenge.name}
                     </h2>
                     <div class="links">
                         ${challenge.htmlUrl ? 
                             `<a href="${challenge.htmlUrl}" class="link html-link" target="_blank">
-                                <i>🌐</i> Visualizar HTML
+                                <i>🚀</i> Visualizar HTML
                             </a>` : 
-                            '<span class="link html-link" style="opacity: 0.5; cursor: not-allowed;"><i>🌐</i> HTML não disponível</span>'
+                            '<span class="link html-link" style="opacity: 0.5; cursor: not-allowed;"><i>🚀</i> HTML não disponível</span>'
                         }
                         ${challenge.qmdUrl ? 
-                            `<a href="${challenge.qmdUrl}" class="link qmd-link" target="_blank">
-                                <i>📊</i> Ver código QMD/RMD
+                            `<a href="${challenge.qmdUrl}" class="link download-link" target="_blank" download>
+                                <i>📥</i> Baixar QMD/RMD
                             </a>` : 
-                            '<span class="link qmd-link" style="opacity: 0.5; cursor: not-allowed;"><i>📊</i> QMD/RMD não disponível</span>'
+                            '<span class="link download-link" style="opacity: 0.5; cursor: not-allowed;"><i>📥</i> QMD/RMD não disponível</span>'
                         }
                     </div>
                 `;
@@ -338,6 +397,18 @@
         // Função para buscar arquivos do repositório via GitHub API
         async function fetchRepoFiles() {
             try {
+                // Verificar se as configurações foram personalizadas
+                if (config.repoOwner === 'seu-usuario' || config.repoName === 'seu-repositorio') {
+                    challengeList.innerHTML = `
+                        <div class="loading">
+                            <p>⚠️ Configure o repositório primeiro!</p>
+                            <p>Substitua 'seu-usuario' e 'seu-repositorio' no código JavaScript.</p>
+                            <p><small>Linhas 174-175 do código</small></p>
+                        </div>
+                    `;
+                    return;
+                }
+
                 const apiUrl = `https://api.github.com/repos/${config.repoOwner}/${config.repoName}/contents`;
                 const response = await fetch(apiUrl);
                 
@@ -349,7 +420,7 @@
                 
                 // Filtrar apenas os arquivos com as extensões desejadas
                 const filteredFiles = files.filter(file => 
-                    config.fileExtensions.some(ext => file.name.endsWith(ext))
+                    config.fileExtensions.some(ext => file.name.toLowerCase().endsWith(ext))
                 );
                 
                 // Agrupar arquivos por desafio
@@ -360,23 +431,18 @@
                 
             } catch (error) {
                 console.error('Erro:', error);
-                challengeList.innerHTML = `<div class="loading">Erro ao carregar desafios: ${error.message}</div>`;
+                challengeList.innerHTML = `
+                    <div class="loading">
+                        Erro ao carregar desafios: ${error.message}
+                        <br><br>
+                        <small>Verifique se o repositório é público e se o nome está correto.</small>
+                    </div>
+                `;
             }
         }
 
         // Inicializar a aplicação
         document.addEventListener('DOMContentLoaded', () => {
-            // Verificar se as configurações foram personalizadas
-            if (config.repoOwner === 'SEU_USUARIO' || config.repoName === 'SEU_REPOSITORIO') {
-                challengeList.innerHTML = `
-                    <div class="loading">
-                        <p>⚠️ Por favor, configure o nome de usuário e repositório no código JavaScript.</p>
-                        <p>Procure por "SEU_USUARIO" e "SEU_REPOSITORIO" e substitua pelos valores corretos.</p>
-                    </div>
-                `;
-                return;
-            }
-            
             // Buscar arquivos do repositório
             fetchRepoFiles();
             
