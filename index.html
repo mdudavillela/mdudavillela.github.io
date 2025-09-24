@@ -2,42 +2,30 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Desafios ME315</title>
+  <title>Comparação: Lista vs Grid</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       background-color: #f9f9f9;
       color: #333;
-      text-align: center;
-      padding: 50px;
+      padding: 40px;
       transition: background-color 0.3s, color 0.3s;
     }
 
     h1 {
-      margin-bottom: 30px;
+      text-align: center;
+      margin-bottom: 40px;
     }
 
-    /* Links */
-    a {
-      display: inline-block;
-      margin: 10px;
-      padding: 12px 24px;
-      text-decoration: none;
-      color: #fff;
-      background: linear-gradient(135deg, #007BFF, #0056b3);
-      border-radius: 8px;
-      font-weight: bold;
-      transition: transform 0.2s, background 0.3s;
+    h2 {
+      margin-top: 40px;
+      text-align: center;
     }
 
-    a:hover {
-      transform: scale(1.05);
-      background: linear-gradient(135deg, #0056b3, #003d80);
-    }
-
-    /* Botão de toggle */
+    /* Botão modo escuro */
     .toggle-btn {
-      margin-bottom: 30px;
+      display: block;
+      margin: 0 auto 30px auto;
       padding: 10px 20px;
       cursor: pointer;
       border: none;
@@ -52,18 +40,78 @@
       background-color: #555;
     }
 
-    /* Estilo do modo escuro */
+    /* LISTA CLEAN */
+    ul {
+      list-style: none;
+      padding: 0;
+      max-width: 400px;
+      margin: auto;
+      text-align: left;
+    }
+
+    li {
+      margin: 12px 0;
+    }
+
+    ul a {
+      text-decoration: none;
+      color: #007BFF;
+      font-size: 18px;
+      font-weight: bold;
+      transition: color 0.3s, padding-left 0.3s;
+    }
+
+    ul a:hover {
+      color: #0056b3;
+      padding-left: 8px;
+    }
+
+    /* GRID RESPONSIVO */
+    .links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 15px;
+      max-width: 600px;
+      margin: 30px auto;
+    }
+
+    .links a {
+      display: block;
+      padding: 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      background: #007BFF;
+      transition: background 0.3s, transform 0.2s;
+      text-align: center;
+    }
+
+    .links a:hover {
+      background: #0056b3;
+      transform: scale(1.05);
+    }
+
+    /* Estilo modo escuro */
     body.dark {
       background-color: #121212;
       color: #f1f1f1;
     }
 
-    body.dark a {
-      background: linear-gradient(135deg, #ff7b00, #ff4d00);
+    body.dark ul a {
+      color: #ff7b00;
     }
 
-    body.dark a:hover {
-      background: linear-gradient(135deg, #cc3c00, #992d00);
+    body.dark ul a:hover {
+      color: #ff4500;
+    }
+
+    body.dark .links a {
+      background: #ff7b00;
+    }
+
+    body.dark .links a:hover {
+      background: #cc3c00;
     }
 
     body.dark .toggle-btn {
@@ -74,24 +122,45 @@
 </head>
 <body>
   <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Alternar modo</button>
-  <h1>Desafios ME315</h1>
+  <h1>Comparação de Estilos</h1>
 
-  <!-- Desafio buttons -->
-  <a href="ManipulacaoBancoDados/Desafio01.html">Desafio 01</a>
-  <a href="ManipulacaoBancoDados/Desafio02.html">Desafio 02</a>
-  <a href="ManipulacaoBancoDados/Desafio03.html">Desafio 03</a>
-  <a href="ManipulacaoBancoDados/Desafio04.html">Desafio 04</a>
-  <a href="ManipulacaoBancoDados/Desafio05.html">Desafio 05</a>
-  <a href="ManipulacaoBancoDados/Desafio06.html">Desafio 06</a>
-  <a href="ManipulacaoBancoDados/Desafio07.html">Desafio 07</a>
-  <a href="ManipulacaoBancoDados/Desafio08.html">Desafio 08</a>
-  <a href="ManipulacaoBancoDados/Desafio09.html">Desafio 09</a>
-  <a href="ManipulacaoBancoDados/Desafio10.html">Desafio 10</a>
-  <a href="ManipulacaoBancoDados/Desafio11.html">Desafio 11</a>
-  <a href="ManipulacaoBancoDados/Desafio12.html">Desafio 12</a>
-  <a href="ManipulacaoBancoDados/Desafio13.html">Desafio 13</a>
-  <a href="ManipulacaoBancoDados/Desafio14.html">Desafio 14</a>
-  <a href="ManipulacaoBancoDados/Desafio15.html">Desafio 15</a>
+  <h2>🔹 Lista Clean</h2>
+  <ul>
+    <li><a href="#">Desafio 01</a></li>
+    <li><a href="#">Desafio 02</a></li>
+    <li><a href="#">Desafio 03</a></li>
+    <li><a href="#">Desafio 04</a></li>
+    <li><a href="#">Desafio 05</a></li>
+    <li><a href="#">Desafio 06</a></li>
+    <li><a href="#">Desafio 07</a></li>
+    <li><a href="#">Desafio 08</a></li>
+    <li><a href="#">Desafio 09</a></li>
+    <li><a href="#">Desafio 10</a></li>
+    <li><a href="#">Desafio 11</a></li>
+    <li><a href="#">Desafio 12</a></li>
+    <li><a href="#">Desafio 13</a></li>
+    <li><a href="#">Desafio 14</a></li>
+    <li><a href="#">Desafio 15</a></li>
+  </ul>
+
+  <h2>🔹 Grid Responsivo (Cards)</h2>
+  <div class="links">
+    <a href="#">Desafio 01</a>
+    <a href="#">Desafio 02</a>
+    <a href="#">Desafio 03</a>
+    <a href="#">Desafio 04</a>
+    <a href="#">Desafio 05</a>
+    <a href="#">Desafio 06</a>
+    <a href="#">Desafio 07</a>
+    <a href="#">Desafio 08</a>
+    <a href="#">Desafio 09</a>
+    <a href="#">Desafio 10</a>
+    <a href="#">Desafio 11</a>
+    <a href="#">Desafio 12</a>
+    <a href="#">Desafio 13</a>
+    <a href="#">Desafio 14</a>
+    <a href="#">Desafio 15</a>
+  </div>
 
   <script>
     function toggleDarkMode() {
@@ -100,4 +169,3 @@
   </script>
 </body>
 </html>
-
