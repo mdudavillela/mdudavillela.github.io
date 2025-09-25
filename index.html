@@ -294,6 +294,45 @@
             0%, 100% { opacity: 0.2; }
             50% { opacity: 1; }
         }
+                .file-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .file-link {
+            padding: 6px 12px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .file-link.html {
+            background: rgba(138, 43, 226, 0.2);
+            color: var(--secondary-color);
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+        
+        .file-link.pdf {
+            background: rgba(255, 74, 74, 0.2);
+            color: #ff4a4a;
+            border: 1px solid rgba(255, 74, 74, 0.3);
+        }
+        
+        .file-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        /* Remove o ícone antigo do challenge-meta */
+        .challenge-meta span:last-child {
+            display: none;
+        }
     </style>
 </head>
 <body>
