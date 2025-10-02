@@ -745,59 +745,8 @@
             <p>Instituto de Matemática, Estatística e Computação Científica</p>
         </footer>
     </div>
-
-    <script>
-        // Controle das abas
-        document.addEventListener('DOMContentLoaded', function() {
-            const tabs = document.querySelectorAll('.tab');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active class from all tabs and contents
-                    tabs.forEach(t => t.classList.remove('active'));
-                    tabContents.forEach(c => c.classList.remove('active'));
-                    
-                    // Add active class to clicked tab
-                    tab.classList.add('active');
-                    
-                    // Show corresponding content
-                    const tabId = tab.getAttribute('data-tab');
-                    document.getElementById(`${tabId}-tab`).classList.add('active');
-                });
-            });
-            
-            // Criar estrelas de fundo
-            createStars();
-        });
-        
-        // Criar efeito de estrelas no fundo
-        function createStars() {
-            const body = document.querySelector('body');
-            const starCount = 100;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                
-                // Tamanho aleatório entre 1 e 3 pixels
-                const size = Math.random() * 2 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                
-                // Posição aleatória
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.top = `${Math.random() * 100}vh`;
-                
-                // Duração da animação aleatória
-                const duration = Math.random() * 10 + 5;
-                star.style.animationDuration = `${duration}s`;
-                
-                body.appendChild(star);
-            }
-        }
             <script>
-        // Controle das abas
+            // Controle das abas
         document.addEventListener('DOMContentLoaded', function() {
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
@@ -869,7 +818,6 @@
                 icon.classList.add('fa-sun');
             }
         }
-    </script>
-    </script>
+                </script>
 </body>
 </html>
