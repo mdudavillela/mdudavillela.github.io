@@ -18,6 +18,13 @@
             --border-radius: 12px;
             --transition: all 0.3s ease;
             --space-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230A0A1F"/><circle cx="20" cy="30" r="1" fill="white" opacity="0.7"/><circle cx="70" cy="20" r="1" fill="white" opacity="0.5"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.9"/><circle cx="85" cy="60" r="1" fill="white" opacity="0.6"/><circle cx="60" cy="85" r="1" fill="white" opacity="0.8"/></svg>');
+         /* Variáveis para o tema claro */
+            --light-bg: #87CEEB;
+            --lighter-bg: #B0E2FF;
+            --light-card-bg: #FFFFFF;
+            --light-text-color: #333333;
+            --light-text-muted: #666666;
+            --light-space-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2387CEEB"/><circle cx="20" cy="30" r="1" fill="white" opacity="0.9"/><circle cx="70" cy="20" r="1" fill="white" opacity="0.7"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.8"/><circle cx="85" cy="60" r="1" fill="white" opacity="0.6"/><circle cx="60" cy="85" r="1" fill="white" opacity="0.7"/></svg>');
         }
 
         * {
@@ -332,6 +339,95 @@
         /* Remove o ícone antigo do challenge-meta */
         .challenge-meta span:last-child {
             display: none;
+        }
+
+                /* Tema claro */
+        body.light-theme {
+            background-color: var(--light-bg);
+            background-image: var(--light-space-bg);
+            color: var(--light-text-color);
+        }
+        
+        body.light-theme header {
+            background: linear-gradient(135deg, var(--lighter-bg) 0%, var(--light-card-bg) 100%);
+            box-shadow: 0 10px 30px rgba(0, 100, 200, 0.2);
+            border: 1px solid rgba(0, 100, 200, 0.3);
+        }
+        
+        body.light-theme .theme-toggle {
+            background: var(--light-card-bg);
+            border: 1px solid #4682B4;
+            color: #4682B4;
+        }
+        
+        body.light-theme .theme-toggle:hover {
+            background: #4682B4;
+            color: white;
+        }
+        
+        body.light-theme .tabs,
+        body.light-theme .tab-content {
+            background: var(--light-card-bg);
+            border: 1px solid rgba(0, 100, 200, 0.3);
+            color: var(--light-text-color);
+        }
+        
+        body.light-theme .tab {
+            background: var(--light-card-bg);
+            color: var(--light-text-muted);
+        }
+        
+        body.light-theme .tab.active {
+            background: linear-gradient(180deg, rgba(0, 100, 200, 0.1) 0%, transparent 100%);
+            color: var(--light-text-color);
+            border-bottom: 3px solid #4682B4;
+        }
+        
+        body.light-theme .tab:hover:not(.active) {
+            background: rgba(0, 100, 200, 0.05);
+            color: var(--light-text-color);
+        }
+        
+        body.light-theme .challenge-card {
+            background: linear-gradient(135deg, var(--light-card-bg) 0%, rgba(255, 255, 255, 0.8) 100%);
+            border: 1px solid rgba(0, 100, 200, 0.2);
+            color: var(--light-text-color);
+        }
+        
+        body.light-theme .challenge-card::before {
+            background: linear-gradient(90deg, #4682B4, #87CEEB);
+        }
+        
+        body.light-theme .challenge-card:hover {
+            box-shadow: 0 10px 25px rgba(0, 100, 200, 0.2);
+            border-color: #4682B4;
+        }
+        
+        body.light-theme .section-title {
+            color: #4682B4;
+        }
+        
+        body.light-theme .subtitle {
+            color: var(--light-text-muted);
+        }
+        
+        body.light-theme .student-name {
+            color: #4682B4;
+        }
+        
+        body.light-theme footer {
+            color: var(--light-text-muted);
+            border-top: 1px solid rgba(0, 100, 200, 0.2);
+        }
+        
+        body.light-theme .file-link.html {
+            background: rgba(0, 100, 200, 0.1);
+            color: #4682B4;
+            border: 1px solid rgba(0, 100, 200, 0.3);
+        }
+        
+        body.light-theme .star {
+            background-color: rgba(255, 255, 255, 0.8);
         }
     </style>
 </head>
@@ -700,6 +796,80 @@
                 body.appendChild(star);
             }
         }
+            <script>
+        // Controle das abas
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-tab`).classList.add('active');
+                });
+            });
+            
+            // Criar estrelas de fundo
+            createStars();
+            
+            // Controle do tema
+            const themeToggle = document.getElementById('themeToggle');
+            themeToggle.addEventListener('click', toggleTheme);
+        });
+        
+        // Criar efeito de estrelas no fundo
+        function createStars() {
+            const body = document.querySelector('body');
+            const starCount = 100;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Tamanho aleatório entre 1 e 3 pixels
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Posição aleatória
+                star.style.left = `${Math.random() * 100}vw`;
+                star.style.top = `${Math.random() * 100}vh`;
+                
+                // Duração da animação aleatória
+                const duration = Math.random() * 10 + 5;
+                star.style.animationDuration = `${duration}s`;
+                
+                body.appendChild(star);
+            }
+        }
+        
+        // Alternar entre tema escuro e claro
+        function toggleTheme() {
+            const body = document.body;
+            const themeToggle = document.getElementById('themeToggle');
+            const icon = themeToggle.querySelector('i');
+            
+            if (body.classList.contains('light-theme')) {
+                // Mudar para tema escuro (céu roxo)
+                body.classList.remove('light-theme');
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                // Mudar para tema claro (céu azul)
+                body.classList.add('light-theme');
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        }
+    </script>
     </script>
 </body>
 </html>
