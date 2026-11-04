@@ -1,1260 +1,515 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maria Eduarda Villéla Silva - Portfólio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --primary-color: #1a237e;
-            --secondary-color: #818cf8;    /* Azul mais claro */
-            --accent-color: #a5b4fc;       /* Azul bem claro */
-            --dark-bg: #0f1326;     /* um pouco mais claro que #0a0e1a */
-            --darker-bg: #0a0e1a;   /* um pouco mais claro que #050812 */
-            --card-bg: #161c33;     /* um pouco mais claro que #111827 */
-            --text-color: #eef2ff;          /* Branco com leve tom azul */
-            --text-muted: #c7d2fe;          /* Azul bem clarinho */
-            --space-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%230a0e1a"/><circle cx="20" cy="30" r="1.5" fill="white" opacity="0.9"/><circle cx="70" cy="20" r="1.5" fill="white" opacity="0.7"/><circle cx="40" cy="70" r="1.5" fill="white" opacity="1"/><circle cx="85" cy="60" r="1.5" fill="white" opacity="0.8"/><circle cx="60" cy="85" r="1.5" fill="white" opacity="0.9"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.6"/><circle cx="90" cy="10" r="1" fill="white" opacity="0.8"/><circle cx="50" cy="50" r="2" fill="white" opacity="0.4"/><circle cx="30" cy="10" r="1" fill="white" opacity="0.7"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.9"/></svg>');
-            --light-bg: #87CEEB;
-            --lighter-bg: #B0E2FF;
-            --light-card-bg: #FFFFFF;
-            --light-text-color: #333333;
-            --light-text-muted: #666666;
-            --light-space-bg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%2387CEEB"/><circle cx="20" cy="30" r="1" fill="white" opacity="0.9"/><circle cx="70" cy="20" r="1" fill="white" opacity="0.7"/><circle cx="40" cy="70" r="1" fill="white" opacity="0.8"/><circle cx="85" cy="60" r="1" fill="white" opacity="0.6"/><circle cx="60" cy="85" r="1" fill="white" opacity="0.7"/></svg>');
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark-bg);
-            background-image: var(--space-bg);
-            color: var(--text-color);
-            line-height: 1.6;
-            min-height: 100vh;
-            padding: 20px;
-            transition: var(--transition);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        /* ===== HEADER ===== */
-        header {
-            text-align: center;
-            padding: 40px 20px;
-            margin-bottom: 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            background: linear-gradient(135deg, var(--darker-bg) 0%, var(--card-bg) 100%);
-            box-shadow: 0 10px 30px rgba(26, 35, 126, 0.3);
-            border: 1px solid rgba(26, 35, 126, 0.4);
-        }
-
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1a237e, #3949ab, #1a237e);
-        }
-
-        h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            background: linear-gradient(90deg, #818cf8, #a5b4fc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 30px rgba(129, 140, 248, 0.5);
-            font-weight: 700;
-        }
-
-        .subtitle {
-            font-size: 1.2rem;
-            color: #a5b4fc;  /* Azul clarinho */
-            margin-bottom: 5px;
-            font-weight: 300;
-            letter-spacing: 1px;
-        }
-
-        .student-name {
-            font-size: 1.4rem;
-            color: #c7d2fe;  /* Azul bem clarinho */
-            font-weight: 600;
-            margin-top: 15px;
-        }
-
-        .theme-toggle {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--card-bg);
-            border: 1px solid var(--primary-color);
-            color: var(--text-color);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            z-index: 10;
-        }
-
-        .theme-toggle:hover {
-            background: var(--primary-color);
-            transform: rotate(30deg);
-        }
-
-        /* ===== MENU DE NAVEGAÇÃO PRINCIPAL ===== */
-        .nav-principal {
-            display: flex;
-            background: var(--card-bg);
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            overflow: hidden;
-            border: 1px solid rgba(26, 35, 126, 0.4);
-            border-bottom: none;
-            margin-bottom: 0;
-            flex-wrap: wrap;
-        }
-
-        .nav-item {
-            flex: 1;
-            min-width: 120px;
-            padding: 18px 20px;
-            text-align: center;
-            cursor: pointer;
-            font-weight: 600;
-            transition: var(--transition);
-            background: var(--card-bg);
-            color: var(--text-muted);
-            border-bottom: 3px solid transparent;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .nav-item.active {
-            background: linear-gradient(180deg, rgba(26, 35, 126, 0.25) 0%, transparent 100%);
-            color: var(--text-color);
-            border-bottom: 3px solid var(--primary-color);
-        }
-
-        .nav-item:hover:not(.active) {
-            background: rgba(26, 35, 126, 0.15);
-            color: var(--text-color);
-        }
-
-        .nav-item.external {
-            border-bottom: 3px solid transparent;
-        }
-
-        .nav-item.external:hover {
-            background: rgba(138, 43, 226, 0.1);
-            color: var(--text-color);
-        }
-
-        /* ===== CONTEÚDO DAS PÁGINAS ===== */
-        .page {
-            display: none;
-            padding: 30px;
-            background: var(--card-bg);
-            border-radius: 0 0 var(--border-radius) var(--border-radius);
-            border: 1px solid rgba(26, 35, 126, 0.4);
-            border-top: none;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-            animation: fadeIn 0.5s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #a5b4fc;  /* Azul clarinho */
-            display: flex;
-            align-items: center;
-            font-weight: 600;
-        }
-
-        .section-title i {
-            margin-right: 10px;
-            color: #818cf8;  /* Azul médio claro */
-        }
-
-        /* ===== PÁGINA INÍCIO ===== */
-        .apresentacao-texto {
-            font-size: 1.15rem;
-            max-width: 800px;
-            margin: 0 auto 30px;
-            text-align: center;
-            color: #c7d2fe;  /* Azul clarinho */
-            line-height: 1.8;
-            font-weight: 300;
-        }
-
-        .cards-destaque {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .card-destaque {
-            background: linear-gradient(135deg, rgba(21, 21, 48, 0.8) 0%, rgba(21, 21, 48, 0.5) 100%);
-            border-radius: var(--border-radius);
-            padding: 25px 20px;
-            text-align: center;
-            border: 1px solid rgba(26, 35, 126, 0.3);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .card-destaque:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.4);
-            border-color: var(--primary-color);
-        }
-
-        .card-destaque i {
-            font-size: 2.5rem;
-            color: #818cf8;  /* Azul claro */
-            margin-bottom: 15px;
-        }
-
-        .card-destaque h3 {
-            color: #eef2ff;  /* Branco azulado */
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .card-destaque p {
-            color: #c7d2fe;  /* Azul clarinho */
-            font-size: 0.95rem;
-            font-weight: 300;
-        }
-
-        /* ===== DESAFIOS ===== */
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .challenge-card {
-            background: linear-gradient(135deg, var(--card-bg) 0%, rgba(21, 21, 48, 0.8) 100%);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            transition: var(--transition);
-            border: 1px solid rgba(26, 35, 126, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .challenge-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #1a237e, #3949ab);
-        }
-
-        .challenge-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(26, 35, 126, 0.4);
-            border-color: var(--primary-color);
-        }
-
-        .challenge-title {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            color: #eef2ff;  /* Branco azulado */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-        }
-
-        .file-type {
-            background: linear-gradient(90deg, #1a237e, #3949ab);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .challenge-meta {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #c7d2fe;  /* Azul clarinho */
-            font-weight: 300;
-        }
-
-        .file-links {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-        
-        .file-link {
-            padding: 6px 12px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .file-link.html {
-            background: rgba(129, 140, 248, 0.15);
-            color: #a5b4fc;  /* Azul clarinho */
-            border: 1px solid rgba(129, 140, 248, 0.25);
-        }
-        
-        .file-link.pdf {
-            background: rgba(255, 74, 74, 0.2);
-            color: #ff4a4a;
-            border: 1px solid rgba(255, 74, 74, 0.3);
-        }
-        
-        .file-link:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        }
-
-        .file-link.challenge-link {
-            background: rgba(138, 43, 226, 0.15);
-            color: var(--secondary-color);
-            border: 1px solid rgba(138, 43, 226, 0.2);
-            text-decoration: none;
-        }
-
-        .file-link.challenge-link:hover {
-            background: rgba(138, 43, 226, 0.3);
-        }
-
-        .tab-sub {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-
-        .tab-sub-item {
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            background: rgba(26, 35, 126, 0.15);
-            color: var(--text-muted);
-            border: 1px solid transparent;
-            transition: var(--transition);
-            font-weight: 600;
-        }
-
-        .tab-sub-item.active {
-            background: rgba(26, 35, 126, 0.25);
-            color: var(--text-color);
-            border-color: var(--primary-color);
-        }
-
-        .tab-sub-item:hover:not(.active) {
-            background: rgba(26, 35, 126, 0.2);
-        }
-
-        .sub-content {
-            display: none;
-        }
-
-        .sub-content.active {
-            display: block;
-            animation: fadeIn 0.3s ease;
-        }
-
-        /* ===== LATTES ===== */
-        .lattes-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .lattes-section {
-            background: rgba(21, 21, 48, 0.5);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 3px solid #3949ab;
-        }
-
-        .lattes-section h3 {
-            color: var(--secondary-color);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .lattes-section ul {
-            list-style: none;
-            padding-left: 10px;
-        }
-
-        .lattes-section ul li {
-            padding: 5px 0;
-            color: var(--text-muted);
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .lattes-section ul li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: #3949ab;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-            color: #c7d2fe;  /* Azul clarinho */
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(129, 140, 248, 0.15);
-            font-weight: 300;
-        }
-
-        .unicamp-logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #a5b4fc;  /* Azul clarinho */
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 15px;
-        }
-
-        .social-links a {
-            color: var(--text-muted);
-            font-size: 1.5rem;
-            transition: var(--transition);
-        }
-
-        .social-links a:hover {
-            color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-
-        /* ===== ESTRELAS ===== */
-        .star {
-            position: fixed;
-            background-color: white;
-            border-radius: 50%;
-            animation: twinkle linear infinite;
-            z-index: -1;
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.2; }
-            50% { opacity: 1; }
-        }
-
-        /* ===== TEMA CLARO ===== */
-        body.light-theme {
-            background-color: var(--light-bg);
-            background-image: var(--light-space-bg);
-            color: var(--light-text-color);
-        }
-        
-        body.light-theme header {
-            background: linear-gradient(135deg, var(--lighter-bg) 0%, var(--light-card-bg) 100%);
-            box-shadow: 0 10px 30px rgba(0, 100, 200, 0.2);
-            border: 1px solid rgba(0, 100, 200, 0.3);
-        }
-        
-        body.light-theme .theme-toggle {
-            background: var(--light-card-bg);
-            border: 1px solid #4682B4;
-            color: #4682B4;
-        }
-        
-        body.light-theme .theme-toggle:hover {
-            background: #4682B4;
-            color: white;
-        }
-        
-        body.light-theme .nav-principal,
-        body.light-theme .page {
-            background: var(--light-card-bg);
-            border: 1px solid rgba(0, 100, 200, 0.3);
-            color: var(--light-text-color);
-        }
-        
-        body.light-theme .nav-item {
-            background: var(--light-card-bg);
-            color: var(--light-text-muted);
-        }
-        
-        body.light-theme .nav-item.active {
-            background: linear-gradient(180deg, rgba(0, 100, 200, 0.1) 0%, transparent 100%);
-            color: var(--light-text-color);
-            border-bottom: 3px solid #4682B4;
-        }
-        
-        body.light-theme .nav-item:hover:not(.active) {
-            background: rgba(0, 100, 200, 0.05);
-            color: var(--light-text-color);
-        }
-        
-        body.light-theme .challenge-card {
-            background: linear-gradient(135deg, var(--light-card-bg) 0%, rgba(255, 255, 255, 0.8) 100%);
-            border: 1px solid rgba(0, 100, 200, 0.2);
-            color: var(--light-text-color);
-        }
-        
-        body.light-theme .challenge-card::before {
-            background: linear-gradient(90deg, #4682B4, #87CEEB);
-        }
-        
-        body.light-theme .challenge-card:hover {
-            box-shadow: 0 10px 25px rgba(0, 100, 200, 0.2);
-            border-color: #4682B4;
-        }
-        
-        body.light-theme .section-title {
-            color: #4682B4;
-        }
-        
-        body.light-theme .subtitle {
-            color: var(--light-text-muted);
-        }
-        
-        body.light-theme .student-name {
-            color: #4682B4;
-        }
-        
-        body.light-theme footer {
-            color: var(--light-text-muted);
-            border-top: 1px solid rgba(0, 100, 200, 0.2);
-        }
-        
-        body.light-theme .file-link.html {
-            background: rgba(0, 100, 200, 0.1);
-            color: #4682B4;
-            border: 1px solid rgba(0, 100, 200, 0.3);
-        }
-        
-        body.light-theme .star {
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-
-        body.light-theme h1 {
-            background: linear-gradient(90deg, #4682B4, #87CEEB);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(70, 130, 180, 0.5);
-        }
-        
-        body.light-theme .challenge-title {
-            color: #4682B4;
-        }
-        
-        body.light-theme .file-type {
-            background: linear-gradient(90deg, #4682B4, #87CEEB);
-            color: white;
-        }
-        
-        body.light-theme .section-title i {
-            color: #4682B4;
-        }
-        
-        body.light-theme .unicamp-logo {
-            color: #4682B4;
-        }
-        
-        body.light-theme header::before {
-            background: linear-gradient(90deg, #4682B4, #87CEEB, #4682B4);
-        }
-
-        body.light-theme .card-destaque {
-            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.7) 100%);
-            border: 1px solid rgba(0, 100, 200, 0.2);
-        }
-
-        body.light-theme .card-destaque i {
-            color: #4682B4;
-        }
-
-        body.light-theme .card-destaque h3 {
-            color: var(--light-text-color);
-        }
-
-        body.light-theme .card-destaque p {
-            color: var(--light-text-muted);
-        }
-
-        body.light-theme .tab-sub-item {
-            background: rgba(0, 100, 200, 0.08);
-            color: var(--light-text-muted);
-        }
-
-        body.light-theme .tab-sub-item.active {
-            background: rgba(0, 100, 200, 0.15);
-            color: var(--light-text-color);
-            border-color: #4682B4;
-        }
-
-        body.light-theme .lattes-section {
-            background: rgba(255, 255, 255, 0.7);
-            border-left-color: #4682B4;
-        }
-
-        body.light-theme .lattes-section h3 {
-            color: #4682B4;
-        }
-
-        body.light-theme .lattes-section ul li {
-            color: var(--light-text-muted);
-        }
-
-        body.light-theme .lattes-section ul li::before {
-            color: #4682B4;
-        }
-
-        body.light-theme .apresentacao-texto {
-            color: var(--light-text-muted);
-        }
-
-        /* ===== RESPONSIVIDADE ===== */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-            
-            .challenge-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-principal {
-                flex-direction: column;
-            }
-
-            .nav-item {
-                min-width: unset;
-            }
-            
-            .theme-toggle {
-                position: relative;
-                top: 0;
-                right: 0;
-                margin: 10px auto;
-            }
-
-            .cards-destaque {
-                grid-template-columns: 1fr;
-            }
-
-            .page {
-                padding: 20px 15px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maria Eduarda Villéla Silva | Ciência de Dados</title>
+<meta name="description" content="Portfólio de Maria Eduarda Villéla Silva, estudante de Estatística na UNICAMP e futura cientista de dados.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#07060d; --panel:#110e1f; --panel2:#181330; --line:#2d2552;
+  --text:#e8e6ff; --muted:#a9a4d6;
+  --cyan:#22f3e6; --green:#5dff8a; --purple:#9b6bff; --pink:#ff5fa8; --red:#ff4d6d;
+  --px:4px;
+}
+[data-theme="light"]{
+  --bg:#f3f0ff; --panel:#ffffff; --panel2:#ebe6ff; --line:#2a2150;
+  --text:#1b1535; --muted:#5a5185;
+  --cyan:#0a8f9c; --green:#1c9c4a; --purple:#6d3fd6; --pink:#d6336c; --red:#d62839;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'VT323',monospace; font-size:1.35rem; line-height:1.35;
+  background:var(--bg); color:var(--text); min-height:100vh;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:32px 32px; background-position:-1px -1px;
+  background-attachment:fixed;
+}
+body::before{ /* grade esmaecida */
+  content:"";position:fixed;inset:0;background:var(--bg);opacity:.93;pointer-events:none;z-index:-1;
+}
+h1,h2,h3,.px{font-family:'Press Start 2P',monospace;font-weight:400;line-height:1.5}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px dashed var(--cyan);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:16px}
+
+/* blocos com borda pixelada */
+.box{
+  background:var(--panel); border:var(--px) solid var(--line);
+  box-shadow:var(--px) var(--px) 0 var(--line); padding:20px;
+}
+
+/* ---------- topo ---------- */
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+.logo{font-size:.7rem;color:var(--cyan);display:flex;align-items:center;gap:10px}
+.logo i{color:var(--pink)}
+.tools{display:flex;gap:10px}
+.sq{
+  width:44px;height:44px;display:grid;place-items:center;cursor:pointer;
+  background:var(--panel);color:var(--text);border:var(--px) solid var(--line);
+  box-shadow:var(--px) var(--px) 0 var(--line);font-size:1.1rem;
+}
+.sq:active{transform:translate(var(--px),var(--px));box-shadow:none}
+
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 20px}
+nav a{
+  font-family:'Press Start 2P',monospace;font-size:.62rem;padding:12px 14px;
+  background:var(--panel);border:var(--px) solid var(--line);color:var(--muted);
+  display:flex;gap:8px;align-items:center;cursor:pointer;
+}
+nav a:hover{color:var(--text);border-color:var(--purple)}
+nav a[aria-current="page"]{color:#07060d;background:var(--cyan);border-color:var(--cyan);box-shadow:var(--px) var(--px) 0 var(--purple)}
+
+section.page{display:none}
+section.page.on{display:block}
+h2.title{font-size:1rem;color:var(--green);margin-bottom:20px}
+h2.title::before{content:"> ";color:var(--pink)}
+
+/* ---------- início ---------- */
+.hero{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:stretch}
+.hero h1{font-size:clamp(1.1rem,3.4vw,1.8rem);color:var(--text);margin:8px 0 14px}
+.hero h1 span{color:var(--cyan)}
+.typed{font-size:1.6rem;color:var(--green);min-height:2.2rem}
+.typed::after{content:"█";color:var(--pink);animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.lead{color:var(--muted);max-width:52ch;margin:10px 0 22px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{
+  font-family:'Press Start 2P',monospace;font-size:.62rem;padding:14px 16px;cursor:pointer;
+  border:var(--px) solid var(--line);background:var(--panel2);color:var(--text);
+  box-shadow:var(--px) var(--px) 0 var(--line);display:inline-flex;gap:8px;align-items:center;
+}
+.btn.main{background:var(--pink);border-color:var(--pink);color:#07060d;box-shadow:var(--px) var(--px) 0 var(--purple)}
+.btn:hover{transform:translate(-2px,-2px)}
+.btn:active{transform:translate(var(--px),var(--px));box-shadow:none}
+
+.card-p1{text-align:center;border-color:var(--purple);box-shadow:var(--px) var(--px) 0 var(--cyan)}
+.card-p1 svg{width:112px;height:112px;image-rendering:pixelated;margin:4px auto 12px;display:block}
+.card-p1 .px{font-size:.6rem;color:var(--pink)}
+.stat{display:flex;justify-content:space-between;text-align:left;border-top:2px dashed var(--line);padding:6px 0;font-size:1.2rem}
+.stat b{font-weight:400;color:var(--cyan)}
+
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px}
+.quick button{all:unset;cursor:pointer}
+.quick .box{height:100%;transition:transform .1s}
+.quick button:hover .box{transform:translate(-2px,-2px);border-color:var(--cyan)}
+.quick i{font-size:1.6rem;color:var(--c,var(--cyan));margin-bottom:10px;display:block}
+.quick h3{font-size:.7rem;margin-bottom:8px}
+.quick p{color:var(--muted)}
+
+/* ---------- dashboard ---------- */
+.dash{margin-top:20px}
+.dash h2{font-size:.8rem;color:var(--green);margin-bottom:16px}
+.dash h2::before{content:"> ";color:var(--pink)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:20px}
+.kpi{border:3px solid var(--c);padding:12px;background:var(--panel2)}
+.kpi b{font-family:'Press Start 2P',monospace;font-weight:400;font-size:1.5rem;color:var(--c);display:block;margin-bottom:6px}
+.kpi span{color:var(--muted);font-size:1.15rem}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.charts h3{font-size:.62rem;color:var(--muted);margin-bottom:14px}
+.row{display:grid;grid-template-columns:92px 1fr 28px;gap:10px;align-items:center;margin-bottom:10px}
+.row .track{height:18px;background:var(--bg);border:3px solid var(--line);padding:2px}
+.row .fill{height:100%;background:var(--c);width:0;transition:width .8s steps(12)}
+.row em{font-style:normal;color:var(--c);text-align:right}
+.cap{margin-top:16px;color:var(--muted);font-size:1.1rem;border-top:2px dashed var(--line);padding-top:10px}
+.cap a{color:var(--cyan)}
+
+/* ---------- sobre ---------- */
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+.box p+p{margin-top:12px}
+.timeline{list-style:none;border-left:var(--px) solid var(--purple);padding-left:18px}
+.timeline li{margin-bottom:16px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-26px;top:6px;width:12px;height:12px;background:var(--green)}
+.timeline small{color:var(--muted);font-size:1.1rem;display:block}
+
+/* ---------- habilidades ---------- */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.skills h3{font-size:.7rem;color:var(--c);margin-bottom:16px}
+.bar{margin-bottom:14px}
+.bar div:first-child{display:flex;justify-content:space-between}
+.bar .track{height:16px;background:var(--bg);border:3px solid var(--line);margin-top:4px;display:flex;gap:2px;padding:2px}
+.bar .track i{flex:1;background:var(--line)}
+.bar .track i.f{background:var(--c)}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{border:3px solid var(--c);color:var(--c);padding:2px 10px}
+
+/* ---------- projetos ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
+.proj{border-top:8px solid var(--c)}
+.proj h3{font-size:.72rem;margin-bottom:10px}
+.proj p{color:var(--muted);margin-bottom:14px}
+.proj.empty{border-style:dashed;opacity:.8}
+.mini{font-size:1.15rem;padding:4px 12px;border:3px solid var(--c);color:var(--c);display:inline-flex;gap:6px;align-items:center;margin:0 8px 8px 0}
+.mini:hover{background:var(--c);color:var(--bg)}
+
+/* ---------- desafios ---------- */
+.sub{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.sub button{
+  font-family:'Press Start 2P',monospace;font-size:.6rem;padding:10px 14px;cursor:pointer;
+  background:var(--panel);color:var(--muted);border:3px solid var(--line)
+}
+.sub button[aria-pressed="true"]{background:var(--purple);color:#fff;border-color:var(--purple)}
+.lv{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.lv h3{font-size:.7rem}
+.ext{font-family:'Press Start 2P',monospace;font-size:.5rem;padding:5px 7px;background:var(--c);color:#07060d}
+.chal{padding:16px}
+
+/* ---------- contato ---------- */
+.contact a.box{display:flex;gap:16px;align-items:center;transition:transform .1s}
+.contact a.box:hover{transform:translate(-2px,-2px);border-color:var(--c)}
+.contact i{font-size:2rem;color:var(--c);width:40px;text-align:center}
+.contact small{color:var(--muted);display:block;font-size:1.1rem}
+
+footer{margin:36px 0 12px;text-align:center;color:var(--muted);border-top:3px dashed var(--line);padding-top:18px}
+footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
+
+@media(max-width:760px){
+  .hero,.two,.charts{grid-template-columns:1fr}
+  nav a{flex:1 1 45%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
 </head>
 <body>
-    <div class="container">
-        <!-- ===== HEADER ===== -->
-        <header>
-            <button class="theme-toggle" id="themeToggle">
-                <i class="fas fa-moon"></i>
-            </button>
-            <h1>Maria Eduarda Villéla Silva</h1>
-            <p class="subtitle">Portfólio Acadêmico</p>
-            <p class="student-name">Estudante na UNICAMP</p>
-        </header>
+<div class="wrap">
 
-        <!-- ===== MENU PRINCIPAL ===== -->
-        <nav class="nav-principal">
-            <a href="#" class="nav-item active" data-page="inicio">
-                <i class="fas fa-home"></i> Início
-            </a>
-            <a href="#" class="nav-item" data-page="desafios">
-                <i class="fas fa-code"></i> Desafios
-            </a>
-            <a href="#" class="nav-item" data-page="linkedin">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="#" class="nav-item" data-page="lattes">
-                <i class="fas fa-graduation-cap"></i> Lattes
-            </a>
-        </nav>
+<div class="top">
+  <div class="logo px"><i class="fas fa-gamepad"></i> MEVILLELA</div>
+  <div class="tools">
+    <button class="sq" id="theme" aria-label="Alternar entre modo escuro e claro" title="Alternar tema"><i class="fas fa-sun"></i></button>
+  </div>
+</div>
 
-        <!-- ===== PÁGINA: INÍCIO ===== -->
-        <div class="page active" id="page-inicio">
-            <h2 class="section-title"><i class="fas fa-rocket"></i> Olá!</h2>
-            <p class="apresentacao-texto">
-                Página criada com o objetivo de divulgar alguns
-                dos meus projetos.
-            </p>
+<nav aria-label="Navegação principal" id="nav">
+  <a href="#inicio"><i class="fas fa-home"></i>Início</a>
+  <a href="#sobre"><i class="fas fa-user"></i>Sobre</a>
+  <a href="#habilidades"><i class="fas fa-bolt"></i>Skills</a>
+  <a href="#projetos"><i class="fas fa-cubes"></i>Projetos</a>
+  <a href="#desafios"><i class="fas fa-code"></i>Desafios</a>
+  <a href="#contato"><i class="fas fa-envelope"></i>Contato</a>
+</nav>
 
-            <div class="cards-destaque">
-                <div class="card-destaque" onclick="navegarPara('desafios')">
-                    <i class="fas fa-laptop-code"></i>
-                    <h3>Desafios (ME315)</h3>
-                    <p>Desafios da disciplina Manipulação de Banco de Dados</p>
-                </div>
-                <div class="card-destaque" onclick="window.open('https://www.linkedin.com/in/mevillela/', '_blank')">
-                    <i class="fab fa-linkedin"></i>
-                    <h3>LinkedIn</h3>
-                </div>
-                <div class="card-destaque" onclick="navegarPara('lattes')">
-                    <i class="fas fa-file-alt"></i>
-                    <h3>Currículo Lattes</h3>
-                </div>
-            </div>
-        </div>
-
-        <!-- ===== PÁGINA: DESAFIOS ===== -->
-        <div class="page" id="page-desafios">
-            <h2 class="section-title"><i class="fas fa-tasks"></i> Desafios ME315</h2>
-            
-            <div class="tab-sub">
-                <div class="tab-sub-item active" data-sub="qmd">
-                    <i class="fas fa-code"></i> Códigos
-                </div>
-                <div class="tab-sub-item" data-sub="html">
-                    <i class="fas fa-eye"></i> Resultados
-                </div>
-            </div>
-
-            <!-- SUB-ABA: Códigos -->
-            <div class="sub-content active" id="sub-qmd">
-                <div class="challenge-grid">
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 01
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio01.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 02
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio02.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 03
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio03.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 04
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio04.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 05
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio05.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 06
-                            <span class="file-type">RMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio06.Rmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 07
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio07.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 08
-                            <span class="file-type">RMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio08.Rmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 09
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio09.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 10
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio10.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 11
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio11.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 12
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio12.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 13
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/desafio13real.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 14
-                            <span class="file-type">QMD</span>
-                        </div>
-                        <a href="ManipulacaoBancoDados/Desafio14.qmd" class="file-link challenge-link">
-                            <i class="fas fa-download"></i> Baixar código
-                        </a>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 15
-                            <span class="file-type">IPYNB</span>
-                        </div>
-                        <a href="https://github.com/mdudavillela/ManipulacaoBancoDados/blob/main/Desafio15.ipynb" target="_blank" class="file-link challenge-link">
-                            <i class="fab fa-github"></i> Ver no GitHub
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SUB-ABA: Resultados -->
-            <div class="sub-content" id="sub-html">
-                <div class="challenge-grid">
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 01
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio01.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 02
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio02.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 03
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio03.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                            <a href="ManipulacaoBancoDados/Desafio03.pdf" class="file-link pdf">
-                                <i class="fas fa-file-pdf"></i> Ver PDF
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 04
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio04.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                            <a href="ManipulacaoBancoDados/mapa.html" class="file-link html">
-                                <i class="fas fa-map"></i> Ver Mapa
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 05
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio05.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 06
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio06.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                            <a href="ManipulacaoBancoDados/Desafio06.pdf" class="file-link pdf">
-                                <i class="fas fa-file-pdf"></i> Ver PDF
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 07
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio07.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 08
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio08.pdf" class="file-link pdf">
-                                <i class="fas fa-file-pdf"></i> Ver PDF
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 09
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio09.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 10
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio10.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 11
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio11.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 12
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio12.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 13
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/desafio13real.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 14
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/Desafio14.html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver HTML
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Desafio 15
-                        </div>
-                        <div class="file-links">
-                            <a href="https://github.com/mdudavillela/ManipulacaoBancoDados/blob/main/Desafio15.ipynb" target="_blank" class="file-link html">
-                                <i class="fab fa-github"></i> Ver no GitHub
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="challenge-card">
-                        <div class="challenge-title">
-                            Trabalho Final
-                        </div>
-                        <div class="file-links">
-                            <a href="ManipulacaoBancoDados/slides_me315 (1).html" class="file-link html">
-                                <i class="fas fa-external-link-alt"></i> Ver Slides
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-                <!-- PÁGINA LATTES - VERSÃO COM LINK EXTERNO -->
-        <div class="page" id="page-lattes">
-            <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Currículo Lattes</h2>
-            
-            <div style="text-align: center; padding: 40px 20px;">
-                <i class="fas fa-file-alt" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 20px; display: block;"></i>
-                <h3 style="color: var(--secondary-color); margin-bottom: 15px;">Currículo Lattes</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
-                    Currículo completo na plataforma Lattes do CNPq.
-                </p>
-                <a href="https://lattes.cnpq.br/4029073359917865" target="_blank" 
-                   style="display: inline-block; 
-                          background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-                          color: white;
-                          padding: 15px 40px;
-                          border-radius: 30px;
-                          text-decoration: none;
-                          font-weight: 600;
-                          font-size: 1.1rem;
-                          transition: var(--transition);
-                          box-shadow: 0 5px 20px rgba(26, 35, 126, 0.4);">
-                    <i class="fas fa-external-link-alt"></i> Acessar Currículo Lattes
-                </a>
-                <p style="color: var(--text-muted); margin-top: 20px; font-size: 0.9rem;">
-                    <i class="fas fa-info-circle"></i> Você será redirecionado para o site do CNPq
-                </p>
-            </div>
-        </div>
-                    <!-- PÁGINA LINKEDIN -->
-        <div class="page" id="page-linkedin">
-            <h2 class="section-title"><i class="fab fa-linkedin"></i> LinkedIn</h2>
-            
-            <div style="text-align: center; padding: 40px 20px;">
-                <i class="fab fa-linkedin" style="font-size: 4rem; color: #0A66C2; margin-bottom: 20px; display: block;"></i>
-                <h3 style="color: var(--secondary-color); margin-bottom: 15px;">Meu Perfil no LinkedIn</h3>
-                <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto 30px;">
-                    Perfil na plataforma LinkedIn.
-                </p>
-                <a href="https://www.linkedin.com/in/mevillela/" target="_blank" 
-                   style="display: inline-block; 
-                          background: linear-gradient(90deg, #0A66C2, #0A66C2);
-                          color: white;
-                          padding: 15px 40px;
-                          border-radius: 30px;
-                          text-decoration: none;
-                          font-weight: 600;
-                          font-size: 1.1rem;
-                          transition: var(--transition);
-                          box-shadow: 0 5px 20px rgba(10, 102, 194, 0.3);">
-                    <i class="fab fa-linkedin"></i> Acessar LinkedIn
-                </a>
-                <p style="color: var(--text-muted); margin-top: 20px; font-size: 0.9rem;">
-                    <i class="fas fa-info-circle"></i> Você será redirecionado para o LinkedIn
-                </p>
-            </div>
-        </div>
-
-        <footer>
-            <div class="unicamp-logo">UNICAMP</div>
-            <p>Instituto de Matemática, Estatística e Computação Científica</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/mevillela/" target="_blank" title="LinkedIn">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                <a href="https://github.com/mdudavillela" target="_blank" title="GitHub">
-                    <i class="fab fa-github"></i>
-                </a>
-                <a href="mailto:madudavs024@gmail.com" title="E-mail">
-                    <i class="fas fa-envelope"></i>
-                </a>
-            </div>
-        </footer>
+<main>
+<!-- INÍCIO -->
+<section class="page" id="inicio">
+  <div class="hero">
+    <div class="box">
+      <span class="px" style="font-size:.6rem;color:var(--pink)">Jogador 1 conectado</span>
+      <h1>Oi, eu sou a <span>Maria Eduarda</span></h1>
+      <div class="typed" id="typed" aria-live="off"></div>
+      <p class="lead">Estudante da UNICAMP me tornando cientista de dados. Aqui estão meus projetos, códigos e as formas de falar comigo.</p>
+      <div class="btns">
+        <a class="btn main" href="#projetos"><i class="fas fa-play"></i>Ver projetos</a>
+        <a class="btn" href="#contato"><i class="fas fa-comment"></i>Falar comigo</a>
+      </div>
     </div>
+    <aside class="box card-p1" aria-label="Ficha de jogador">
+      <!-- avatar pixel art: notebook gamer -->
+      <svg viewBox="0 0 16 14" aria-hidden="true">
+        <rect x="2" y="1" width="12" height="8" fill="#9b6bff"/>
+        <rect x="3" y="2" width="10" height="6" fill="#07060d"/>
+        <rect x="4" y="6" width="1" height="1" fill="#5dff8a"/>
+        <rect x="6" y="5" width="1" height="2" fill="#22f3e6"/>
+        <rect x="8" y="4" width="1" height="3" fill="#ff5fa8"/>
+        <rect x="10" y="3" width="1" height="4" fill="#5dff8a"/>
+        <rect x="4" y="3" width="1" height="1" fill="#22f3e6"/>
+        <rect x="0" y="9" width="16" height="1" fill="#22f3e6"/>
+        <rect x="1" y="10" width="14" height="3" fill="#2d2552"/>
+        <g fill="#ff5fa8"><rect x="2" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="13" y="10" width="1" height="1"/></g>
+        <g fill="#22f3e6"><rect x="4" y="10" width="1" height="1"/><rect x="8" y="10" width="1" height="1"/><rect x="12" y="10" width="1" height="1"/></g>
+        <g fill="#5dff8a"><rect x="3" y="11" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="11" y="11" width="1" height="1"/></g>
+        <rect x="6" y="12" width="4" height="1" fill="#9b6bff"/>
+      </svg>
+      <div class="px">Ficha</div>
+      <div class="stat"><span>Classe</span><b>Data Scientist</b></div>
+      <div class="stat"><span>Guilda</span><b>UNICAMP</b></div>
+      <div class="stat"><span>Armas</span><b>R · Python · SQL</b></div>
+      <div class="stat"><span>Status</span><b>Upando</b></div>
+    </aside>
+  </div>
+  <div class="box dash" aria-labelledby="dash-t">
+    <h2 id="dash-t">Painel do portfólio</h2>
+    <div class="kpis" id="kpis"></div>
+    <div class="charts">
+      <div><h3>Arquivos de código por extensão</h3><div id="ch-ext"></div></div>
+      <div><h3>Resultados publicados por formato</h3><div id="ch-res"></div></div>
+    </div>
+    <p class="cap" id="cap"></p>
+  </div>
+  <div class="quick">
+    <button data-go="projetos"><div class="box" style="--c:var(--cyan)"><i class="fas fa-cubes"></i><h3>Projetos</h3><p>O que já construí com dados.</p></div></button>
+    <button data-go="desafios"><div class="box" style="--c:var(--green)"><i class="fas fa-code"></i><h3>Desafios ME315</h3><p>15 desafios de banco de dados, com código e resultado.</p></div></button>
+    <button data-go="habilidades"><div class="box" style="--c:var(--pink)"><i class="fas fa-bolt"></i><h3>Skills</h3><p>Ferramentas e linguagens que uso.</p></div></button>
+  </div>
+</section>
 
-    <script>
-        // ===== NAVEGAÇÃO ENTRE PÁGINAS =====
-        function navegarPara(pagina) {
-            // Esconde todas as páginas
-            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-            
-            // Mostra a página selecionada
-            const pageEl = document.getElementById(`page-${pagina}`);
-            if (pageEl) pageEl.classList.add('active');
-            
-            // Atualiza o menu
-            document.querySelectorAll('.nav-item[data-page]').forEach(item => {
-                item.classList.toggle('active', item.dataset.page === pagina);
-            });
-        }
+<!-- SOBRE -->
+<section class="page" id="sobre">
+  <h2 class="title">Sobre mim</h2>
+  <div class="two">
+    <div class="box">
+      <!-- EDITE: conte sua história com suas palavras -->
+      <p>Sou Maria Eduarda Villéla Silva, estudante do Instituto de Matemática, Estatística e Computação Científica (IMECC) da UNICAMP.</p>
+      <p>Estou construindo minha carreira em ciência de dados: gosto de transformar dados brutos em respostas claras, com código reprodutível e boa visualização.</p>
+      <p>Este site começou como a vitrine dos desafios de uma disciplina e virou meu portfólio.</p>
+    </div>
+    <div class="box">
+      <ul class="timeline">
+        <li>UNICAMP<small>Graduação, IMECC</small></li>
+        <li>ME315<small>Manipulação de Banco de Dados</small></li>
+        <li>Agora<small>Projetos e estágio em dados</small></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-        // Event listeners para os itens do menu
-        document.querySelectorAll('.nav-item[data-page]').forEach(item => {
-            item.addEventListener('click', function(e) {
-                e.preventDefault();
-                const pagina = this.dataset.page;
-                navegarPara(pagina);
-            });
-        });
+<!-- HABILIDADES -->
+<section class="page" id="habilidades">
+  <h2 class="title">Árvore de skills</h2>
+  <div class="skills">
+    <div class="box" style="--c:var(--cyan)">
+      <h3>Linguagens</h3>
+      <div class="bar"><div><span>R</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
+      <div class="bar"><div><span>Python</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="bar"><div><span>SQL</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+    </div>
+    <div class="box" style="--c:var(--pink)">
+      <h3>Dados e análise</h3>
+      <div class="bar"><div><span>Manipulação de dados</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
+      <div class="bar"><div><span>Visualização e mapas</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="bar"><div><span>Estatística</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+    </div>
+    <div class="box" style="--c:var(--green)">
+      <h3>Inventário</h3>
+      <div class="tags">
+        <span class="tag">Quarto</span><span class="tag">R Markdown</span><span class="tag">Jupyter</span>
+        <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">HTML/CSS</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // ===== SUB-ABAS DOS DESAFIOS =====
-        document.querySelectorAll('.tab-sub-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Remove active de todos os sub-items
-                document.querySelectorAll('.tab-sub-item').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                
-                // Mostra o sub-content correspondente
-                const subId = this.dataset.sub;
-                document.querySelectorAll('.sub-content').forEach(c => c.classList.remove('active'));
-                const subContent = document.getElementById(`sub-${subId}`);
-                if (subContent) subContent.classList.add('active');
-            });
-        });
+<!-- PROJETOS -->
+<section class="page" id="projetos">
+  <h2 class="title">Projetos</h2>
+  <div class="grid">
+    <article class="box proj" style="--c:var(--cyan)">
+      <h3>Convergência de gradiente em MLPs</h3>
+      <p>Iniciação científica voluntária sobre o comportamento do Gradiente Descendente e do SGD no treino de redes Perceptron. Já inclui coleta de dados da API do TMDB e pré-processamento. Em andamento.</p>
+      <span class="chip">Python</span><span class="chip">Otimização</span><span class="chip">Em andamento</span><br>
+      <a class="mini" href="https://github.com/mdudavillela/gradient-convergence-mlp" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+    </article>
+    <article class="box proj" style="--c:var(--pink)">
+      <h3>Detecção de objetos com YOLOv8</h3>
+      <p>Sistema de detecção com YOLOv8n e pós-processamento escrito à mão em Python. O relatório analisa como os limiares de confiança e IoU afetam falsos positivos e falsos negativos.</p>
+      <span class="chip">Python</span><span class="chip">Deep Learning</span><br>
+      <a class="mini" href="https://github.com/mdudavillela/yolov8-object-detection" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+    </article>
+    <article class="box proj" style="--c:var(--purple)">
+      <h3>Tradução automática de datas</h3>
+      <p>Rede Seq2Seq com atenção que converte datas em vários formatos para o padrão ISO 8601, com análise dos mapas de atenção e de diferentes configurações da rede.</p>
+      <span class="chip">Python</span><span class="chip">Seq2Seq</span><br>
+      <a class="mini" href="https://github.com/mdudavillela/automatic-date-translation" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+    </article>
+    <article class="box proj" style="--c:var(--green)">
+      <h3>Streams do Spotify em 2023</h3>
+      <p>Análise exploratória das músicas mais ouvidas do ano: playlists, charts, lançamentos, positividade e dançabilidade. Virou um pôster científico apresentado a professores e colegas.</p>
+      <span class="chip">R</span><span class="chip">Visualização</span><br>
+      <a class="mini" href="https://github.com/mdudavillela/spotify-streams-analysis" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+    </article>
+    <article class="box proj" style="--c:var(--cyan)">
+      <h3>Reconhecimento de dígitos (MNIST)</h3>
+      <p>Projeto de aprendizado de máquina para classificar dígitos manuscritos a partir de imagens, com notebook, script e relatório final.</p>
+      <span class="chip">Python</span><span class="chip">Machine Learning</span><br>
+      <a class="mini" href="https://github.com/mdudavillela/mnist-digit-recognition" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+    </article>
+    <article class="box proj" style="--c:var(--red)">
+      <h3>Manipulação de Banco de Dados (ME315)</h3>
+      <p>Quinze desafios com código e resultados, mais um trabalho final apresentado em slides.</p>
+      <span class="chip">R</span><span class="chip">Quarto</span><span class="chip">SQL</span><br>
+      <a class="mini" href="#desafios"><i class="fas fa-code"></i>Ver desafios</a>
+      <a class="mini" href="ManipulacaoBancoDados/slides_me315 (1).html"><i class="fas fa-display"></i>Slides</a>
+      <a class="mini" href="ManipulacaoBancoDados/mapa.html"><i class="fas fa-map"></i>Mapa</a>
+    </article>
+  </div>
+</section>
 
-        // ===== TEMA CLARO/ESCURO =====
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            const body = document.body;
-            const icon = this.querySelector('i');
-            
-            body.classList.toggle('light-theme');
-            
-            if (body.classList.contains('light-theme')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        });
+<!-- DESAFIOS -->
+<section class="page" id="desafios">
+  <h2 class="title">Desafios ME315</h2>
+  <div class="sub" role="group" aria-label="Tipo de conteúdo">
+    <button data-v="cod" aria-pressed="true"><i class="fas fa-code"></i> Códigos</button>
+    <button data-v="res" aria-pressed="false"><i class="fas fa-eye"></i> Resultados</button>
+  </div>
+  <div class="grid" id="chal"></div>
+</section>
 
-        // ===== ESTRELAS =====
-        function createStars() {
-            const body = document.body;
-            const starCount = 100;
-            
-            for (let i = 0; i < starCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                
-                const size = Math.random() * 2 + 1;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.left = `${Math.random() * 100}vw`;
-                star.style.top = `${Math.random() * 100}vh`;
-                star.style.animationDuration = `${Math.random() * 10 + 5}s`;
-                
-                body.appendChild(star);
-            }
-        }
-        createStars();
-    </script>
+<!-- CONTATO -->
+<section class="page" id="contato">
+  <h2 class="title">Contato</h2>
+  <div class="grid contact">
+    <a class="box" style="--c:#4aa3ff" href="https://www.linkedin.com/in/mevillela/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><div><b>LinkedIn</b><small>Conexões e carreira</small></div></a>
+    <a class="box" style="--c:var(--green)" href="https://github.com/mdudavillela" target="_blank" rel="noopener"><i class="fab fa-github"></i><div><b>GitHub</b><small>Código-fonte</small></div></a>
+    <a class="box" style="--c:var(--pink)" href="https://lattes.cnpq.br/4029073359917865" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i><div><b>Currículo Lattes</b><small>Plataforma do CNPq</small></div></a>
+    <a class="box" style="--c:var(--cyan)" href="mailto:madudavs024@gmail.com"><i class="fas fa-envelope"></i><div><b>E-mail</b><small>madudavs024@gmail.com</small></div></a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="px">UNICAMP</div>
+  <p>Instituto de Matemática, Estatística e Computação Científica</p>
+</footer>
+</div>
+
+<script>
+(function(){
+  var B='ManipulacaoBancoDados/', GH='https://github.com/mdudavillela/ManipulacaoBancoDados/blob/main/Desafio15.ipynb';
+  var colors=['var(--cyan)','var(--green)','var(--purple)','var(--pink)'];
+  // n, extensão, arquivo de código, resultados [rótulo, link, ícone]
+  var H=function(f){return ['HTML',B+f+'.html','fa-external-link-alt']}, P=function(f){return ['PDF',B+f+'.pdf','fa-file-pdf']};
+  var D=[
+    [1,'QMD','Desafio01.qmd',[H('Desafio01')]],
+    [2,'QMD','Desafio02.qmd',[H('Desafio02')]],
+    [3,'QMD','Desafio03.qmd',[H('Desafio03'),P('Desafio03')]],
+    [4,'QMD','Desafio04.qmd',[H('Desafio04'),['Mapa',B+'mapa.html','fa-map']]],
+    [5,'QMD','Desafio05.qmd',[H('Desafio05')]],
+    [6,'RMD','Desafio06.Rmd',[H('Desafio06'),P('Desafio06')]],
+    [7,'QMD','Desafio07.qmd',[H('Desafio07')]],
+    [8,'RMD','Desafio08.Rmd',[P('Desafio08')]],
+    [9,'QMD','Desafio09.qmd',[H('Desafio09')]],
+    [10,'QMD','Desafio10.qmd',[H('Desafio10')]],
+    [11,'QMD','Desafio11.qmd',[H('Desafio11')]],
+    [12,'QMD','Desafio12.qmd',[H('Desafio12')]],
+    [13,'QMD','desafio13real.qmd',[H('desafio13real')]],
+    [14,'QMD','Desafio14.qmd',[H('Desafio14')]],
+    [15,'IPYNB',null,[['GitHub',GH,'fa-github']]]
+  ];
+  var view='cod', grid=document.getElementById('chal');
+  function pad(n){return n<10?'0'+n:n}
+  function draw(){
+    var h='';
+    D.forEach(function(d,i){
+      var c=colors[i%4], links='';
+      if(view==='cod'){
+        links=d[2]?'<a class="mini" href="'+B+d[2]+'" download><i class="fas fa-download"></i>Baixar código</a>'
+                  :'<a class="mini" href="'+GH+'" target="_blank" rel="noopener"><i class="fab fa-github"></i>Ver no GitHub</a>';
+      }else{
+        d[3].forEach(function(r){links+='<a class="mini" href="'+r[1]+'"'+(r[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><i class="'+(r[2]==='fa-github'?'fab':'fas')+' '+r[2]+'"></i>'+(r[0]==='HTML'?'Ver HTML':r[0]==='PDF'?'Ver PDF':r[0]==='Mapa'?'Ver mapa':'Ver no GitHub')+'</a>'});
+      }
+      h+='<article class="box chal" style="--c:'+c+'"><div class="lv"><h3>Desafio '+pad(d[0])+'</h3>'+(view==='cod'?'<span class="ext">'+d[1]+'</span>':'')+'</div>'+links+'</article>';
+    });
+    if(view==='res') h+='<article class="box chal" style="--c:var(--red)"><div class="lv"><h3>Chefe final</h3></div><a class="mini" href="'+B+'slides_me315 (1).html"><i class="fas fa-display"></i>Ver slides</a></article>';
+    grid.innerHTML=h;
+  }
+  document.querySelectorAll('.sub button').forEach(function(b){
+    b.addEventListener('click',function(){
+      view=b.dataset.v;
+      document.querySelectorAll('.sub button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
+      draw();
+    });
+  });
+  draw();
+
+  // dashboard: calculado a partir da lista D, então atualiza sozinho quando você adicionar um desafio
+  (function(){
+    // projetos fora da disciplina (GitHub): [repositório, [extensões dos arquivos de código], nº de PDFs publicados]
+    // para atualizar: adicione uma linha aqui e os números e as barras mudam sozinhos
+    var E=[
+      ['yolov8-object-detection',['PY'],1],
+      ['automatic-date-translation',['PY'],1],
+      ['gradient-convergence-mlp',['PY','PY','IPYNB'],0],
+      ['mnist-digit-recognition',['PY','IPYNB'],1],
+      ['spotify-streams-analysis',['RMD'],2]
+    ];
+    var ext={}, res={'HTML':0,'PDF':0,'Mapa':0,'Slides':1,'Notebook':0}, nRes=1, nCod=D.length;
+    D.forEach(function(d){
+      ext[d[1]]=(ext[d[1]]||0)+1;
+      d[3].forEach(function(r){
+        var k=r[0]==='GitHub'?'Notebook':r[0]; res[k]=(res[k]||0)+1; nRes++;
+      });
+    });
+    E.forEach(function(e){
+      e[1].forEach(function(x){ext[x]=(ext[x]||0)+1; nCod++});
+      res['PDF']+=e[2]; nRes+=e[2];
+    });
+    var kpis=[[D.length,'desafios concluídos','var(--cyan)'],[E.length+1,'repositórios no painel','var(--purple)'],[nCod,'arquivos de código','var(--green)'],[nRes,'resultados publicados','var(--pink)'],[Object.keys(ext).length,'formatos de código','var(--red)']];
+    document.getElementById('kpis').innerHTML=kpis.map(function(k){return '<div class="kpi" style="--c:'+k[2]+'"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join('');
+    document.getElementById('cap').innerHTML='Inclui os '+D.length+' desafios da ME315 e '+E.length+' projetos do <a href="https://github.com/mdudavillela" target="_blank" rel="noopener">meu GitHub</a>.';
+    // cor da barra e do número vem da quantidade: do tom "pouco" ao tom "muito"
+    function chart(id,obj,ramp){
+      var keys=Object.keys(obj).filter(function(k){return obj[k]>0}).sort(function(a,b){return obj[b]-obj[a]});
+      var max=obj[keys[0]]||1;
+      document.getElementById(id).innerHTML=keys.map(function(k){
+        var pct=obj[k]/max*100;
+        var c='color-mix(in srgb,'+ramp[1]+' '+Math.round(pct)+'%,'+ramp[0]+')';
+        return '<div class="row" style="--c:'+c+'"><span>.'+k.toLowerCase()+'</span><div class="track"><div class="fill" data-w="'+pct+'"></div></div><em>'+obj[k]+'</em></div>';
+      }).join('');
+    }
+    chart('ch-ext',ext,['var(--purple)','var(--green)']);
+    chart('ch-res',res,['var(--purple)','var(--cyan)']);
+    // os rótulos de resultados não são extensões: remove o ponto
+    document.querySelectorAll('#ch-res .row span').forEach(function(s){s.textContent=s.textContent.slice(1)});
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      document.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w+'%'});
+    })});
+  })();
+
+  // barras de skill em blocos
+  document.querySelectorAll('.track').forEach(function(t){
+    var n=+t.dataset.n, s='';
+    for(var i=0;i<5;i++) s+='<i class="'+(i<n?'f':'')+'"></i>';
+    t.innerHTML=s;
+  });
+
+  // navegação por hash
+  var pages=['inicio','sobre','habilidades','projetos','desafios','contato'];
+  function show(id){
+    if(pages.indexOf(id)<0) id='inicio';
+    document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id===id)});
+    document.querySelectorAll('#nav a').forEach(function(a){
+      if(a.getAttribute('href')==='#'+id) a.setAttribute('aria-current','page'); else a.removeAttribute('aria-current');
+    });
+    window.scrollTo(0,0);
+  }
+  function open(id){
+    show(id);
+    try{history.replaceState(null,'','#'+id)}catch(e){}
+  }
+  // todo link interno (#aba) e todo botão [data-go] troca de aba direto pelo JS
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(e){e.preventDefault();open(a.getAttribute('href').slice(1))});
+  });
+  document.querySelectorAll('[data-go]').forEach(function(b){b.addEventListener('click',function(){open(b.dataset.go)})});
+  window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
+  show(location.hash.slice(1));
+
+  // tema (escuro por padrão)
+  var root=document.documentElement, ic=document.querySelector('#theme i');
+  function setTheme(t){root.dataset.theme=t; ic.className='fas '+(t==='dark'?'fa-sun':'fa-moon'); try{localStorage.setItem('tema',t)}catch(e){}}
+  var saved=null; try{saved=localStorage.getItem('tema')}catch(e){}
+  setTheme(saved==='light'?'light':'dark');
+  document.getElementById('theme').addEventListener('click',function(){setTheme(root.dataset.theme==='dark'?'light':'dark')});
+
+  // texto digitado
+  var phrases=['Cientista de dados em formação','Apaixonada por dados','Transformando dados em respostas'], pi=0, ci=0, del=false, el=document.getElementById('typed');
+  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still){el.textContent=phrases[0]}else(function tick(){
+    var p=phrases[pi];
+    ci+=del?-1:1; el.textContent=p.slice(0,ci);
+    var t=del?35:70;
+    if(!del&&ci===p.length){del=true;t=1600}
+    else if(del&&ci===0){del=false;pi=(pi+1)%phrases.length;t=400}
+    setTimeout(tick,t);
+  })();
+})();
+</script>
 </body>
 </html>
