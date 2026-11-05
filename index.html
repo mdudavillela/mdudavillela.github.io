@@ -73,7 +73,7 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
   border-bottom:var(--px) solid transparent;border-image:linear-gradient(90deg,var(--cyan),var(--green),transparent) 1}
 
 /* início */
-.hero{display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:stretch}
+.hero{display:grid;grid-template-columns:1fr;gap:22px;align-items:stretch}
 .hero .main{display:flex;flex-direction:column;justify-content:center}
 .hero h1{font-size:clamp(1rem,2.2vw,1.35rem);margin-bottom:18px;line-height:1.5;
   background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent;
@@ -165,7 +165,7 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 
 /* ===== DISCIPLINAS ===== */
 .discipline-home{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
-.discipline-card{width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;border:3px solid var(--line);background:var(--panel2);padding:18px;box-shadow:3px 3px 0 var(--line);transition:transform .15s,border-color .15s}
+.discipline-card{width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;border:3px solid var(--line);background:var(--panel2);padding:18px;box-shadow:3px 3px 0 var(--line);transition:transform .15s,border-color .15s;display:flex;flex-direction:column;justify-content:space-between;min-height:160px}
 .discipline-card:hover{transform:translate(-2px,-2px);border-color:var(--c,var(--cyan))}
 .discipline-card strong{display:block;font-family:var(--font);font-size:.7rem;color:var(--c,var(--cyan));margin-bottom:9px}
 .discipline-card span{color:var(--muted);font-size:.55rem;line-height:1.6}
@@ -234,9 +234,6 @@ footer p{font-size:.55rem}
       <h1>Olá, meu nome é Maria Eduarda</h1>
       <div class="sub-h">Graduanda em Estatística na UNICAMP</div>
       <p class="lead">Aqui estão meus projetos, meus códigos e as formas de entrar em contato comigo.</p>
-      <div class="btns">
-        <a class="btn main" href="#projetos"><i class="fas fa-cubes"></i>Ver projetos</a>
-        <a class="btn" href="#links"><i class="fas fa-link"></i>Meus links</a>
       </div>
     </div>
     <figure class="box portrait">
@@ -433,9 +430,9 @@ footer p{font-size:.55rem}
     [15,'IPYNB',null,[['Código no GitHub',GH,'fa-github']]]
   ];
 
-  var disciplines=[
-    {id:'ME115',name:'ME115',description:'Materiais e atividades da disciplina.',items:[]},
-    {id:'ME315',name:'ME315',description:'Manipulação de Banco de Dados',items:
+    var disciplines=[
+    {id:'ME115',name:'ME115 - Linguagem R',description:'Materiais e atividades da disciplina.',items:[]},
+    {id:'ME315',name:'ME315 - Manipulação de Banco de Dados',description:'Materiais e atividades da disciplina.',items:
       D.map(function(d){
         var resources=[];
         if(d[2]) resources.push(['Baixar código',B+d[2],'fa-download',true]);
@@ -447,9 +444,9 @@ footer p{font-size:.55rem}
         resources:[['Ver slides',B+'slides_me315 (1).html','fa-display',false],['Ver mapa interativo',B+'mapa.html','fa-map',false]]
       }])
     },
-    {id:'MS672',name:'MS672',description:'Materiais e atividades da disciplina.',items:[]},
-    {id:'MS571',name:'MS571',description:'Materiais e atividades da disciplina.',items:[]},
-    {id:'MS428',name:'MS428',description:'Materiais e atividades da disciplina.',items:[]}
+    {id:'MS428',name:'MS428 - Programação Linear',description:'Materiais e atividades da disciplina.',items:[]},
+    {id:'MS571',name:'MS571 - Aprendizado de Máquinas',description:'Materiais e atividades da disciplina.',items:[]},
+    {id:'MS671',name:'MS671 - Introdução ao Aprendizado de Máquinas Profundo',description:'Materiais e atividades da disciplina.',items:[]}
   ];
 
   var dashboard=document.getElementById('discipline-dashboard');
@@ -499,7 +496,7 @@ footer p{font-size:.55rem}
   // 1) Radar de habilidades técnicas
   (function(){
     var labels=['R','Python','SQL','Julia','Looker Studio','Power BI'];
-    var values=[4,3,3,2,1,2,2]; // 0..5
+    var values=[4,3,3,2,1,2]; // 0..5
     var N=labels.length, R=70, cx=110, cy=95;
     var svg=document.getElementById('radar');
     function pt(i, r){
