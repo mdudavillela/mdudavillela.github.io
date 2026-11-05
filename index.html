@@ -75,8 +75,9 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 /* início */
 .hero{display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:stretch}
 .hero .main{display:flex;flex-direction:column;justify-content:center}
-.hero h1{font-size:clamp(1.1rem,2.8vw,1.7rem);margin-bottom:16px;line-height:1.5;
-  background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero h1{font-size:clamp(1rem,2.2vw,1.35rem);margin-bottom:18px;line-height:1.5;
+  background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent;
+  white-space:nowrap;letter-spacing:-.04em}
 .sub-h{font-size:.85rem;color:var(--green);margin-bottom:14px}
 .lead{color:var(--muted);max-width:52ch;margin:6px 0 24px;font-size:.68rem}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
@@ -95,30 +96,39 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .portrait .px{font-size:.48rem;color:var(--text);margin-bottom:8px;line-height:1.6;white-space:nowrap}
 .portrait span{color:var(--cyan);font-size:.55rem;display:block;margin-top:4px}
 
-.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:22px}
-.quick button{all:unset;cursor:pointer}
-.quick .box{height:100%;transition:transform .15s,border-color .15s}
-.quick button:hover .box{transform:translate(-2px,-2px);border-color:var(--c,var(--cyan))}
-.quick i{font-size:1.4rem;color:var(--c,var(--cyan));margin-bottom:10px;display:block}
-.quick h3{font-size:.68rem;margin-bottom:8px}
-.quick p{color:var(--muted);font-size:.6rem}
-
-/* números */
+/* ===== DASHBOARD: MEUS DADOS ===== */
 .dash{margin-top:22px}
-.dash h2{font-size:.8rem;margin-bottom:16px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:22px}
-.kpi{border:3px solid var(--c);padding:12px;background:var(--panel2)}
-.kpi b{font-family:var(--font);font-weight:400;font-size:1.2rem;color:var(--c);display:block;margin-bottom:8px}
-.kpi span{color:var(--muted);font-size:.55rem;line-height:1.5;display:block}
-.charts{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.charts h3{font-size:.62rem;color:var(--muted);margin-bottom:14px}
-.row{display:grid;grid-template-columns:92px 1fr 28px;gap:10px;align-items:center;margin-bottom:10px}
-.row .track{height:18px;background:var(--bg);border:3px solid var(--line);padding:2px}
-.row .fill{height:100%;background:var(--c);width:0;transition:width .8s steps(12)}
-.row em{font-style:normal;color:var(--c);text-align:right}
-.row span{font-size:.58rem}
-.cap{margin-top:16px;color:var(--muted);font-size:.58rem;border-top:2px dashed var(--line);padding-top:10px}
-.cap a{color:var(--cyan)}
+.dash h2{font-size:.85rem;margin-bottom:6px;color:var(--text)}
+.dash .dash-sub{color:var(--muted);font-size:.6rem;margin-bottom:22px}
+.dash-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.panel{
+  background:var(--panel2);border:3px solid var(--line);padding:18px;
+}
+.panel h3{font-size:.62rem;color:var(--c,var(--cyan));margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.panel h3 i{font-size:.8rem}
+
+/* radar */
+.radar-wrap{display:flex;justify-content:center;align-items:center;min-height:260px}
+.radar-wrap svg{width:100%;max-width:280px;height:auto;overflow:visible}
+.radar-wrap text{font-family:var(--font);font-size:5px;fill:var(--muted)}
+
+/* barras horizontais */
+.hbar{margin-bottom:14px}
+.hbar .label{display:flex;justify-content:space-between;font-size:.55rem;margin-bottom:6px;color:var(--muted)}
+.hbar .label b{color:var(--text);font-weight:400}
+.hbar .track{height:20px;background:var(--bg);border:3px solid var(--line);padding:2px;position:relative}
+.hbar .fill{height:100%;background:var(--c,var(--cyan));width:0;transition:width .9s steps(14)}
+
+/* linha do tempo */
+.timeline-chart{position:relative;padding:8px 0 0 6px}
+.tl-line{position:absolute;left:12px;top:22px;bottom:8px;width:4px;background:var(--line)}
+.tl-item{position:relative;padding-left:30px;margin-bottom:18px}
+.tl-item::before{content:"";position:absolute;left:6px;top:4px;width:16px;height:16px;background:var(--c,var(--cyan));border:3px solid var(--panel2);box-shadow:0 0 0 3px var(--c,var(--cyan))}
+.tl-item b{display:block;font-size:.6rem;color:var(--c,var(--cyan));margin-bottom:4px;font-weight:400}
+.tl-item span{font-size:.52rem;color:var(--muted);line-height:1.6}
+
+.dash-cap{margin-top:18px;color:var(--muted);font-size:.55rem;border-top:2px dashed var(--line);padding-top:12px;text-align:center}
+.dash-cap a{color:var(--cyan)}
 
 /* sobre */
 .two{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
@@ -140,7 +150,7 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{border:3px solid var(--c);color:var(--c);padding:2px 10px;font-size:.55rem}
 
-/* projetos: todos os cards com a mesma altura e estrutura */
+/* projetos */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
 .proj{border-top:8px solid var(--c);display:flex;flex-direction:column}
 .proj h3{font-size:.7rem;margin-bottom:12px;min-height:3.6em;line-height:1.5}
@@ -151,6 +161,28 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .mini{font-size:.52rem;padding:6px 12px;border:3px solid var(--c);color:var(--c);display:inline-flex;gap:6px;align-items:center;transition:background .15s,color .15s}
 .mini:hover{background:var(--c);color:var(--ink)}
 
+/* ===== DISCIPLINAS (layout original) ===== */
+.discipline-home{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
+.discipline-card{width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;border:3px solid var(--line);background:var(--panel2);padding:18px;box-shadow:3px 3px 0 var(--line);transition:transform .15s,border-color .15s}
+.discipline-card:hover{transform:translate(-2px,-2px);border-color:var(--c,var(--cyan))}
+.discipline-card strong{display:block;font-family:var(--font);font-size:.7rem;color:var(--c,var(--cyan));margin-bottom:9px}
+.discipline-card span{color:var(--muted);font-size:.55rem;line-height:1.6}
+.dash-crumb{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:18px;color:var(--muted);font-size:.58rem}
+.dash-crumb button{font:inherit;color:var(--cyan);background:none;border:0;text-decoration:underline;cursor:pointer}
+.dash-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:16px}
+.dash-heading h3{font-size:.75rem;color:var(--text)}
+.task-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.task-card{width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;background:var(--panel2);border:3px solid var(--line);padding:15px;display:flex;align-items:center;justify-content:space-between;gap:12px;transition:border-color .15s,transform .15s}
+.task-card:hover{border-color:var(--c,var(--cyan));transform:translateY(-2px)}
+.task-card strong{display:block;font-size:.62rem;font-weight:normal;color:var(--text)}
+.task-card small{display:block;color:var(--muted);font-size:.5rem;margin-top:4px}
+.task-card i{color:var(--c,var(--cyan))}
+.task-detail{border-top:6px solid var(--c,var(--cyan))}
+.task-detail h3{font-size:.72rem;margin-bottom:12px}
+.task-detail p{color:var(--muted);margin-bottom:16px;font-size:.58rem}
+.resource-list{display:flex;flex-wrap:wrap;gap:10px}
+.empty-state{border:2px dashed var(--line);padding:20px;color:var(--muted);background:var(--panel2);font-size:.6rem;line-height:1.7}
+
 /* contato */
 .contact a.box{display:flex;gap:16px;align-items:center;transition:transform .15s,border-color .15s}
 .contact a.box:hover{transform:translate(-2px,-2px);border-color:var(--c)}
@@ -158,57 +190,18 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .contact b{font-size:.68rem}
 .contact small{color:var(--muted);display:block;font-size:.55rem;margin-top:4px}
 
-/* ===== DASHBOARD DE DISCIPLINAS (reestruturado) ===== */
-.dash-shell{display:grid;grid-template-columns:230px 1fr;gap:22px;align-items:start}
-.dash-side{
-  background:var(--panel);border:var(--px) solid var(--line);
-  box-shadow:var(--px) var(--px) 0 var(--line);padding:16px;
-}
-.dash-side h3{font-size:.62rem;color:var(--muted);margin-bottom:14px;letter-spacing:.05em}
-.dash-side ul{list-style:none;display:flex;flex-direction:column;gap:8px}
-.dash-side button{
-  width:100%;text-align:left;cursor:pointer;font:inherit;font-size:.58rem;
-  color:var(--text);background:var(--panel2);border:3px solid var(--line);
-  padding:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;
-  transition:border-color .15s,background .15s;
-}
-.dash-side button:hover{border-color:var(--c,var(--cyan))}
-.dash-side button[aria-current="true"]{
-  background:linear-gradient(90deg,var(--c,var(--cyan)),var(--green));color:var(--ink);border-color:transparent;
-}
-.dash-side button em{font-style:normal;font-size:.5rem;opacity:.8}
-.dash-main{min-height:200px}
-.dash-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:12px;border-bottom:2px dashed var(--line)}
-.dash-head h3{font-size:.78rem}
-.dash-head .ext{font-size:.5rem;padding:5px 8px;background:var(--c,var(--cyan));color:var(--ink)}
-.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
-.task-card{
-  width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;
-  background:var(--panel2);border:3px solid var(--line);padding:14px;
-  display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s;
-}
-.task-card:hover{border-color:var(--c,var(--cyan));transform:translateY(-2px)}
-.task-card strong{font-size:.62rem;font-weight:400;color:var(--c,var(--cyan))}
-.task-card span{font-size:.5rem;color:var(--muted);line-height:1.6}
-.task-card i{align-self:flex-end;color:var(--c,var(--cyan));font-size:.7rem}
-.task-detail{border-top:6px solid var(--c,var(--cyan))}
-.task-detail h3{font-size:.72rem;margin-bottom:12px}
-.task-detail p{color:var(--muted);margin-bottom:18px;font-size:.58rem}
-.resource-list{display:flex;flex-wrap:wrap;gap:10px}
-.empty-state{border:2px dashed var(--line);padding:22px;color:var(--muted);background:var(--panel2);font-size:.6rem;line-height:1.7}
-.empty-state strong{color:var(--text);display:block;margin-bottom:8px}
-
 footer{margin:36px 0 12px;text-align:center;color:var(--muted);border-top:3px dashed var(--line);padding-top:18px}
 footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:8px}
 footer p{font-size:.55rem}
 
+@media(max-width:900px){
+  .dash-grid{grid-template-columns:1fr}
+}
 @media(max-width:760px){
-  .hero,.two,.charts{grid-template-columns:1fr}
+  .hero,.two{grid-template-columns:1fr}
+  .hero h1{font-size:clamp(.85rem,4vw,1.2rem);white-space:normal}
   .portrait{max-width:320px;margin:0 auto;width:100%}
   nav a{flex:1 1 45%;justify-content:center}
-  .dash-shell{grid-template-columns:1fr}
-  .dash-side ul{flex-direction:row;flex-wrap:wrap}
-  .dash-side li{flex:1 1 45%}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -252,20 +245,38 @@ footer p{font-size:.55rem}
     </figure>
   </div>
 
+  <!-- DASHBOARD: MEUS DADOS -->
   <div class="box dash" aria-labelledby="dash-t">
-    <h2 id="dash-t">O portfólio em números</h2>
-    <div class="kpis" id="kpis"></div>
-    <div class="charts">
-      <div><h3>Arquivos de código por extensão</h3><div id="ch-ext"></div></div>
-      <div><h3>Resultados publicados por formato</h3><div id="ch-res"></div></div>
-    </div>
-    <p class="cap" id="cap"></p>
-  </div>
+    <h2 id="dash-t">Meus dados, em gráficos</h2>
+    <p class="dash-sub">Um retrato rápido do que eu estudo, de como distribuo meu tempo e de onde estou na trajetória.</p>
 
-  <div class="quick">
-    <button data-go="projetos"><div class="box" style="--c:var(--cyan)"><i class="fas fa-cubes"></i><h3>Projetos</h3><p>O que já construí com dados.</p></div></button>
-    <button data-go="disciplinas"><div class="box" style="--c:var(--green)"><i class="fas fa-code"></i><h3>Disciplinas</h3><p>Acesse desafios, trabalhos, códigos e relatórios das disciplinas.</p></div></button>
-    <button data-go="habilidades"><div class="box" style="--c:var(--mid)"><i class="fas fa-bolt"></i><h3>Habilidades</h3><p>Ferramentas e linguagens que uso.</p></div></button>
+    <div class="dash-grid">
+
+      <!-- Radar de habilidades técnicas -->
+      <div class="panel" style="--c:var(--cyan)">
+        <h3><i class="fas fa-chart-pie"></i>Perfil técnico</h3>
+        <div class="radar-wrap">
+          <svg id="radar" viewBox="0 0 220 200" role="img" aria-label="Radar de habilidades técnicas">
+            <!-- gerado via JS -->
+          </svg>
+        </div>
+      </div>
+
+      <!-- Barras horizontais: distribuição de tempo -->
+      <div class="panel" style="--c:var(--green)">
+        <h3><i class="fas fa-clock"></i>Onde invisto meu tempo</h3>
+        <div id="time-bars"></div>
+      </div>
+
+      <!-- Linha do tempo de aprendizado (largura total) -->
+      <div class="panel" style="--c:var(--mid);grid-column:1/-1">
+        <h3><i class="fas fa-route"></i>Minha trajetória</h3>
+        <div class="timeline-chart" id="traj"></div>
+      </div>
+
+    </div>
+
+    <p class="dash-cap">Dados auto-reportados com base em <a href="https://github.com/mdudavillela" target="_blank" rel="noopener">meus repositórios</a> e nas disciplinas que já cursei.</p>
   </div>
 </section>
 
@@ -365,16 +376,10 @@ footer p{font-size:.55rem}
   </div>
 </section>
 
-<!-- DISCIPLINAS -->
+<!-- DISCIPLINAS (layout original restaurado) -->
 <section class="page" id="disciplinas">
   <h2 class="title">Disciplinas</h2>
-  <div class="dash-shell">
-    <aside class="dash-side" aria-label="Lista de disciplinas">
-      <h3>DISCIPLINAS</h3>
-      <ul id="disc-list"></ul>
-    </aside>
-    <div class="dash-main" id="discipline-dashboard" aria-live="polite"></div>
-  </div>
+  <div id="discipline-dashboard" aria-live="polite"></div>
 </section>
 
 <!-- CONTATO -->
@@ -438,105 +443,124 @@ footer p{font-size:.55rem}
   ];
 
   var dashboard=document.getElementById('discipline-dashboard');
-  var discList=document.getElementById('disc-list');
   var selectedDiscipline=null, selectedTask=null;
-
   function safeAttr(value){return String(value).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-
-  function renderList(){
-    discList.innerHTML=disciplines.map(function(d,i){
-      var active = selectedDiscipline===d.id;
-      return '<li><button data-discipline="'+d.id+'" style="--c:'+colors[i%3]+'" '+(active?'aria-current="true"':'')+'>'+
-        '<span>'+d.name+'</span><em>'+d.items.length+'</em></button></li>';
-    }).join('');
-    discList.querySelectorAll('[data-discipline]').forEach(function(btn){
-      btn.addEventListener('click',function(){
-        selectedDiscipline=btn.dataset.discipline; selectedTask=null; renderAll();
-      });
-    });
-  }
-
   function renderDashboard(){
     var out='';
     if(!selectedDiscipline){
-      out+='<div class="empty-state"><strong>← Escolha uma disciplina ao lado</strong>Selecione uma disciplina para ver as atividades, códigos e relatórios disponíveis.</div>';
-    } else {
+      out+='<div class="dash-heading"><h3>Escolha uma disciplina</h3><span class="ext" style="font-family:var(--font);font-size:.5rem;padding:5px 7px;background:var(--cyan);color:var(--ink)">5 DISCIPLINAS</span></div><div class="discipline-home">';
+      disciplines.forEach(function(d,i){
+        out+='<button class="discipline-card" data-discipline="'+d.id+'" style="--c:'+colors[i%3]+'"><strong>'+d.name+'</strong><span>'+d.description+'</span><span style="display:block;margin-top:10px">'+(d.items.length?d.items.length+' atividades disponíveis':'Conteúdo a cadastrar')+' <i class="fas fa-arrow-right"></i></span></button>';
+      });
+      out+='</div>';
+    }else{
       var d=disciplines.find(function(x){return x.id===selectedDiscipline;});
+      out+='<div class="dash-crumb"><button data-back="disciplines">Disciplinas</button><span>/</span><strong>'+d.name+'</strong>';
+      if(selectedTask!==null) out+='<span>/</span><strong>'+d.items[selectedTask].title+'</strong>';
+      out+='</div>';
       if(selectedTask===null){
-        out+='<div class="dash-head"><h3 style="--c:'+colors[0]+'">'+d.name+' · '+d.description+'</h3><span class="ext" style="--c:'+colors[0]+'">'+d.items.length+' ITENS</span></div>';
+        out+='<div class="dash-heading"><h3>'+d.name+' · atividades</h3></div>';
         if(d.items.length){
-          out+='<div class="task-grid">';
-          d.items.forEach(function(item,i){
-            out+='<button class="task-card" data-task="'+i+'" style="--c:'+colors[i%3]+'">'+
-              '<strong>'+item.title+'</strong><span>'+item.subtitle+'</span><i class="fas fa-arrow-right"></i></button>';
-          });
+          out+='<div class="task-list">';
+          d.items.forEach(function(item,i){out+='<button class="task-card" data-task="'+i+'" style="--c:'+colors[i%3]+'"><span><strong>'+item.title+'</strong><small>'+item.subtitle+'</small></span><i class="fas fa-chevron-right"></i></button>';});
           out+='</div>';
-        } else {
-          out+='<div class="empty-state"><strong>Conteúdo ainda não cadastrado.</strong>Esta disciplina já está na estrutura do dashboard. Quando os arquivos estiverem disponíveis, as atividades aparecerão aqui.</div>';
+        }else{
+          out+='<div class="empty-state"><strong>Conteúdo ainda não cadastrado.</strong><br>Esta disciplina já está na estrutura do dashboard. Quando os arquivos estiverem disponíveis, as atividades aparecerão aqui.</div>';
         }
-      } else {
+      }else{
         var item=d.items[selectedTask];
-        out+='<div class="dash-head"><h3>'+item.title+'</h3><span class="ext" style="--c:'+colors[selectedTask%3]+'">'+item.subtitle+'</span></div>';
-        out+='<article class="box task-detail" style="--c:'+colors[selectedTask%3]+'"><div class="resource-list">';
+        out+='<article class="box task-detail" style="--c:'+colors[selectedTask%3]+'"><h3>'+item.title+'</h3><p>'+item.subtitle+'</p><div class="resource-list">';
         item.resources.forEach(function(r){
           var external=r[1].indexOf('http')===0;
           out+='<a class="mini" href="'+safeAttr(r[1])+'" '+(r[3]?'download':'')+(external?' target="_blank" rel="noopener"':'')+'><i class="fas '+r[2]+'"></i>'+r[0]+'</a>';
         });
         out+='</div></article>';
-        out+='<p style="margin-top:16px"><button class="mini" data-back="tasks" style="--c:'+colors[selectedTask%3]+'"><i class="fas fa-arrow-left"></i>Voltar às atividades</button></p>';
       }
     }
     dashboard.innerHTML=out;
-    dashboard.querySelectorAll('[data-task]').forEach(function(btn){
-      btn.addEventListener('click',function(){selectedTask=Number(btn.dataset.task); renderDashboard();});
-    });
-    dashboard.querySelectorAll('[data-back="tasks"]').forEach(function(btn){
-      btn.addEventListener('click',function(){selectedTask=null; renderDashboard();});
-    });
+    dashboard.querySelectorAll('[data-discipline]').forEach(function(btn){btn.addEventListener('click',function(){selectedDiscipline=btn.dataset.discipline;selectedTask=null;renderDashboard();});});
+    dashboard.querySelectorAll('[data-task]').forEach(function(btn){btn.addEventListener('click',function(){selectedTask=Number(btn.dataset.task);renderDashboard();});});
+    dashboard.querySelectorAll('[data-back="disciplines"]').forEach(function(btn){btn.addEventListener('click',function(){selectedDiscipline=null;selectedTask=null;renderDashboard();});});
   }
+  renderDashboard();
 
-  function renderAll(){ renderList(); renderDashboard(); }
-  renderAll();
+  /* ===== DASHBOARD: MEUS DADOS ===== */
 
-  // números do portfólio: calculados a partir da lista D e da lista E
+  // 1) Radar de habilidades técnicas
   (function(){
-    var E=[
-      ['yolov8-object-detection',['PY'],1],
-      ['automatic-date-translation',['PY'],1],
-      ['gradient-convergence-mlp',['PY','PY','IPYNB'],0],
-      ['mnist-digit-recognition',['PY','IPYNB'],1],
-      ['spotify-streams-analysis',['RMD'],2]
-    ];
-    var ext={}, res={'HTML':0,'PDF':0,'Mapa':0,'Slides':1,'Notebook':0}, nRes=1, nCod=D.length;
-    D.forEach(function(d){
-      ext[d[1]]=(ext[d[1]]||0)+1;
-      d[3].forEach(function(r){
-        var k=r[0]==='GitHub'?'Notebook':r[0]; res[k]=(res[k]||0)+1; nRes++;
-      });
-    });
-    E.forEach(function(e){
-      e[1].forEach(function(x){ext[x]=(ext[x]||0)+1; nCod++});
-      res['PDF']+=e[2]; nRes+=e[2];
-    });
-    var kpis=[[D.length,'desafios concluídos','var(--cyan)'],[E.length+1,'repositórios','var(--mid)'],[nCod,'arquivos de código','var(--green)'],[nRes,'resultados publicados','var(--cyan)'],[Object.keys(ext).length,'formatos de código','var(--mid)']];
-    document.getElementById('kpis').innerHTML=kpis.map(function(k){return '<div class="kpi" style="--c:'+k[2]+'"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join('');
-    document.getElementById('cap').innerHTML='Inclui os '+D.length+' desafios da ME315 e '+E.length+' projetos do <a href="https://github.com/mdudavillela" target="_blank" rel="noopener">meu GitHub</a>.';
-    function chart(id,obj,ramp){
-      var keys=Object.keys(obj).filter(function(k){return obj[k]>0}).sort(function(a,b){return obj[b]-obj[a]});
-      var max=obj[keys[0]]||1;
-      document.getElementById(id).innerHTML=keys.map(function(k){
-        var pct=obj[k]/max*100;
-        var c='color-mix(in srgb,'+ramp[1]+' '+Math.round(pct)+'%,'+ramp[0]+')';
-        return '<div class="row" style="--c:'+c+'"><span>.'+k.toLowerCase()+'</span><div class="track"><div class="fill" data-w="'+pct+'"></div></div><em>'+obj[k]+'</em></div>';
-      }).join('');
+    var labels=['R','Python','SQL','Julia','Estatística','Viz','Power BI'];
+    var values=[4,3,3,3,3,3,3]; // 0..5
+    var N=labels.length, R=70, cx=110, cy=95;
+    var svg=document.getElementById('radar');
+    var ns='http://www.w3.org/2000/svg';
+    function pt(i, r){
+      var a=-Math.PI/2 + i*2*Math.PI/N;
+      return [cx+Math.cos(a)*r, cy+Math.sin(a)*r];
     }
-    chart('ch-ext',ext,['var(--dim)','var(--green)']);
-    chart('ch-res',res,['var(--dim)','var(--cyan)']);
-    document.querySelectorAll('#ch-res .row span').forEach(function(s){s.textContent=s.textContent.slice(1)});
-    requestAnimationFrame(function(){requestAnimationFrame(function(){
-      document.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w+'%'});
-    })});
+    var html='';
+    // anéis
+    [1,2,3,4,5].forEach(function(k){
+      var r=R*k/5;
+      var pts=labels.map(function(_,i){var p=pt(i,r);return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ');
+      html+='<polygon points="'+pts+'" fill="none" stroke="var(--line)" stroke-width="1"/>';
+    });
+    // eixos
+    labels.forEach(function(_,i){
+      var p=pt(i,R);
+      html+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="var(--line)" stroke-width="1"/>';
+    });
+    // polígono dos valores
+    var vpts=values.map(function(v,i){var p=pt(i,R*v/5);return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ');
+    html+='<polygon points="'+vpts+'" fill="color-mix(in srgb, var(--cyan) 35%, transparent)" stroke="var(--cyan)" stroke-width="2"/>';
+    // pontos
+    values.forEach(function(v,i){
+      var p=pt(i,R*v/5);
+      html+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="2.5" fill="var(--cyan)"/>';
+    });
+    // rótulos
+    labels.forEach(function(l,i){
+      var p=pt(i,R+12);
+      var anchor='middle';
+      if(Math.cos(-Math.PI/2 + i*2*Math.PI/N) > 0.3) anchor='start';
+      else if(Math.cos(-Math.PI/2 + i*2*Math.PI/N) < -0.3) anchor='end';
+      html+='<text x="'+p[0].toFixed(1)+'" y="'+(p[1]+2).toFixed(1)+'" text-anchor="'+anchor+'">'+l+'</text>';
+    });
+    svg.innerHTML=html;
   })();
+
+  // 2) Barras horizontais: onde invisto meu tempo
+  (function(){
+    var data=[
+      ['Estatística',38,'var(--cyan)'],
+      ['Programação',25,'var(--mid)'],
+      ['Otimização',15,'var(--green)'],
+      ['Visualização',12,'var(--cyan)'],
+      ['Extensão',10,'var(--mid)']
+    ];
+    var max=Math.max.apply(null,data.map(function(d){return d[1]}));
+    document.getElementById('time-bars').innerHTML=data.map(function(d){
+      var pct=d[1]/max*100;
+      return '<div class="hbar" style="--c:'+d[2]+'"><div class="label"><b>'+d[0]+'</b><span>'+d[1]+'%</span></div><div class="track"><div class="fill" data-w="'+pct+'"></div></div></div>';
+    }).join('');
+  })();
+
+  // 3) Linha do tempo
+  (function(){
+    var items=[
+      ['2023','Ingresso na UNICAMP (IMECC)','Início da graduação em Estatística.'],
+      ['2024','Primeiros projetos em R','Análise exploratória, Quarto e visualização.'],
+      ['2025','Iniciação Científica','Convergência de gradiente em redes Perceptron.'],
+      ['2026','Portfólio e extensão','Projetos autorais, empresa júnior e robótica.']
+    ];
+    document.getElementById('traj').innerHTML='<div class="tl-line"></div>'+items.map(function(it,i){
+      return '<div class="tl-item" style="--c:'+['var(--cyan)','var(--mid)','var(--green)','var(--cyan)'][i%4]+'"><b>'+it[0]+' · '+it[1]+'</b><span>'+it[2]+'</span></div>';
+    }).join('');
+  })();
+
+  // anima barras após render
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    document.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w+'%'});
+  })});
 
   document.querySelectorAll('.bar .track').forEach(function(t){
     var n=+t.dataset.n, s='';
