@@ -125,7 +125,7 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .tl-item{position:relative;padding-left:30px;margin-bottom:18px}
 .tl-item::before{content:"";position:absolute;left:6px;top:4px;width:16px;height:16px;background:var(--c,var(--cyan));border:3px solid var(--panel2);box-shadow:0 0 0 3px var(--c,var(--cyan))}
 .tl-item b{display:block;font-size:.6rem;color:var(--c,var(--cyan));margin-bottom:4px;font-weight:400}
-.tl-item span{font-size:.52rem;color:var(--muted);line-height:1.6}
+.tl-item span{font-size:.52rem;color:var(--muted);line-height:1.6;display:block}
 
 .dash-cap{margin-top:18px;color:var(--muted);font-size:.55rem;border-top:2px dashed var(--line);padding-top:12px;text-align:center}
 .dash-cap a{color:var(--cyan)}
@@ -139,9 +139,11 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .timeline li::before{content:"";position:absolute;left:-26px;top:8px;width:12px;height:12px;background:var(--green)}
 .timeline small{color:var(--muted);font-size:.55rem;display:block;margin-top:4px;line-height:1.6}
 
-/* habilidades */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+/* ===== HABILIDADES (empilhadas) ===== */
+.skills{display:flex;flex-direction:column;gap:22px}
+.skills .box{width:100%}
 .skills h3{font-size:.7rem;color:var(--c);margin-bottom:16px}
+.skill-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px 30px}
 .bar{margin-bottom:14px}
 .bar div:first-child{display:flex;justify-content:space-between;gap:12px;font-size:.58rem}
 .bar .track{height:16px;background:var(--bg);border:3px solid var(--line);margin-top:6px;display:flex;gap:2px;padding:2px}
@@ -161,7 +163,7 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .mini{font-size:.52rem;padding:6px 12px;border:3px solid var(--c);color:var(--c);display:inline-flex;gap:6px;align-items:center;transition:background .15s,color .15s}
 .mini:hover{background:var(--c);color:var(--ink)}
 
-/* ===== DISCIPLINAS (layout original) ===== */
+/* ===== DISCIPLINAS ===== */
 .discipline-home{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px}
 .discipline-card{width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;border:3px solid var(--line);background:var(--panel2);padding:18px;box-shadow:3px 3px 0 var(--line);transition:transform .15s,border-color .15s}
 .discipline-card:hover{transform:translate(-2px,-2px);border-color:var(--c,var(--cyan))}
@@ -183,7 +185,7 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .resource-list{display:flex;flex-wrap:wrap;gap:10px}
 .empty-state{border:2px dashed var(--line);padding:20px;color:var(--muted);background:var(--panel2);font-size:.6rem;line-height:1.7}
 
-/* contato */
+/* links (antigo contato) */
 .contact a.box{display:flex;gap:16px;align-items:center;transition:transform .15s,border-color .15s}
 .contact a.box:hover{transform:translate(-2px,-2px);border-color:var(--c)}
 .contact i{font-size:1.6rem;color:var(--c);width:40px;text-align:center}
@@ -196,6 +198,7 @@ footer p{font-size:.55rem}
 
 @media(max-width:900px){
   .dash-grid{grid-template-columns:1fr}
+  .skill-cols{grid-template-columns:1fr}
 }
 @media(max-width:760px){
   .hero,.two{grid-template-columns:1fr}
@@ -220,7 +223,7 @@ footer p{font-size:.55rem}
   <a href="#habilidades"><i class="fas fa-bolt"></i>Habilidades</a>
   <a href="#projetos"><i class="fas fa-cubes"></i>Projetos</a>
   <a href="#disciplinas"><i class="fas fa-book-open"></i>Disciplinas</a>
-  <a href="#contato"><i class="fas fa-envelope"></i>Contato</a>
+  <a href="#links"><i class="fas fa-link"></i>Links</a>
 </nav>
 
 <main>
@@ -233,7 +236,7 @@ footer p{font-size:.55rem}
       <p class="lead">Estudo Estatística na UNICAMP e gosto de transformar dados em respostas claras. Aqui estão meus projetos, meus códigos e as formas de falar comigo.</p>
       <div class="btns">
         <a class="btn main" href="#projetos"><i class="fas fa-cubes"></i>Ver projetos</a>
-        <a class="btn" href="#contato"><i class="fas fa-envelope"></i>Entrar em contato</a>
+        <a class="btn" href="#links"><i class="fas fa-link"></i>Meus links</a>
       </div>
     </div>
     <figure class="box portrait">
@@ -248,7 +251,7 @@ footer p{font-size:.55rem}
   <!-- DASHBOARD: MEUS DADOS -->
   <div class="box dash" aria-labelledby="dash-t">
     <h2 id="dash-t">Meus dados, em gráficos</h2>
-    <p class="dash-sub">Um retrato rápido do que eu estudo, de como distribuo meu tempo e de onde estou na trajetória.</p>
+    <p class="dash-sub">Um retrato rápido do que eu estudo, das ferramentas que uso e de onde estou na trajetória.</p>
 
     <div class="dash-grid">
 
@@ -262,10 +265,10 @@ footer p{font-size:.55rem}
         </div>
       </div>
 
-      <!-- Barras horizontais: distribuição de tempo -->
+      <!-- Barras horizontais: ferramentas por projeto -->
       <div class="panel" style="--c:var(--green)">
-        <h3><i class="fas fa-clock"></i>Onde invisto meu tempo</h3>
-        <div id="time-bars"></div>
+        <h3><i class="fas fa-code"></i>Ferramentas por projeto</h3>
+        <div id="tool-bars"></div>
       </div>
 
       <!-- Linha do tempo de aprendizado (largura total) -->
@@ -276,7 +279,7 @@ footer p{font-size:.55rem}
 
     </div>
 
-    <p class="dash-cap">Dados auto-reportados com base em <a href="https://github.com/mdudavillela" target="_blank" rel="noopener">meus repositórios</a> e nas disciplinas que já cursei.</p>
+    <p class="dash-cap">Dados auto-reportados com base em <a href="https://github.com/mdudavillela" target="_blank" rel="noopener">meus repositórios</a> e no meu <a href="https://www.linkedin.com/in/mevillela/" target="_blank" rel="noopener">LinkedIn</a>.</p>
   </div>
 </section>
 
@@ -300,30 +303,37 @@ footer p{font-size:.55rem}
   </div>
 </section>
 
-<!-- HABILIDADES -->
+<!-- HABILIDADES (empilhadas horizontalmente) -->
 <section class="page" id="habilidades">
   <h2 class="title">Habilidades</h2>
   <div class="skills">
     <div class="box" style="--c:var(--cyan)">
       <h3>Linguagens e ferramentas</h3>
-      <div class="bar"><div><span>R</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
-      <div class="bar"><div><span>Python</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
-      <div class="bar"><div><span>SQL</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
-      <div class="bar"><div><span>Julia</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
-      <div class="bar"><div><span>Power BI</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
-      <div class="bar"><div><span>Looker Studio</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="skill-cols">
+        <div class="bar"><div><span>R</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
+        <div class="bar"><div><span>Python</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+        <div class="bar"><div><span>SQL</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+        <div class="bar"><div><span>Julia</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+        <div class="bar"><div><span>Power BI</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+        <div class="bar"><div><span>Looker Studio</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      </div>
     </div>
+    
     <div class="box" style="--c:var(--mid)">
       <h3>Dados e análise</h3>
-      <div class="bar"><div><span>Manipulação de banco de dados</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
-      <div class="bar"><div><span>Visualização de dados</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
-      <div class="bar"><div><span>Estatística</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="skill-cols">
+        <div class="bar"><div><span>Manipulação de banco de dados</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
+        <div class="bar"><div><span>Visualização de dados</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+        <div class="bar"><div><span>Estatística</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      </div>
     </div>
+    
     <div class="box" style="--c:var(--green)">
       <h3>Também uso</h3>
       <div class="tags">
         <span class="tag">Quarto Markdown</span><span class="tag">R Markdown</span><span class="tag">Jupyter</span>
         <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">HTML/CSS</span>
+        <span class="tag">Onshape</span><span class="tag">Robótica</span>
       </div>
     </div>
   </div>
@@ -376,15 +386,15 @@ footer p{font-size:.55rem}
   </div>
 </section>
 
-<!-- DISCIPLINAS (layout original restaurado) -->
+<!-- DISCIPLINAS -->
 <section class="page" id="disciplinas">
   <h2 class="title">Disciplinas</h2>
   <div id="discipline-dashboard" aria-live="polite"></div>
 </section>
 
-<!-- CONTATO -->
-<section class="page" id="contato">
-  <h2 class="title">Contato</h2>
+<!-- LINKS -->
+<section class="page" id="links">
+  <h2 class="title">Links</h2>
   <div class="grid contact">
     <a class="box" style="--c:var(--cyan)" href="https://www.linkedin.com/in/mevillela/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><div><b>LinkedIn</b><small>Conexões e carreira</small></div></a>
     <a class="box" style="--c:var(--green)" href="https://github.com/mdudavillela" target="_blank" rel="noopener"><i class="fab fa-github"></i><div><b>GitHub</b><small>Código-fonte</small></div></a>
@@ -492,32 +502,26 @@ footer p{font-size:.55rem}
     var values=[4,3,3,3,3,3,3]; // 0..5
     var N=labels.length, R=70, cx=110, cy=95;
     var svg=document.getElementById('radar');
-    var ns='http://www.w3.org/2000/svg';
     function pt(i, r){
       var a=-Math.PI/2 + i*2*Math.PI/N;
       return [cx+Math.cos(a)*r, cy+Math.sin(a)*r];
     }
     var html='';
-    // anéis
     [1,2,3,4,5].forEach(function(k){
       var r=R*k/5;
       var pts=labels.map(function(_,i){var p=pt(i,r);return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ');
       html+='<polygon points="'+pts+'" fill="none" stroke="var(--line)" stroke-width="1"/>';
     });
-    // eixos
     labels.forEach(function(_,i){
       var p=pt(i,R);
       html+='<line x1="'+cx+'" y1="'+cy+'" x2="'+p[0].toFixed(1)+'" y2="'+p[1].toFixed(1)+'" stroke="var(--line)" stroke-width="1"/>';
     });
-    // polígono dos valores
     var vpts=values.map(function(v,i){var p=pt(i,R*v/5);return p[0].toFixed(1)+','+p[1].toFixed(1)}).join(' ');
     html+='<polygon points="'+vpts+'" fill="color-mix(in srgb, var(--cyan) 35%, transparent)" stroke="var(--cyan)" stroke-width="2"/>';
-    // pontos
     values.forEach(function(v,i){
       var p=pt(i,R*v/5);
       html+='<circle cx="'+p[0].toFixed(1)+'" cy="'+p[1].toFixed(1)+'" r="2.5" fill="var(--cyan)"/>';
     });
-    // rótulos
     labels.forEach(function(l,i){
       var p=pt(i,R+12);
       var anchor='middle';
@@ -528,32 +532,37 @@ footer p{font-size:.55rem}
     svg.innerHTML=html;
   })();
 
-  // 2) Barras horizontais: onde invisto meu tempo
+  // 2) Barras horizontais: ferramentas por projeto
   (function(){
+    // Contagem aproximada baseada nos 6 projetos + disciplina
     var data=[
-      ['Estatística',38,'var(--cyan)'],
-      ['Programação',25,'var(--mid)'],
-      ['Otimização',15,'var(--green)'],
-      ['Visualização',12,'var(--cyan)'],
-      ['Extensão',10,'var(--mid)']
+      ['Python',4,'var(--cyan)'],
+      ['R',2,'var(--green)'],
+      ['SQL',1,'var(--mid)'],
+      ['Quarto/Jupyter',3,'var(--cyan)'],
+      ['Git/GitHub',6,'var(--mid)']
     ];
     var max=Math.max.apply(null,data.map(function(d){return d[1]}));
-    document.getElementById('time-bars').innerHTML=data.map(function(d){
+    document.getElementById('tool-bars').innerHTML=data.map(function(d){
       var pct=d[1]/max*100;
-      return '<div class="hbar" style="--c:'+d[2]+'"><div class="label"><b>'+d[0]+'</b><span>'+d[1]+'%</span></div><div class="track"><div class="fill" data-w="'+pct+'"></div></div></div>';
+      return '<div class="hbar" style="--c:'+d[2]+'"><div class="label"><b>'+d[0]+'</b><span>'+d[1]+' proj.</span></div><div class="track"><div class="fill" data-w="'+pct+'"></div></div></div>';
     }).join('');
   })();
 
-  // 3) Linha do tempo
+  // 3) Linha do tempo (baseada no LinkedIn)
   (function(){
     var items=[
-      ['2023','Ingresso na UNICAMP (IMECC)','Início da graduação em Estatística.'],
-      ['2024','Primeiros projetos em R','Análise exploratória, Quarto e visualização.'],
-      ['2025','Iniciação Científica','Convergência de gradiente em redes Perceptron.'],
-      ['2026','Portfólio e extensão','Projetos autorais, empresa júnior e robótica.']
+      ['mar. 2024','Graduação na UNICAMP','Início do Bacharelado em Estatística no IMECC.'],
+      ['abr. 2024','Trainee na Quanta Jr','Passagem pelas áreas de Mercado, Projetos e Gestão.'],
+      ['abr. 2025','Trainee em Gestão de Pessoas','Início na Estat Júnior, focado em R e competências interpessoais.'],
+      ['mai. 2025','Vice Presidência e Gestão de Pessoas','Atuação na Estat Júnior e integração da célula Diversifica.'],
+      ['nov. 2025','Assessora Plena de Infraestrutura','Trabalho na SEMEST com logística e organização de evento de 5 dias.'],
+      ['mai. 2026','Integrante do GER','Grupo de Estudos em Robótica, trabalhando com Onshape e robótica.'],
+      ['set. 2026','Pesquisadora de Iniciação Científica','PICV voluntária estudando convergência de gradiente em redes Perceptron.']
     ];
+    var tlColors=['var(--cyan)','var(--mid)','var(--green)'];
     document.getElementById('traj').innerHTML='<div class="tl-line"></div>'+items.map(function(it,i){
-      return '<div class="tl-item" style="--c:'+['var(--cyan)','var(--mid)','var(--green)','var(--cyan)'][i%4]+'"><b>'+it[0]+' · '+it[1]+'</b><span>'+it[2]+'</span></div>';
+      return '<div class="tl-item" style="--c:'+tlColors[i%3]+'"><b>'+it[0]+' · '+it[1]+'</b><span>'+it[2]+'</span></div>';
     }).join('');
   })();
 
@@ -568,7 +577,7 @@ footer p{font-size:.55rem}
     t.innerHTML=s;
   });
 
-  var pages=['inicio','sobre','habilidades','projetos','disciplinas','contato'];
+  var pages=['inicio','sobre','habilidades','projetos','disciplinas','links'];
   function show(id){
     if(pages.indexOf(id)<0) id='inicio';
     document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id===id)});
