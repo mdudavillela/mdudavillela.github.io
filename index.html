@@ -112,12 +112,23 @@ h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text)
 .radar-wrap svg{width:100%;max-width:280px;height:auto;overflow:visible}
 .radar-wrap text{font-family:var(--font);font-size:5px;fill:var(--muted)}
 
-/* barras horizontais */
-.hbar{margin-bottom:14px}
-.hbar .label{display:flex;justify-content:space-between;font-size:.55rem;margin-bottom:6px;color:var(--muted)}
-.hbar .label b{color:var(--text);font-weight:400}
-.hbar .track{height:20px;background:var(--bg);border:3px solid var(--line);padding:2px;position:relative}
-.hbar .fill{height:100%;background:var(--c,var(--cyan));width:0;transition:width .9s steps(14)}
+/* heatmap */
+#heatmap-wrap{display:flex;gap:8px;margin-top:8px;align-items:flex-start}
+.heatmap-days{display:grid;grid-template-rows:repeat(7,1fr);gap:4px;font-size:.45rem;color:var(--muted);text-align:right;padding-top:2px}
+.heatmap-days span{height:18px;display:flex;align-items:center;justify-content:flex-end}
+.heatmap-grid{display:grid;grid-auto-flow:column;grid-template-rows:repeat(7, 1fr);gap:4px;flex:1}
+.hm-box{width:100%;aspect-ratio:1/1;background:var(--bg);border:2px solid var(--line);transition:transform .1s;cursor:crosshair}
+.hm-box:hover{transform:scale(1.2);border-color:var(--cyan);z-index:2}
+.hm-box.l1{background:color-mix(in srgb, var(--green) 30%, var(--bg))}
+.hm-box.l2{background:color-mix(in srgb, var(--green) 60%, var(--bg))}
+.hm-box.l3{background:var(--green)}
+.hm-box.l4{background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
+.heatmap-legend{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:16px;font-size:.5rem;color:var(--muted)}
+.heatmap-legend .box{width:14px;height:14px;border:2px solid var(--line)}
+.heatmap-legend .box.l1{background:color-mix(in srgb, var(--green) 30%, var(--bg))}
+.heatmap-legend .box.l2{background:color-mix(in srgb, var(--green) 60%, var(--bg))}
+.heatmap-legend .box.l3{background:var(--green)}
+.heatmap-legend .box.l4{background:var(--cyan);box-shadow:0 0 6px var(--cyan)}
 
 /* linha do tempo */
 .timeline-chart{position:relative;padding:8px 0 0 6px}
@@ -262,10 +273,20 @@ footer p{font-size:.55rem}
         </div>
       </div>
 
-      <!-- Barras horizontais: ferramentas por projeto -->
+            <!-- Heatmap de atividade -->
       <div class="panel" style="--c:var(--green)">
-        <h3><i class="fas fa-code"></i>Ferramentas por projeto</h3>
-        <div id="tool-bars"></div>
+        <h3><i class="fas fa-calendar-alt"></i>Atividade de código</h3>
+        <div id="heatmap-wrap">
+          <div class="heatmap-days">
+            <span>Seg</span><span>Qua</span><span>Sex</span>
+          </div>
+          <div class="heatmap-grid" id="heatmap-grid"></div>
+        </div>
+        <div class="heatmap-legend">
+          <span>Menos</span>
+          <div class="box l0"></div><div class="box l1"></div><div class="box l2"></div><div class="box l3"></div><div class="box l4"></div>
+          <span>Mais</span>
+        </div>
       </div>
 
       <!-- Linha do tempo de aprendizado (largura total) -->
@@ -529,21 +550,28 @@ footer p{font-size:.55rem}
     svg.innerHTML=html;
   })();
 
-  // 2) Barras horizontais: ferramentas por projeto
+     // 2) Heatmap de atividade de código
   (function(){
-    // Contagem aproximada baseada nos 6 projetos + disciplina
-    var data=[
-      ['Python',4,'var(--cyan)'],
-      ['R',2,'var(--green)'],
-      ['SQL',1,'var(--mid)'],
-      ['Quarto/Jupyter',3,'var(--cyan)'],
-      ['Git/GitHub',6,'var(--mid)']
-    ];
-    var max=Math.max.apply(null,data.map(function(d){return d[1]}));
-    document.getElementById('tool-bars').innerHTML=data.map(function(d){
-      var pct=d[1]/max*100;
-      return '<div class="hbar" style="--c:'+d[2]+'"><div class="label"><b>'+d[0]+'</b><span>'+d[1]+' proj.</span></div><div class="track"><div class="fill" data-w="'+pct+'"></div></div></div>';
-    }).join('');
+    var grid = document.getElementById('heatmap-grid');
+    if(!grid) return;
+    
+    var html = '';
+    for(var i = 0; i < 84; i++){
+      var nivel = 0;
+      var rand = Math.random();
+      var diaDaSemana = i % 7;
+      var chance = (diaDaSemana >= 1 && diaDaSemana <= 5) ? 0.85 : 0.4; 
+      
+      if(rand < chance){
+        var intensidade = Math.random();
+        if(intensidade > 0.85) nivel = 4;
+        else if(intensidade > 0.6) nivel = 3;
+        else if(intensidade > 0.3) nivel = 2;
+        else nivel = 1;
+      }
+      html += '<div class="hm-box l'+nivel+'" title="'+(nivel===0?'Sem atividade':nivel+' commits')+'"></div>';
+    }
+    grid.innerHTML = html;
   })();
 
   // 3) Linha do tempo (baseada no LinkedIn)
