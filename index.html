@@ -4,175 +4,211 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Maria Eduarda Villéla Silva | Ciência de Dados</title>
-<meta name="description" content="Portfólio de Maria Eduarda Villéla Silva, estudante de Estatística na UNICAMP e futura cientista de dados.">
+<meta name="description" content="Portfólio de Maria Eduarda Villéla Silva, graduanda em Estatística na UNICAMP e futura cientista de dados.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --bg:#07060d; --panel:#110e1f; --panel2:#181330; --line:#2d2552;
-  --text:#e8e6ff; --muted:#a9a4d6;
-  --cyan:#22f3e6; --green:#5dff8a; --purple:#9b6bff; --pink:#ff5fa8; --red:#ff4d6d;
+  --bg:#040807; --panel:#0a1413; --panel2:#0f1d1c; --line:#1c3b38;
+  --text:#e4faf6; --muted:#8db4ad;
+  --cyan:#4fe3d6; --green:#6fd58a; --mid:#5bdcb0; --dim:#1f6b66;
+  --ink:#03100e; --glow:rgba(79,227,214,.14); --glow2:rgba(111,213,138,.10);
   --px:4px;
+  --font:'Press Start 2P',monospace;
 }
 [data-theme="light"]{
-  --bg:#f3f0ff; --panel:#ffffff; --panel2:#ebe6ff; --line:#2a2150;
-  --text:#1b1535; --muted:#5a5185;
-  --cyan:#0a8f9c; --green:#1c9c4a; --purple:#6d3fd6; --pink:#d6336c; --red:#d62839;
+  --bg:#e9f6f3; --panel:#ffffff; --panel2:#dff0ec; --line:#0f3d39;
+  --text:#06201d; --muted:#4a726c;
+  --cyan:#0a8c87; --green:#2a8a4f; --mid:#1a8a69; --dim:#9fd3cb;
+  --ink:#ffffff; --glow:rgba(10,140,135,.16); --glow2:rgba(42,138,79,.12);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{
-  font-family:'VT323',monospace; font-size:1.35rem; line-height:1.35;
-  background:var(--bg); color:var(--text); min-height:100vh;
+  font-family:var(--font);font-size:.72rem;line-height:1.8;
+  color:var(--text);min-height:100vh;background-color:var(--bg);
   background-image:
-    linear-gradient(var(--line) 1px,transparent 1px),
-    linear-gradient(90deg,var(--line) 1px,transparent 1px);
-  background-size:32px 32px; background-position:-1px -1px;
-  background-attachment:fixed;
+    radial-gradient(ellipse 60% 40% at 15% 0%,var(--glow),transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 100%,var(--glow2),transparent 70%),
+    linear-gradient(color-mix(in srgb,var(--line) 35%,transparent) 1px,transparent 1px),
+    linear-gradient(90deg,color-mix(in srgb,var(--line) 35%,transparent) 1px,transparent 1px);
+  background-size:auto,auto,32px 32px,32px 32px;background-attachment:fixed;
 }
-body::before{ /* grade esmaecida */
-  content:"";position:fixed;inset:0;background:var(--bg);opacity:.93;pointer-events:none;z-index:-1;
-}
-h1,h2,h3,.px{font-family:'Press Start 2P',monospace;font-weight:400;line-height:1.5}
+h1,h2,h3{font-family:var(--font);font-weight:400;line-height:1.6}
 a{color:inherit;text-decoration:none}
 :focus-visible{outline:3px dashed var(--cyan);outline-offset:3px}
 .wrap{max-width:1040px;margin:0 auto;padding:16px}
 
-/* blocos com borda pixelada */
 .box{
-  background:var(--panel); border:var(--px) solid var(--line);
-  box-shadow:var(--px) var(--px) 0 var(--line); padding:20px;
+  background:var(--panel);border:var(--px) solid var(--line);
+  box-shadow:var(--px) var(--px) 0 var(--line);padding:22px;
 }
 
-/* ---------- topo ---------- */
+/* topo */
 .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
-.logo{font-size:.7rem;color:var(--cyan);display:flex;align-items:center;gap:10px}
-.logo i{color:var(--pink)}
-.tools{display:flex;gap:10px}
+.logo{font-size:.7rem;display:flex;align-items:center;gap:10px;
+  background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo::before{content:"";width:14px;height:14px;background:linear-gradient(135deg,var(--cyan),var(--green))}
 .sq{
   width:44px;height:44px;display:grid;place-items:center;cursor:pointer;
   background:var(--panel);color:var(--text);border:var(--px) solid var(--line);
-  box-shadow:var(--px) var(--px) 0 var(--line);font-size:1.1rem;
+  box-shadow:var(--px) var(--px) 0 var(--line);font-size:1rem;
 }
 .sq:active{transform:translate(var(--px),var(--px));box-shadow:none}
 
-nav{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 20px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 22px}
 nav a{
-  font-family:'Press Start 2P',monospace;font-size:.62rem;padding:12px 14px;
+  font-family:var(--font);font-size:.62rem;padding:12px 14px;
   background:var(--panel);border:var(--px) solid var(--line);color:var(--muted);
-  display:flex;gap:8px;align-items:center;cursor:pointer;
+  display:flex;gap:8px;align-items:center;transition:color .2s,border-color .2s,background .2s;
 }
-nav a:hover{color:var(--text);border-color:var(--purple)}
-nav a[aria-current="page"]{color:#07060d;background:var(--cyan);border-color:var(--cyan);box-shadow:var(--px) var(--px) 0 var(--purple)}
+nav a:hover{color:var(--text);border-color:var(--cyan)}
+nav a[aria-current="page"]{color:var(--ink);border-color:transparent;background:linear-gradient(90deg,var(--cyan),var(--green))}
 
 section.page{display:none}
 section.page.on{display:block}
-h2.title{font-size:1rem;color:var(--green);margin-bottom:20px}
-h2.title::before{content:"> ";color:var(--pink)}
+h2.title{font-size:1rem;margin-bottom:22px;padding-bottom:12px;color:var(--text);
+  border-bottom:var(--px) solid transparent;border-image:linear-gradient(90deg,var(--cyan),var(--green),transparent) 1}
 
-/* ---------- início ---------- */
-.hero{display:grid;grid-template-columns:1fr 280px;gap:20px;align-items:stretch}
-.hero h1{font-size:clamp(1.1rem,3.4vw,1.8rem);color:var(--text);margin:8px 0 14px}
-.hero h1 span{color:var(--cyan)}
-.typed{font-size:1.6rem;color:var(--green);min-height:2.2rem}
-.typed::after{content:"█";color:var(--pink);animation:blink 1s steps(1) infinite}
-@keyframes blink{50%{opacity:0}}
-.lead{color:var(--muted);max-width:52ch;margin:10px 0 22px}
+/* início */
+.hero{display:grid;grid-template-columns:1fr 300px;gap:22px;align-items:stretch}
+.hero .main{display:flex;flex-direction:column;justify-content:center}
+.hero h1{font-size:clamp(1.1rem,2.8vw,1.7rem);margin-bottom:16px;line-height:1.5;
+  background:linear-gradient(90deg,var(--cyan),var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub-h{font-size:.85rem;color:var(--green);margin-bottom:14px}
+.lead{color:var(--muted);max-width:52ch;margin:6px 0 24px;font-size:.68rem}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
 .btn{
-  font-family:'Press Start 2P',monospace;font-size:.62rem;padding:14px 16px;cursor:pointer;
+  font-family:var(--font);font-size:.62rem;padding:14px 16px;cursor:pointer;
   border:var(--px) solid var(--line);background:var(--panel2);color:var(--text);
-  box-shadow:var(--px) var(--px) 0 var(--line);display:inline-flex;gap:8px;align-items:center;
+  box-shadow:var(--px) var(--px) 0 var(--line);display:inline-flex;gap:8px;align-items:center;transition:transform .15s;
 }
-.btn.main{background:var(--pink);border-color:var(--pink);color:#07060d;box-shadow:var(--px) var(--px) 0 var(--purple)}
+.btn.main{background:linear-gradient(90deg,var(--cyan),var(--green));border-color:transparent;color:var(--ink);box-shadow:var(--px) var(--px) 0 var(--dim)}
 .btn:hover{transform:translate(-2px,-2px)}
 .btn:active{transform:translate(var(--px),var(--px));box-shadow:none}
 
-.card-p1{text-align:center;border-color:var(--purple);box-shadow:var(--px) var(--px) 0 var(--cyan)}
-.card-p1 svg{width:112px;height:112px;image-rendering:pixelated;margin:4px auto 12px;display:block}
-.card-p1 .px{font-size:.6rem;color:var(--pink)}
-.stat{display:flex;justify-content:space-between;text-align:left;border-top:2px dashed var(--line);padding:6px 0;font-size:1.2rem}
-.stat b{font-weight:400;color:var(--cyan)}
+.portrait{padding:0;overflow:hidden;text-align:center;border-color:var(--cyan);box-shadow:var(--px) var(--px) 0 var(--green);display:flex;flex-direction:column}
+.portrait img{width:100%;aspect-ratio:1/1;object-fit:cover;image-rendering:pixelated;display:block}
+.portrait figcaption{padding:16px 14px 18px;background:linear-gradient(180deg,var(--panel),var(--panel2))}
+.portrait .px{font-size:.48rem;color:var(--text);margin-bottom:8px;line-height:1.6;white-space:nowrap}
+.portrait span{color:var(--cyan);font-size:.55rem;display:block;margin-top:4px}
 
-.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:20px}
+.quick{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:22px}
 .quick button{all:unset;cursor:pointer}
-.quick .box{height:100%;transition:transform .1s}
-.quick button:hover .box{transform:translate(-2px,-2px);border-color:var(--cyan)}
-.quick i{font-size:1.6rem;color:var(--c,var(--cyan));margin-bottom:10px;display:block}
-.quick h3{font-size:.7rem;margin-bottom:8px}
-.quick p{color:var(--muted)}
+.quick .box{height:100%;transition:transform .15s,border-color .15s}
+.quick button:hover .box{transform:translate(-2px,-2px);border-color:var(--c,var(--cyan))}
+.quick i{font-size:1.4rem;color:var(--c,var(--cyan));margin-bottom:10px;display:block}
+.quick h3{font-size:.68rem;margin-bottom:8px}
+.quick p{color:var(--muted);font-size:.6rem}
 
-/* ---------- dashboard ---------- */
-.dash{margin-top:20px}
-.dash h2{font-size:.8rem;color:var(--green);margin-bottom:16px}
-.dash h2::before{content:"> ";color:var(--pink)}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:20px}
+/* números */
+.dash{margin-top:22px}
+.dash h2{font-size:.8rem;margin-bottom:16px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px;margin-bottom:22px}
 .kpi{border:3px solid var(--c);padding:12px;background:var(--panel2)}
-.kpi b{font-family:'Press Start 2P',monospace;font-weight:400;font-size:1.5rem;color:var(--c);display:block;margin-bottom:6px}
-.kpi span{color:var(--muted);font-size:1.15rem}
-.charts{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.kpi b{font-family:var(--font);font-weight:400;font-size:1.2rem;color:var(--c);display:block;margin-bottom:8px}
+.kpi span{color:var(--muted);font-size:.55rem;line-height:1.5;display:block}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .charts h3{font-size:.62rem;color:var(--muted);margin-bottom:14px}
 .row{display:grid;grid-template-columns:92px 1fr 28px;gap:10px;align-items:center;margin-bottom:10px}
 .row .track{height:18px;background:var(--bg);border:3px solid var(--line);padding:2px}
 .row .fill{height:100%;background:var(--c);width:0;transition:width .8s steps(12)}
 .row em{font-style:normal;color:var(--c);text-align:right}
-.cap{margin-top:16px;color:var(--muted);font-size:1.1rem;border-top:2px dashed var(--line);padding-top:10px}
+.row span{font-size:.58rem}
+.cap{margin-top:16px;color:var(--muted);font-size:.58rem;border-top:2px dashed var(--line);padding-top:10px}
 .cap a{color:var(--cyan)}
 
-/* ---------- sobre ---------- */
-.two{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
+/* sobre */
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:22px}
 .box p+p{margin-top:12px}
-.timeline{list-style:none;border-left:var(--px) solid var(--purple);padding-left:18px}
-.timeline li{margin-bottom:16px;position:relative}
-.timeline li::before{content:"";position:absolute;left:-26px;top:6px;width:12px;height:12px;background:var(--green)}
-.timeline small{color:var(--muted);font-size:1.1rem;display:block}
+.two .box p{font-size:.62rem}
+.timeline{list-style:none;border-left:var(--px) solid var(--cyan);padding-left:18px}
+.timeline li{margin-bottom:16px;position:relative;font-size:.62rem}
+.timeline li::before{content:"";position:absolute;left:-26px;top:8px;width:12px;height:12px;background:var(--green)}
+.timeline small{color:var(--muted);font-size:.55rem;display:block;margin-top:4px;line-height:1.6}
 
-/* ---------- habilidades ---------- */
-.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+/* habilidades */
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
 .skills h3{font-size:.7rem;color:var(--c);margin-bottom:16px}
 .bar{margin-bottom:14px}
-.bar div:first-child{display:flex;justify-content:space-between}
-.bar .track{height:16px;background:var(--bg);border:3px solid var(--line);margin-top:4px;display:flex;gap:2px;padding:2px}
+.bar div:first-child{display:flex;justify-content:space-between;gap:12px;font-size:.58rem}
+.bar .track{height:16px;background:var(--bg);border:3px solid var(--line);margin-top:6px;display:flex;gap:2px;padding:2px}
 .bar .track i{flex:1;background:var(--line)}
 .bar .track i.f{background:var(--c)}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
-.tag{border:3px solid var(--c);color:var(--c);padding:2px 10px}
+.tag{border:3px solid var(--c);color:var(--c);padding:2px 10px;font-size:.55rem}
 
-/* ---------- projetos ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:20px}
-.proj{border-top:8px solid var(--c)}
-.proj h3{font-size:.72rem;margin-bottom:10px}
-.proj p{color:var(--muted);margin-bottom:14px}
-.proj.empty{border-style:dashed;opacity:.8}
-.mini{font-size:1.15rem;padding:4px 12px;border:3px solid var(--c);color:var(--c);display:inline-flex;gap:6px;align-items:center;margin:0 8px 8px 0}
-.mini:hover{background:var(--c);color:var(--bg)}
+/* projetos: todos os cards com a mesma altura e estrutura */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:22px}
+.proj{border-top:8px solid var(--c);display:flex;flex-direction:column}
+.proj h3{font-size:.7rem;margin-bottom:12px;min-height:3.6em;line-height:1.5}
+.proj p{color:var(--muted);flex:1;margin-bottom:14px;font-size:.58rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;min-height:2rem}
+.chip{font-size:.5rem;padding:2px 8px;background:var(--panel2);border:2px solid var(--line);color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+.mini{font-size:.52rem;padding:6px 12px;border:3px solid var(--c);color:var(--c);display:inline-flex;gap:6px;align-items:center;transition:background .15s,color .15s}
+.mini:hover{background:var(--c);color:var(--ink)}
 
-/* ---------- desafios ---------- */
-.sub{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}
-.sub button{
-  font-family:'Press Start 2P',monospace;font-size:.6rem;padding:10px 14px;cursor:pointer;
-  background:var(--panel);color:var(--muted);border:3px solid var(--line)
-}
-.sub button[aria-pressed="true"]{background:var(--purple);color:#fff;border-color:var(--purple)}
-.lv{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.lv h3{font-size:.7rem}
-.ext{font-family:'Press Start 2P',monospace;font-size:.5rem;padding:5px 7px;background:var(--c);color:#07060d}
-.chal{padding:16px}
-
-/* ---------- contato ---------- */
-.contact a.box{display:flex;gap:16px;align-items:center;transition:transform .1s}
+/* contato */
+.contact a.box{display:flex;gap:16px;align-items:center;transition:transform .15s,border-color .15s}
 .contact a.box:hover{transform:translate(-2px,-2px);border-color:var(--c)}
-.contact i{font-size:2rem;color:var(--c);width:40px;text-align:center}
-.contact small{color:var(--muted);display:block;font-size:1.1rem}
+.contact i{font-size:1.6rem;color:var(--c);width:40px;text-align:center}
+.contact b{font-size:.68rem}
+.contact small{color:var(--muted);display:block;font-size:.55rem;margin-top:4px}
+
+/* ===== DASHBOARD DE DISCIPLINAS (reestruturado) ===== */
+.dash-shell{display:grid;grid-template-columns:230px 1fr;gap:22px;align-items:start}
+.dash-side{
+  background:var(--panel);border:var(--px) solid var(--line);
+  box-shadow:var(--px) var(--px) 0 var(--line);padding:16px;
+}
+.dash-side h3{font-size:.62rem;color:var(--muted);margin-bottom:14px;letter-spacing:.05em}
+.dash-side ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.dash-side button{
+  width:100%;text-align:left;cursor:pointer;font:inherit;font-size:.58rem;
+  color:var(--text);background:var(--panel2);border:3px solid var(--line);
+  padding:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;
+  transition:border-color .15s,background .15s;
+}
+.dash-side button:hover{border-color:var(--c,var(--cyan))}
+.dash-side button[aria-current="true"]{
+  background:linear-gradient(90deg,var(--c,var(--cyan)),var(--green));color:var(--ink);border-color:transparent;
+}
+.dash-side button em{font-style:normal;font-size:.5rem;opacity:.8}
+.dash-main{min-height:200px}
+.dash-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:12px;border-bottom:2px dashed var(--line)}
+.dash-head h3{font-size:.78rem}
+.dash-head .ext{font-size:.5rem;padding:5px 8px;background:var(--c,var(--cyan));color:var(--ink)}
+.task-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+.task-card{
+  width:100%;text-align:left;cursor:pointer;color:var(--text);font:inherit;
+  background:var(--panel2);border:3px solid var(--line);padding:14px;
+  display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s;
+}
+.task-card:hover{border-color:var(--c,var(--cyan));transform:translateY(-2px)}
+.task-card strong{font-size:.62rem;font-weight:400;color:var(--c,var(--cyan))}
+.task-card span{font-size:.5rem;color:var(--muted);line-height:1.6}
+.task-card i{align-self:flex-end;color:var(--c,var(--cyan));font-size:.7rem}
+.task-detail{border-top:6px solid var(--c,var(--cyan))}
+.task-detail h3{font-size:.72rem;margin-bottom:12px}
+.task-detail p{color:var(--muted);margin-bottom:18px;font-size:.58rem}
+.resource-list{display:flex;flex-wrap:wrap;gap:10px}
+.empty-state{border:2px dashed var(--line);padding:22px;color:var(--muted);background:var(--panel2);font-size:.6rem;line-height:1.7}
+.empty-state strong{color:var(--text);display:block;margin-bottom:8px}
 
 footer{margin:36px 0 12px;text-align:center;color:var(--muted);border-top:3px dashed var(--line);padding-top:18px}
-footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
+footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:8px}
+footer p{font-size:.55rem}
 
 @media(max-width:760px){
   .hero,.two,.charts{grid-template-columns:1fr}
+  .portrait{max-width:320px;margin:0 auto;width:100%}
   nav a{flex:1 1 45%;justify-content:center}
+  .dash-shell{grid-template-columns:1fr}
+  .dash-side ul{flex-direction:row;flex-wrap:wrap}
+  .dash-side li{flex:1 1 45%}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
@@ -181,18 +217,16 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
 <div class="wrap">
 
 <div class="top">
-  <div class="logo px"><i class="fas fa-gamepad"></i> MEVILLELA</div>
-  <div class="tools">
-    <button class="sq" id="theme" aria-label="Alternar entre modo escuro e claro" title="Alternar tema"><i class="fas fa-sun"></i></button>
-  </div>
+  <div class="logo px">MEVILLELA</div>
+  <button class="sq" id="theme" aria-label="Alternar entre modo escuro e claro" title="Alternar tema"><i class="fas fa-sun"></i></button>
 </div>
 
 <nav aria-label="Navegação principal" id="nav">
   <a href="#inicio"><i class="fas fa-home"></i>Início</a>
   <a href="#sobre"><i class="fas fa-user"></i>Sobre</a>
-  <a href="#habilidades"><i class="fas fa-bolt"></i>Skills</a>
+  <a href="#habilidades"><i class="fas fa-bolt"></i>Habilidades</a>
   <a href="#projetos"><i class="fas fa-cubes"></i>Projetos</a>
-  <a href="#desafios"><i class="fas fa-code"></i>Desafios</a>
+  <a href="#disciplinas"><i class="fas fa-book-open"></i>Disciplinas</a>
   <a href="#contato"><i class="fas fa-envelope"></i>Contato</a>
 </nav>
 
@@ -200,42 +234,26 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
 <!-- INÍCIO -->
 <section class="page" id="inicio">
   <div class="hero">
-    <div class="box">
-      <span class="px" style="font-size:.6rem;color:var(--pink)">Jogador 1 conectado</span>
-      <h1>Oi, meu nome é <span>Maria Eduarda</span></h1>
-      <div class="typed" id="typed" aria-live="off"></div>
-      <p class="lead">Estudante da UNICAMP, aspirante a Cientista de Dados. Aqui estão meus projetos, códigos e as formas de falar comigo.</p>
+    <div class="box main">
+      <h1>Oi, eu sou a Maria Eduarda</h1>
+      <div class="sub-h">Graduanda em Estatística</div>
+      <p class="lead">Estudo Estatística na UNICAMP e gosto de transformar dados em respostas claras. Aqui estão meus projetos, meus códigos e as formas de falar comigo.</p>
       <div class="btns">
-        <a class="btn main" href="#projetos"><i class="fas fa-play"></i>Ver projetos</a>
-        <a class="btn" href="#contato"><i class="fas fa-comment"></i>Falar comigo</a>
+        <a class="btn main" href="#projetos"><i class="fas fa-cubes"></i>Ver projetos</a>
+        <a class="btn" href="#contato"><i class="fas fa-envelope"></i>Entrar em contato</a>
       </div>
     </div>
-    <aside class="box card-p1" aria-label="Ficha de jogador">
-      <!-- avatar pixel art: notebook gamer -->
-      <svg viewBox="0 0 16 14" aria-hidden="true">
-        <rect x="2" y="1" width="12" height="8" fill="#9b6bff"/>
-        <rect x="3" y="2" width="10" height="6" fill="#07060d"/>
-        <rect x="4" y="6" width="1" height="1" fill="#5dff8a"/>
-        <rect x="6" y="5" width="1" height="2" fill="#22f3e6"/>
-        <rect x="8" y="4" width="1" height="3" fill="#ff5fa8"/>
-        <rect x="10" y="3" width="1" height="4" fill="#5dff8a"/>
-        <rect x="4" y="3" width="1" height="1" fill="#22f3e6"/>
-        <rect x="0" y="9" width="16" height="1" fill="#22f3e6"/>
-        <rect x="1" y="10" width="14" height="3" fill="#2d2552"/>
-        <g fill="#ff5fa8"><rect x="2" y="10" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="13" y="10" width="1" height="1"/></g>
-        <g fill="#22f3e6"><rect x="4" y="10" width="1" height="1"/><rect x="8" y="10" width="1" height="1"/><rect x="12" y="10" width="1" height="1"/></g>
-        <g fill="#5dff8a"><rect x="3" y="11" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="11" y="11" width="1" height="1"/></g>
-        <rect x="6" y="12" width="4" height="1" fill="#9b6bff"/>
-      </svg>
-      <div class="px">Ficha</div>
-      <div class="stat"><span>Classe</span><b>Data Scientist</b></div>
-      <div class="stat"><span>Mundo</span><b>UNICAMP</b></div>
-      <div class="stat"><span>Ferramentas</span><b>R · Python · SQL</b></div>
-      <div class="stat"><span>Status</span><b>Codando</b></div>
-    </aside>
+    <figure class="box portrait">
+      <img src="stardewVME.jpg" alt="Retrato em pixel art de Maria Eduarda: cabelo loiro cacheado, olhos verdes, brincos e correntes prateadas">
+      <figcaption>
+        <div class="px">Maria Eduarda<br>Villéla Silva</div>
+        <span>Estudante da UNICAMP</span>
+      </figcaption>
+    </figure>
   </div>
+
   <div class="box dash" aria-labelledby="dash-t">
-    <h2 id="dash-t">Painel do portfólio</h2>
+    <h2 id="dash-t">O portfólio em números</h2>
     <div class="kpis" id="kpis"></div>
     <div class="charts">
       <div><h3>Arquivos de código por extensão</h3><div id="ch-ext"></div></div>
@@ -243,10 +261,11 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
     </div>
     <p class="cap" id="cap"></p>
   </div>
+
   <div class="quick">
     <button data-go="projetos"><div class="box" style="--c:var(--cyan)"><i class="fas fa-cubes"></i><h3>Projetos</h3><p>O que já construí com dados.</p></div></button>
-    <button data-go="desafios"><div class="box" style="--c:var(--green)"><i class="fas fa-code"></i><h3>Desafios ME315</h3><p>15 desafios de banco de dados, com código e resultado.</p></div></button>
-    <button data-go="habilidades"><div class="box" style="--c:var(--pink)"><i class="fas fa-bolt"></i><h3>Skills</h3><p>Ferramentas e linguagens que uso.</p></div></button>
+    <button data-go="disciplinas"><div class="box" style="--c:var(--green)"><i class="fas fa-code"></i><h3>Disciplinas</h3><p>Acesse desafios, trabalhos, códigos e relatórios das disciplinas.</p></div></button>
+    <button data-go="habilidades"><div class="box" style="--c:var(--mid)"><i class="fas fa-bolt"></i><h3>Habilidades</h3><p>Ferramentas e linguagens que uso.</p></div></button>
   </div>
 </section>
 
@@ -255,7 +274,6 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
   <h2 class="title">Sobre mim</h2>
   <div class="two">
     <div class="box">
-      <!-- EDITE: conte sua história com suas palavras -->
       <p>Me chamo Maria Eduarda Villéla Silva, sou estudante do Instituto de Matemática, Estatística e Computação Científica (IMECC) da UNICAMP.</p>
       <p>Estou construindo minha carreira em ciência de dados: gosto de transformar dados brutos em respostas claras, com código reprodutível e boa visualização.</p>
       <p>Estudo métodos de otimização que, combinados com análise e visualização de dados, formam o combo perfeito para tomadas de decisão confiáveis.</p>
@@ -273,25 +291,25 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
 
 <!-- HABILIDADES -->
 <section class="page" id="habilidades">
-  <h2 class="title">Árvore de skills</h2>
+  <h2 class="title">Habilidades</h2>
   <div class="skills">
     <div class="box" style="--c:var(--cyan)">
-      <h3>Linguagens</h3>
+      <h3>Linguagens e ferramentas</h3>
       <div class="bar"><div><span>R</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
       <div class="bar"><div><span>Python</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
-      <div class="bar"><div><span>SQL</span><span>3/5</span></div><div class="track" data-n="2"></div></div>
-      <div class="bar"><div><span>Julia</span><span>3/5</span></div><div class="track" data-n="1"></div></div>
-      <div class="bar"><div><span>Power BI</span><span>3/5</span></div><div class="track" data-n="2"></div></div>
-      <div class="bar"><div><span>Looker Studio</span><span>3/5</span></div><div class="track" data-n="2"></div></div>
+      <div class="bar"><div><span>SQL</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="bar"><div><span>Julia</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="bar"><div><span>Power BI</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
+      <div class="bar"><div><span>Looker Studio</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
     </div>
-    <div class="box" style="--c:var(--pink)">
+    <div class="box" style="--c:var(--mid)">
       <h3>Dados e análise</h3>
-      <div class="bar"><div><span>Manipulação de banco de dados</span><span>4/5</span></div><div class="track" data-n="5"></div></div>
-      <div class="bar"><div><span>Visualização/gráficos</span><span>3/5</span></div><div class="track" data-n="5"></div></div>
+      <div class="bar"><div><span>Manipulação de banco de dados</span><span>4/5</span></div><div class="track" data-n="4"></div></div>
+      <div class="bar"><div><span>Visualização de dados</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
       <div class="bar"><div><span>Estatística</span><span>3/5</span></div><div class="track" data-n="3"></div></div>
     </div>
     <div class="box" style="--c:var(--green)">
-      <h3>Inventário</h3>
+      <h3>Também uso</h3>
       <div class="tags">
         <span class="tag">Quarto Markdown</span><span class="tag">R Markdown</span><span class="tag">Jupyter</span>
         <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">HTML/CSS</span>
@@ -306,62 +324,66 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
   <div class="grid">
     <article class="box proj" style="--c:var(--cyan)">
       <h3>Convergência de gradiente em MLPs</h3>
-      <p>Iniciação científica voluntária sobre o comportamento do Gradiente Descendente e do Gradiente Descendente Estocástico no treinamento de redes neurais Perceptron. Feito utilizando o bando de dados do TMDB, conectado diretamente à API oficial. Em andamento.</p>
-      <span class="chip">Python</span><span class="chip">Otimização</span><span class="chip">Em andamento</span><br>
-      <a class="mini" href="https://github.com/mdudavillela/gradient-convergence-mlp" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
-    </article>
-    <article class="box proj" style="--c:var(--pink)">
-      <h3>Detecção de objetos com YOLOv8</h3>
-      <p>Sistema de detecção com YOLOv8n e pós-processamento escrito à mão em Python. O relatório analisa como os limiares de confiança e IoU afetam falsos positivos e falsos negativos.</p>
-      <span class="chip">Python</span><span class="chip">Deep Learning</span><br>
-      <a class="mini" href="https://github.com/mdudavillela/yolov8-object-detection" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
-    </article>
-    <article class="box proj" style="--c:var(--purple)">
-      <h3>Tradução automática de datas</h3>
-      <p>Rede Seq2Seq com atenção que converte datas em vários formatos para o padrão ISO 8601, com análise dos mapas de atenção e de diferentes configurações da rede.</p>
-      <span class="chip">Python</span><span class="chip">Seq2Seq</span><br>
-      <a class="mini" href="https://github.com/mdudavillela/automatic-date-translation" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+      <p>Iniciação científica sobre o comportamento do Gradiente Descendente e do Estocástico no treino de redes Perceptron, com dados do TMDB via API oficial.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Otimização</span><span class="chip">Em andamento</span></div>
+      <div class="links"><a class="mini" href="https://github.com/mdudavillela/gradient-convergence-mlp" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a></div>
     </article>
     <article class="box proj" style="--c:var(--green)">
-      <h3>Streams do Spotify em 2023</h3>
-      <p>Análise exploratória das músicas mais ouvidas do ano: playlists, charts, lançamentos, positividade e dançabilidade. Virou um pôster científico apresentado a professores e colegas.</p>
-      <span class="chip">R</span><span class="chip">Visualização</span><br>
-      <a class="mini" href="https://github.com/mdudavillela/spotify-streams-analysis" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+      <h3>Detecção de objetos com YOLOv8</h3>
+      <p>Detecção com YOLOv8n e pós-processamento escrito à mão em Python, analisando como os limiares de confiança e IoU afetam os erros do modelo.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Deep Learning</span></div>
+      <div class="links"><a class="mini" href="https://github.com/mdudavillela/yolov8-object-detection" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a></div>
+    </article>
+    <article class="box proj" style="--c:var(--mid)">
+      <h3>Tradução automática de datas</h3>
+      <p>Rede Seq2Seq com atenção que converte datas de vários formatos para o padrão ISO 8601, com análise dos mapas de atenção e de configurações da rede.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Seq2Seq</span></div>
+      <div class="links"><a class="mini" href="https://github.com/mdudavillela/automatic-date-translation" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a></div>
     </article>
     <article class="box proj" style="--c:var(--cyan)">
-      <h3>Reconhecimento de dígitos (MNIST)</h3>
-      <p>Projeto de aprendizado de máquina para classificar dígitos manuscritos a partir de imagens, com notebook, script e relatório final.</p>
-      <span class="chip">Python</span><span class="chip">Machine Learning</span><br>
-      <a class="mini" href="https://github.com/mdudavillela/mnist-digit-recognition" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a>
+      <h3>Streams do Spotify em 2023</h3>
+      <p>Análise exploratória das músicas mais ouvidas do ano: playlists, charts, lançamentos, positividade e dançabilidade. Virou pôster científico na universidade.</p>
+      <div class="chips"><span class="chip">R</span><span class="chip">Visualização</span></div>
+      <div class="links"><a class="mini" href="https://github.com/mdudavillela/spotify-streams-analysis" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a></div>
     </article>
-    <article class="box proj" style="--c:var(--red)">
+    <article class="box proj" style="--c:var(--green)">
+      <h3>Reconhecimento de dígitos (MNIST)</h3>
+      <p>Projeto de aprendizado de máquina que classifica dígitos manuscritos a partir de imagens, com notebook, script e relatório final do trabalho.</p>
+      <div class="chips"><span class="chip">Python</span><span class="chip">Machine Learning</span></div>
+      <div class="links"><a class="mini" href="https://github.com/mdudavillela/mnist-digit-recognition" target="_blank" rel="noopener"><i class="fab fa-github"></i>Repositório</a></div>
+    </article>
+    <article class="box proj" style="--c:var(--mid)">
       <h3>Manipulação de Banco de Dados (ME315)</h3>
-      <p>Quinze desafios com código e resultados, mais um trabalho final apresentado em slides.</p>
-      <span class="chip">R</span><span class="chip">Quarto</span><span class="chip">SQL</span><br>
-      <a class="mini" href="#desafios"><i class="fas fa-code"></i>Ver desafios</a>
-      <a class="mini" href="ManipulacaoBancoDados/slides_me315 (1).html"><i class="fas fa-display"></i>Slides</a>
-      <a class="mini" href="ManipulacaoBancoDados/mapa.html"><i class="fas fa-map"></i>Mapa</a>
+      <p>Quinze desafios de manipulação de banco de dados, com código e resultados, mais um trabalho final apresentado em slides e um mapa interativo.</p>
+      <div class="chips"><span class="chip">R</span><span class="chip">Quarto</span><span class="chip">SQL</span></div>
+      <div class="links">
+        <a class="mini" href="#disciplinas"><i class="fas fa-code"></i>Desafios</a>
+        <a class="mini" href="ManipulacaoBancoDados/slides_me315 (1).html"><i class="fas fa-display"></i>Slides</a>
+        <a class="mini" href="ManipulacaoBancoDados/mapa.html"><i class="fas fa-map"></i>Mapa</a>
+      </div>
     </article>
   </div>
 </section>
 
-<!-- DESAFIOS -->
-<section class="page" id="desafios">
-  <h2 class="title">Desafios ME315</h2>
-  <div class="sub" role="group" aria-label="Tipo de conteúdo">
-    <button data-v="cod" aria-pressed="true"><i class="fas fa-code"></i> Códigos</button>
-    <button data-v="res" aria-pressed="false"><i class="fas fa-eye"></i> Resultados</button>
+<!-- DISCIPLINAS -->
+<section class="page" id="disciplinas">
+  <h2 class="title">Disciplinas</h2>
+  <div class="dash-shell">
+    <aside class="dash-side" aria-label="Lista de disciplinas">
+      <h3>DISCIPLINAS</h3>
+      <ul id="disc-list"></ul>
+    </aside>
+    <div class="dash-main" id="discipline-dashboard" aria-live="polite"></div>
   </div>
-  <div class="grid" id="chal"></div>
 </section>
 
 <!-- CONTATO -->
 <section class="page" id="contato">
   <h2 class="title">Contato</h2>
   <div class="grid contact">
-    <a class="box" style="--c:#4aa3ff" href="https://www.linkedin.com/in/mevillela/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><div><b>LinkedIn</b><small>Conexões e carreira</small></div></a>
+    <a class="box" style="--c:var(--cyan)" href="https://www.linkedin.com/in/mevillela/" target="_blank" rel="noopener"><i class="fab fa-linkedin"></i><div><b>LinkedIn</b><small>Conexões e carreira</small></div></a>
     <a class="box" style="--c:var(--green)" href="https://github.com/mdudavillela" target="_blank" rel="noopener"><i class="fab fa-github"></i><div><b>GitHub</b><small>Código-fonte</small></div></a>
-    <a class="box" style="--c:var(--pink)" href="https://lattes.cnpq.br/4029073359917865" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i><div><b>Currículo Lattes</b><small>Plataforma do CNPq</small></div></a>
+    <a class="box" style="--c:var(--mid)" href="https://lattes.cnpq.br/4029073359917865" target="_blank" rel="noopener"><i class="fas fa-graduation-cap"></i><div><b>Currículo Lattes</b><small>Plataforma do CNPq</small></div></a>
     <a class="box" style="--c:var(--cyan)" href="mailto:madudavs024@gmail.com"><i class="fas fa-envelope"></i><div><b>E-mail</b><small>madudavs024@gmail.com</small></div></a>
   </div>
 </section>
@@ -376,14 +398,13 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
 <script>
 (function(){
   var B='ManipulacaoBancoDados/', GH='https://github.com/mdudavillela/ManipulacaoBancoDados/blob/main/Desafio15.ipynb';
-  var colors=['var(--cyan)','var(--green)','var(--purple)','var(--pink)'];
-  // n, extensão, arquivo de código, resultados [rótulo, link, ícone]
-  var H=function(f){return ['HTML',B+f+'.html','fa-external-link-alt']}, P=function(f){return ['PDF',B+f+'.pdf','fa-file-pdf']};
+  var colors=['var(--cyan)','var(--mid)','var(--green)'];
+  var H=function(f){return ['Relatório HTML',B+f+'.html','fa-eye']}, P=function(f){return ['Relatório PDF',B+f+'.pdf','fa-file-pdf']};
   var D=[
     [1,'QMD','Desafio01.qmd',[H('Desafio01')]],
     [2,'QMD','Desafio02.qmd',[H('Desafio02')]],
     [3,'QMD','Desafio03.qmd',[H('Desafio03'),P('Desafio03')]],
-    [4,'QMD','Desafio04.qmd',[H('Desafio04'),['Mapa',B+'mapa.html','fa-map']]],
+    [4,'QMD','Desafio04.qmd',[H('Desafio04'),['Mapa interativo',B+'mapa.html','fa-map']]],
     [5,'QMD','Desafio05.qmd',[H('Desafio05')]],
     [6,'RMD','Desafio06.Rmd',[H('Desafio06'),P('Desafio06')]],
     [7,'QMD','Desafio07.qmd',[H('Desafio07')]],
@@ -394,38 +415,91 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
     [12,'QMD','Desafio12.qmd',[H('Desafio12')]],
     [13,'QMD','desafio13real.qmd',[H('desafio13real')]],
     [14,'QMD','Desafio14.qmd',[H('Desafio14')]],
-    [15,'IPYNB',null,[['GitHub',GH,'fa-github']]]
+    [15,'IPYNB',null,[['Código no GitHub',GH,'fa-github']]]
   ];
-  var view='cod', grid=document.getElementById('chal');
-  function pad(n){return n<10?'0'+n:n}
-  function draw(){
-    var h='';
-    D.forEach(function(d,i){
-      var c=colors[i%4], links='';
-      if(view==='cod'){
-        links=d[2]?'<a class="mini" href="'+B+d[2]+'" download><i class="fas fa-download"></i>Baixar código</a>'
-                  :'<a class="mini" href="'+GH+'" target="_blank" rel="noopener"><i class="fab fa-github"></i>Ver no GitHub</a>';
-      }else{
-        d[3].forEach(function(r){links+='<a class="mini" href="'+r[1]+'"'+(r[1].indexOf('http')===0?' target="_blank" rel="noopener"':'')+'><i class="'+(r[2]==='fa-github'?'fab':'fas')+' '+r[2]+'"></i>'+(r[0]==='HTML'?'Ver HTML':r[0]==='PDF'?'Ver PDF':r[0]==='Mapa'?'Ver mapa':'Ver no GitHub')+'</a>'});
-      }
-      h+='<article class="box chal" style="--c:'+c+'"><div class="lv"><h3>Desafio '+pad(d[0])+'</h3>'+(view==='cod'?'<span class="ext">'+d[1]+'</span>':'')+'</div>'+links+'</article>';
-    });
-    if(view==='res') h+='<article class="box chal" style="--c:var(--red)"><div class="lv"><h3>Chefe final</h3></div><a class="mini" href="'+B+'slides_me315 (1).html"><i class="fas fa-display"></i>Ver slides</a></article>';
-    grid.innerHTML=h;
-  }
-  document.querySelectorAll('.sub button').forEach(function(b){
-    b.addEventListener('click',function(){
-      view=b.dataset.v;
-      document.querySelectorAll('.sub button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});
-      draw();
-    });
-  });
-  draw();
 
-  // dashboard: calculado a partir da lista D, então atualiza sozinho quando você adicionar um desafio
+  var disciplines=[
+    {id:'ME115',name:'ME115',description:'Materiais e atividades da disciplina.',items:[]},
+    {id:'ME315',name:'ME315',description:'Manipulação de Banco de Dados',items:
+      D.map(function(d){
+        var resources=[];
+        if(d[2]) resources.push(['Baixar código',B+d[2],'fa-download',true]);
+        else resources.push(['Abrir código no GitHub',GH,'fa-github',false]);
+        d[3].forEach(function(r){resources.push([r[0],r[1],r[2],false]);});
+        return {title:'Desafio '+(d[0]<10?'0':'')+d[0],subtitle:d[1]+' · '+(resources.length-1)+' resultado(s)',resources:resources};
+      }).concat([{
+        title:'Trabalho final',subtitle:'Apresentação e materiais complementares',
+        resources:[['Ver slides',B+'slides_me315 (1).html','fa-display',false],['Ver mapa interativo',B+'mapa.html','fa-map',false]]
+      }])
+    },
+    {id:'MS672',name:'MS672',description:'Materiais e atividades da disciplina.',items:[]},
+    {id:'MS571',name:'MS571',description:'Materiais e atividades da disciplina.',items:[]},
+    {id:'MS428',name:'MS428',description:'Materiais e atividades da disciplina.',items:[]}
+  ];
+
+  var dashboard=document.getElementById('discipline-dashboard');
+  var discList=document.getElementById('disc-list');
+  var selectedDiscipline=null, selectedTask=null;
+
+  function safeAttr(value){return String(value).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+  function renderList(){
+    discList.innerHTML=disciplines.map(function(d,i){
+      var active = selectedDiscipline===d.id;
+      return '<li><button data-discipline="'+d.id+'" style="--c:'+colors[i%3]+'" '+(active?'aria-current="true"':'')+'>'+
+        '<span>'+d.name+'</span><em>'+d.items.length+'</em></button></li>';
+    }).join('');
+    discList.querySelectorAll('[data-discipline]').forEach(function(btn){
+      btn.addEventListener('click',function(){
+        selectedDiscipline=btn.dataset.discipline; selectedTask=null; renderAll();
+      });
+    });
+  }
+
+  function renderDashboard(){
+    var out='';
+    if(!selectedDiscipline){
+      out+='<div class="empty-state"><strong>← Escolha uma disciplina ao lado</strong>Selecione uma disciplina para ver as atividades, códigos e relatórios disponíveis.</div>';
+    } else {
+      var d=disciplines.find(function(x){return x.id===selectedDiscipline;});
+      if(selectedTask===null){
+        out+='<div class="dash-head"><h3 style="--c:'+colors[0]+'">'+d.name+' · '+d.description+'</h3><span class="ext" style="--c:'+colors[0]+'">'+d.items.length+' ITENS</span></div>';
+        if(d.items.length){
+          out+='<div class="task-grid">';
+          d.items.forEach(function(item,i){
+            out+='<button class="task-card" data-task="'+i+'" style="--c:'+colors[i%3]+'">'+
+              '<strong>'+item.title+'</strong><span>'+item.subtitle+'</span><i class="fas fa-arrow-right"></i></button>';
+          });
+          out+='</div>';
+        } else {
+          out+='<div class="empty-state"><strong>Conteúdo ainda não cadastrado.</strong>Esta disciplina já está na estrutura do dashboard. Quando os arquivos estiverem disponíveis, as atividades aparecerão aqui.</div>';
+        }
+      } else {
+        var item=d.items[selectedTask];
+        out+='<div class="dash-head"><h3>'+item.title+'</h3><span class="ext" style="--c:'+colors[selectedTask%3]+'">'+item.subtitle+'</span></div>';
+        out+='<article class="box task-detail" style="--c:'+colors[selectedTask%3]+'"><div class="resource-list">';
+        item.resources.forEach(function(r){
+          var external=r[1].indexOf('http')===0;
+          out+='<a class="mini" href="'+safeAttr(r[1])+'" '+(r[3]?'download':'')+(external?' target="_blank" rel="noopener"':'')+'><i class="fas '+r[2]+'"></i>'+r[0]+'</a>';
+        });
+        out+='</div></article>';
+        out+='<p style="margin-top:16px"><button class="mini" data-back="tasks" style="--c:'+colors[selectedTask%3]+'"><i class="fas fa-arrow-left"></i>Voltar às atividades</button></p>';
+      }
+    }
+    dashboard.innerHTML=out;
+    dashboard.querySelectorAll('[data-task]').forEach(function(btn){
+      btn.addEventListener('click',function(){selectedTask=Number(btn.dataset.task); renderDashboard();});
+    });
+    dashboard.querySelectorAll('[data-back="tasks"]').forEach(function(btn){
+      btn.addEventListener('click',function(){selectedTask=null; renderDashboard();});
+    });
+  }
+
+  function renderAll(){ renderList(); renderDashboard(); }
+  renderAll();
+
+  // números do portfólio: calculados a partir da lista D e da lista E
   (function(){
-    // projetos fora da disciplina (GitHub): [repositório, [extensões dos arquivos de código], nº de PDFs publicados]
-    // para atualizar: adicione uma linha aqui e os números e as barras mudam sozinhos
     var E=[
       ['yolov8-object-detection',['PY'],1],
       ['automatic-date-translation',['PY'],1],
@@ -444,10 +518,9 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
       e[1].forEach(function(x){ext[x]=(ext[x]||0)+1; nCod++});
       res['PDF']+=e[2]; nRes+=e[2];
     });
-    var kpis=[[D.length,'desafios concluídos','var(--cyan)'],[E.length+1,'repositórios no painel','var(--purple)'],[nCod,'arquivos de código','var(--green)'],[nRes,'resultados publicados','var(--pink)'],[Object.keys(ext).length,'formatos de código','var(--red)']];
+    var kpis=[[D.length,'desafios concluídos','var(--cyan)'],[E.length+1,'repositórios','var(--mid)'],[nCod,'arquivos de código','var(--green)'],[nRes,'resultados publicados','var(--cyan)'],[Object.keys(ext).length,'formatos de código','var(--mid)']];
     document.getElementById('kpis').innerHTML=kpis.map(function(k){return '<div class="kpi" style="--c:'+k[2]+'"><b>'+k[0]+'</b><span>'+k[1]+'</span></div>'}).join('');
     document.getElementById('cap').innerHTML='Inclui os '+D.length+' desafios da ME315 e '+E.length+' projetos do <a href="https://github.com/mdudavillela" target="_blank" rel="noopener">meu GitHub</a>.';
-    // cor da barra e do número vem da quantidade: do tom "pouco" ao tom "muito"
     function chart(id,obj,ramp){
       var keys=Object.keys(obj).filter(function(k){return obj[k]>0}).sort(function(a,b){return obj[b]-obj[a]});
       var max=obj[keys[0]]||1;
@@ -457,24 +530,21 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
         return '<div class="row" style="--c:'+c+'"><span>.'+k.toLowerCase()+'</span><div class="track"><div class="fill" data-w="'+pct+'"></div></div><em>'+obj[k]+'</em></div>';
       }).join('');
     }
-    chart('ch-ext',ext,['var(--purple)','var(--green)']);
-    chart('ch-res',res,['var(--purple)','var(--cyan)']);
-    // os rótulos de resultados não são extensões: remove o ponto
+    chart('ch-ext',ext,['var(--dim)','var(--green)']);
+    chart('ch-res',res,['var(--dim)','var(--cyan)']);
     document.querySelectorAll('#ch-res .row span').forEach(function(s){s.textContent=s.textContent.slice(1)});
     requestAnimationFrame(function(){requestAnimationFrame(function(){
       document.querySelectorAll('.fill').forEach(function(f){f.style.width=f.dataset.w+'%'});
     })});
   })();
 
-  // barras de skill em blocos
-  document.querySelectorAll('.track').forEach(function(t){
+  document.querySelectorAll('.bar .track').forEach(function(t){
     var n=+t.dataset.n, s='';
     for(var i=0;i<5;i++) s+='<i class="'+(i<n?'f':'')+'"></i>';
     t.innerHTML=s;
   });
 
-  // navegação por hash
-  var pages=['inicio','sobre','habilidades','projetos','desafios','contato'];
+  var pages=['inicio','sobre','habilidades','projetos','disciplinas','contato'];
   function show(id){
     if(pages.indexOf(id)<0) id='inicio';
     document.querySelectorAll('.page').forEach(function(p){p.classList.toggle('on',p.id===id)});
@@ -483,11 +553,7 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
     });
     window.scrollTo(0,0);
   }
-  function open(id){
-    show(id);
-    try{history.replaceState(null,'','#'+id)}catch(e){}
-  }
-  // todo link interno (#aba) e todo botão [data-go] troca de aba direto pelo JS
+  function open(id){ show(id); try{history.replaceState(null,'','#'+id)}catch(e){} }
   document.querySelectorAll('a[href^="#"]').forEach(function(a){
     a.addEventListener('click',function(e){e.preventDefault();open(a.getAttribute('href').slice(1))});
   });
@@ -495,24 +561,11 @@ footer .px{font-size:.6rem;color:var(--cyan);margin-bottom:6px}
   window.addEventListener('hashchange',function(){show(location.hash.slice(1))});
   show(location.hash.slice(1));
 
-  // tema (escuro por padrão)
   var root=document.documentElement, ic=document.querySelector('#theme i');
   function setTheme(t){root.dataset.theme=t; ic.className='fas '+(t==='dark'?'fa-sun':'fa-moon'); try{localStorage.setItem('tema',t)}catch(e){}}
   var saved=null; try{saved=localStorage.getItem('tema')}catch(e){}
   setTheme(saved==='light'?'light':'dark');
   document.getElementById('theme').addEventListener('click',function(){setTheme(root.dataset.theme==='dark'?'light':'dark')});
-
-  // texto digitado
-  var phrases=['Cientista de dados em formação','Apaixonada por dados','Transformando dados em respostas'], pi=0, ci=0, del=false, el=document.getElementById('typed');
-  var still=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(still){el.textContent=phrases[0]}else(function tick(){
-    var p=phrases[pi];
-    ci+=del?-1:1; el.textContent=p.slice(0,ci);
-    var t=del?35:70;
-    if(!del&&ci===p.length){del=true;t=1600}
-    else if(del&&ci===0){del=false;pi=(pi+1)%phrases.length;t=400}
-    setTimeout(tick,t);
-  })();
 })();
 </script>
 </body>
