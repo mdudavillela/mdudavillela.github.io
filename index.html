@@ -309,10 +309,10 @@ footer p{font-size:.55rem}
     <div class="box" style="--c:var(--cyan)">
       <h3>Linguagens e ferramentas</h3>
       <div class="skill-cols">
-        <div class="bar"><div><span>R</span><span>Avançado</span></div><div class="track" data-n="3"></div></div>
-        <div class="bar"><div><span>Python</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
+        <div class="bar"><div><span>R</span><span>Avançado</span></div><div class="track" data-n="4"></div></div>
+        <div class="bar"><div><span>Python</span><span>Intermediário</span></div><div class="track" data-n="3"></div></div>
         <div class="bar"><div><span>SQL</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
-        <div class="bar"><div><span>Julia</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
+        <div class="bar"><div><span>Julia</span><span>Básico</span></div><div class="track" data-n="1"></div></div>
         <div class="bar"><div><span>Power BI</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
         <div class="bar"><div><span>Looker Studio</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
       </div>
@@ -321,9 +321,10 @@ footer p{font-size:.55rem}
     <div class="box" style="--c:var(--mid)">
       <h3>Dados e análise</h3>
       <div class="skill-cols">
-        <div class="bar"><div><span>Manipulação de banco de dados</span><span>Avançado</span></div><div class="track" data-n="3"></div></div>
-        <div class="bar"><div><span>Visualização de dados</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
-        <div class="bar"><div><span>Estatística</span><span>Intermediário</span></div><div class="track" data-n="2"></div></div>
+        <div class="bar"><div><span>Análise descritiva e exploratória</span><span>Avançado</span></div><div class="track" data-n="5"></div></div>
+        <div class="bar"><div><span>Visualização de dados</span><span>Avançado</span></div><div class="track" data-n="5"></div></div>
+        <div class="bar"><div><span>Manipulação de banco de dados</span><span>Avançado</span></div><div class="track" data-n="4"></div></div>
+        <div class="bar"><div><span>Interpretação de resultados</span><span>Avançado</span></div><div class="track" data-n="4"></div></div>
       </div>
     </div>
     
@@ -332,7 +333,7 @@ footer p{font-size:.55rem}
       <div class="tags">
         <span class="tag">Quarto Markdown</span><span class="tag">R Markdown</span><span class="tag">Jupyter</span>
         <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">HTML/CSS</span>
-        <span class="tag">Onshape</span><span class="tag">Robótica</span>
+        <span class="tag">Onshape</span><span class="tag">LaTeX</span>
       </div>
     </div>
   </div>
@@ -497,8 +498,8 @@ footer p{font-size:.55rem}
 
   // 1) Radar de habilidades técnicas
   (function(){
-    var labels=['R','Python','SQL','Julia','Estatística','Viz','Power BI'];
-    var values=[4,3,3,3,3,3,3]; // 0..5
+    var labels=['R','Python','SQL','Julia','Looker Studio','Power BI'];
+    var values=[4,3,3,2,1,2,2]; // 0..5
     var N=labels.length, R=70, cx=110, cy=95;
     var svg=document.getElementById('radar');
     function pt(i, r){
@@ -553,11 +554,11 @@ footer p{font-size:.55rem}
     var items=[
       ['mar. 2024','Graduação na UNICAMP','Início do Bacharelado em Estatística no IMECC.'],
       ['abr. 2024','Trainee na Quanta Jr','Passagem pelas áreas de Mercado, Projetos e Gestão.'],
-      ['abr. 2025','Trainee em Gestão de Pessoas','Início na Estat Júnior, focado em R e competências interpessoais.'],
+      ['abr. 2025','Trainee em Gestão de Pessoas na Estat Júnior','Início na Estat Júnior, com foco em R, Power BI e competências interpessoais.'],
       ['mai. 2025','Vice Presidência e Gestão de Pessoas','Atuação na Estat Júnior e integração da célula Diversifica.'],
-      ['nov. 2025','Assessora Plena de Infraestrutura','Trabalho na SEMEST com logística e organização de evento de 5 dias.'],
-      ['mai. 2026','Integrante do GER','Grupo de Estudos em Robótica, trabalhando com Onshape e robótica.'],
-      ['set. 2026','Pesquisadora de Iniciação Científica','PICV voluntária estudando convergência de gradiente em redes Perceptron.']
+      ['nov. 2025','Assessora Plena de Infraestrutura','Trabalho na SEMEST com logística e organização de evento.'],
+      ['mai. 2026','Integrante do GER','Grupo de Estudos em Robótica, trabalhando com Onshape, robótica e projeto social (foco principal).'],
+      ['set. 2026','Pesquisadora de Iniciação Científica','PICV (IC voluntária) - estudando convergência de gradiente em redes neurais Perceptron.']
     ];
     var tlColors=['var(--cyan)','var(--mid)','var(--green)'];
     document.getElementById('traj').innerHTML='<div class="tl-line"></div>'+items.map(function(it,i){
